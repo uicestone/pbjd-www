@@ -57,12 +57,8 @@ input {
   background-size: 100% 100%;
 }
 
-.page4 .header, .page5 .header, .page6 .header, .page7 .header, .page8 .header {
+.page5 .header, .page6 .header, .page7 .header, .page8 .header {
   position: fixed; left: 0; right: 0;
-}
-
-.page4 .list, .page5 .list, .page6 .list, .page7 .list, .page8 .list {
-  padding-top: 2rem !important;
 }
 
 /************************************ 首页 *********************************************/
@@ -1115,7 +1111,7 @@ input {
 }
 
 .page6 .list {
-  padding: 1.1rem 0.6rem 0.6rem;
+  padding: 2rem 0.6rem 0.6rem;
 }
 
 .page6 .list .list-text {
@@ -1287,7 +1283,7 @@ input {
 }
 
 .page8 .list {
-  padding: 1.1rem 0.6rem 0.6rem;
+  padding: 2rem 0.6rem 0.6rem;
 }
 
 .page8 .list .list-text {
@@ -1465,7 +1461,7 @@ input {
 }
 
 .page5 .list {
-  padding: 1rem 0.55rem 0.6rem;
+  padding: 2rem 0.55rem 0.6rem;
 }
 
 .page5 .list .tagDiv {
@@ -1667,7 +1663,7 @@ input {
 }
 
 .page7 .list {
-  padding: 0.65rem 0.6rem 0.6rem;
+  padding: 6.7rem 0.6rem 0.6rem;
 }
 
 .page7 .list .list-text {
