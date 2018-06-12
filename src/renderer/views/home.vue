@@ -212,7 +212,6 @@
 import { handleLoading } from "../utils/utils";
 import * as request from "../utils/request";
 import moment from "moment";
-import { setTimeout, setInterval } from "timers";
 let currentDate = moment().format("YYYY-MM");
 moment.locale("zh-cn");
 moment.updateLocale("zh-cn", {
@@ -295,18 +294,18 @@ export default {
       ll: moment().format("LL"),
       dddd: moment().format("dddd"),
       L: moment().format("HH"),
-      T: moment().format("MM"),
+      T: moment().format("mm"),
       A: moment().format("A")
     };
-    setInterval(async () => {
+    setInterval(() => {
       this.date = {
         ll: moment().format("LL"),
         dddd: moment().format("dddd"),
         L: moment().format("HH"),
-        T: moment().format("MM"),
+        T: moment().format("mm"),
         A: moment().format("A")
       };
-    }, 60000);
+    }, 1000);
   }
 };
 </script>
