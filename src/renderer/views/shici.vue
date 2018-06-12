@@ -8,6 +8,8 @@ export default {
       currentSelectPeople: -1,
       peopleList: [],
       musicList: [],
+      currentPlayIndex: -1,
+      currentPlayer: new Audio(),
       currentTag: 1,
       flowText: [
         "正衣冠，列队有序进入宣誓厅（室）；",
@@ -27,6 +29,7 @@ export default {
     }
   },
   async mounted() {
+    global.player = this.currentPlayer;
     handleLoading();
     this.peopleList = await request.getPosts({
       query: {
@@ -40,6 +43,14 @@ export default {
         limit: 12
       }
     });
+  },
+  methods: {
+    playAudio(index) {
+      this.currentPlayIndex = index;
+      let data = this.musicList[index];
+      this.currentPlayer.load(data.url);
+      this.currentPlayer.play();
+    }
   }
 };
 </script>
@@ -84,9 +95,9 @@ export default {
 				    		</div>
 				    	    
 				    	    <ul v-if="currentTag == 3"  class="chunk chunk3">
-				    	    	<li v-for="(item, index) in musicList">
+				    	    	<li v-for="(item, index) in musicList" @click="playAudio(index)">
 				    	    		<span>{{item.title}}</span>
-				    	    		<audio class="myaudio" :src="item.url" preload="auto" loop="loop"></audio>
+				    	    		<!-- <audio class="myaudio" :src="item.url" :ref="`audio${index}`" preload="auto" loop="loop"></audio> -->
 				    	    		<i class="fa fa-play-circle-o" aria-hidden="true"></i>				    	    		
 				    	    	</li>
 				    	    </ul>

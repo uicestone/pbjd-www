@@ -10,12 +10,10 @@ import router from "./router";
 import store from "./store";
 import moment from "moment";
 import VueAwesomeSwiper from "vue-awesome-swiper";
-import Calendar from "vue2-slot-calendar";
 
-import "swiper/dist/css/swiper.css";
+// import "swiper/dist/css/swiper.css";
 
 Vue.use(VueAwesomeSwiper);
-Vue.use(Calendar);
 
 Vue.filter("dt", (val, format) => (val > 10 ? val : "0" + val));
 Vue.filter("MM", (val, format) => moment(val).format(format));

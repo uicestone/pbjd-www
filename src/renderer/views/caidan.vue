@@ -4,11 +4,18 @@ import * as request from "../utils/request";
 import moment from "moment";
 let currentDate = moment().format("YYYY-MM");
 
+import Calendar from "vue-calendar-component";
+
 export default {
+  components: {
+    Calendar
+  },
   data() {
     return {
       currentSelect: -1,
-      dataList: []
+      dataList: [],
+      eventDates: [],
+      currentDate: ""
     };
   },
   computed: {
@@ -18,16 +25,30 @@ export default {
   },
   async mounted() {
     handleLoading();
-    let cachedMonthMenu = await request.getPosts({
-      query: {
-        category: "月度菜单",
-        limit: 12,
-        month: currentDate
-      }
-    });
-    this.dataList = cachedMonthMenu.sort((a, b) => {
-      return moment(a.date) < moment(b.date) ? -1 : 1;
-    });
+    this.fetchDate({ date: currentDate });
+  },
+  methods: {
+    changeDate(data) {
+      let date = moment(data).format("YYYY-MM");
+      this.fetchDate({ date });
+    },
+    async fetchDate({ date }) {
+      this.currentDate = date;
+      let cachedMonthMenu = await request.getPosts({
+        query: {
+          category: "月度菜单",
+          limit: 12,
+          month: date
+        }
+      });
+      this.eventDates = [];
+      this.dataList = cachedMonthMenu.sort((a, b) => {
+        if (!this.eventDates.includes(b.date)) {
+          this.eventDates.push(b.date);
+        }
+        return moment(a.date) < moment(b.date) ? -1 : 1;
+      });
+    }
   }
 };
 </script>
@@ -41,12 +62,13 @@ export default {
 			</div>
 			<div class="list">
 				<div class="list-text">
-					<div class="text-top">
+					<!-- <div class="text-top">
 						<span class="fl">6月</span>
 						<span class="fr">June</span>
-					</div>
-					<img src="~@/assets/images/cal.png"/>
-					<div class="list-page">
+					</div> -->
+					<!-- <img src="~@/assets/images/cal.png"/> -->
+					<Calendar :markDate="eventDates" @changeMonth="changeDate"></Calendar>
+					<!-- <div class="list-page">
 						<ul>
 							<li><img src="~@/assets/images/index/left-arrow.png"/></li>
 							<li class="active"><span></span></li>
@@ -55,9 +77,9 @@ export default {
 							<li><span></span></li>
 							<li><img src="~@/assets/images/index/right-arrow.png"/></li>
 						</ul>
-					</div>
+					</div> -->
 				</div>
-				<div  v-for="(item,index) in dataList"  class="content">
+				<div  v-for="(item,index) in dataList"  class="content" :key="index">
 					<div class="con-top">
 						<div class="date"><span>{{item.date | MM("M.D")}}</span></div>
 						<div class="title">
@@ -122,3 +144,37 @@ export default {
 		</div>				
 	</body>
 </template>
+
+<style lang="stylus">
+.wh_top_changge li
+	// display none
+	color #666
+.wh_jiantou2
+	border-top 2px solid #666
+	border-right 2px solid #666
+.wh_jiantou1
+	border-top 2px solid #666
+	border-left 2px solid #666
+.wh_content_all
+	background-color transparent
+.wh_top_tag, .wh_item_date
+	color #666
+	border solid 1px #a7a7a7
+	background-color white
+	width 45px
+	height 45px
+.wh_content
+	padding 0
+	justify-content space-between
+.wh_content_item
+	width 12%
+	margin 4px
+.wh_content_item .wh_isToday
+	background-color white
+	border-radius 0
+	color #af2028
+.wh_content_item>.wh_isMark
+	border-radius 0
+	background white
+	font-weight bold
+</style>

@@ -1024,6 +1024,15 @@ input {
 .page9 .activity {
   padding: 0.3rem 0.9rem;
 }
+.page9 .activity h1 {
+  font-size: 0.4rem;
+  color: #4d4d4e;
+  text-align: center;
+}
+
+.page9 .activity h2 {
+  font-size: 0.2rem;
+}
 
 .page9 .activity .title {
   font-size: 0.23rem;
