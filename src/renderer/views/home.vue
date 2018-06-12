@@ -87,7 +87,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="fr caidan">
+					<div class="fr caidan" @click="$router.push('/caidan')">
 						<div class="fl yuedu">
 							<div class="yue-top">
 								<img src="~@/assets/images/index/caidan.png"/><span>月度菜单</span>
@@ -101,7 +101,7 @@
 							</div> -->
 						</div>
 						<div class="fl cd-list">
-							<ul @click="$router.push('/caidan')">
+							<ul>
 								<li v-for="(item, index) in monthMenu" :key="index">
 									<div class="fl index">{{index+ 1}}</div>
 									<div class="fl text">
