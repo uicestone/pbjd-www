@@ -30,6 +30,10 @@
   version "0.0.32"
   resolved "https://registry.npmjs.org/@types/less/-/less-0.0.32.tgz#7e36ccbfc730278dc33ab4b90b111ca32e532410"
 
+"@types/lodash@^4.14.106":
+  version "4.14.109"
+  resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.109.tgz#b1c4442239730bf35cabaf493c772b18c045886d"
+
 "@types/node-sass@^3.10.32":
   version "3.10.32"
   resolved "https://registry.npmjs.org/@types/node-sass/-/node-sass-3.10.32.tgz#b296cce7144ffab77b84090caad4f1e4bbea8e09"

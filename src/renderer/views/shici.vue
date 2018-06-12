@@ -9,7 +9,6 @@ export default {
       peopleList: [],
       musicList: [],
       currentPlayIndex: -1,
-      currentPlayer: new Audio(),
       currentTag: 1,
       flowText: [
         "正衣冠，列队有序进入宣誓厅（室）；",
@@ -26,10 +25,12 @@ export default {
   computed: {
     currentSelectPeopleData() {
       return this.peopleList[this.currentSelectPeople] || {};
-    }
+		},
+		currentPlayer(){
+			return this.$refs.audio
+		}
   },
   async mounted() {
-    global.player = this.currentPlayer;
     handleLoading();
     this.peopleList = await request.getPosts({
       query: {
@@ -104,6 +105,7 @@ export default {
 				    	    		<!-- <audio class="myaudio" :src="item.url" :ref="`audio${index}`" preload="auto" loop="loop"></audio> -->
 				    	    		<i :class="{fa: true, 'fa-play-circle-o': currentPlayIndex != index, 'fa-volume-up': currentPlayIndex == index}" aria-hidden="true"></i>				    	    		
 				    	    	</li>
+										<audio ref="audio"  style="overflow: hidden"/>
 				    	    </ul>
 				    	</div>
 				    </div>

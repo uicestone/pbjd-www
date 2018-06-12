@@ -147,7 +147,6 @@ export default {
 
 <style lang="stylus">
 .wh_top_changge li
-	// display none
 	color #666
 .wh_jiantou2
 	border-top 2px solid #666
