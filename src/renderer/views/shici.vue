@@ -71,15 +71,15 @@ export default {
 				<div class="middle">
 				    <div class="tab-bar">
 				    	<div :class="{curr: currentTag == 1}"  @click="currentTag =1">
-				    		<p><i class="fa fa-list-ul" aria-hidden="true"></i><br><font>宣誓流程</font></p>
+				    		<p><i class="fa fa-list-ul" aria-hidden="true"></i><font>宣誓流程</font></p>
 				    		<img src="~@/assets/images/line.jpg">
 				    	</div>
 				    	<div :class="{curr: currentTag == 2}"  @click="currentTag =2">
-				    		<p><i class="fa fa-user-o" aria-hidden="true"></i><br><font>领誓人</font></p>
+				    		<p><i class="fa fa-user-o" aria-hidden="true"></i><font>领誓人</font></p>
 				    		<img src="~@/assets/images/line.jpg">
 				    	</div>
 				    	<div :class="{curr: currentTag == 3}"  @click="currentTag =3" >
-				    		<p><i class="fa fa-music" aria-hidden="true"></i><br><font>红色歌曲</font></p>
+				    		<p><i class="fa fa-music" aria-hidden="true"></i><font>红色歌曲</font></p>
 				    		<img src="~@/assets/images/line.jpg">
 				    	</div>
 				    </div>

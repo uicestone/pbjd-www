@@ -36,7 +36,7 @@ body {
   width: 100%;
   line-height: normal;
   -webkit-overflow-scrolling: touch;
-  background: #f2f2f3;
+  background: #f2f2f3 !important;
 }
 
 img {
@@ -972,7 +972,7 @@ input {
   border: 1px solid #a1a1a1;
   background: #fff;
   position: relative;
-  margin: 1rem 0;
+  margin: 0.2rem 0;
 }
 
 .page9 .con-top .date {
@@ -2108,7 +2108,9 @@ input {
 }
 
 .page2 .tab-bar div font {
-  font-size: 0.46rem;
+  font-size: 0.4rem;
+  margin-top: 0.2rem;
+  display: block;
 }
 
 .page2 .tab-bar .curr {
@@ -2148,10 +2150,10 @@ input {
   width: 100%;
   height: auto;
   color: #4e4e4e;
-  font-size: 0.36rem;
+  font-size: 0.35rem;
   border-bottom: 1px solid #ec1f26;
   position: relative;
-  padding: 0.4rem 0 0.15rem 0;
+  padding: 0.2rem 0 0.15rem 0;
 }
 
 .page2 .chunk1 span {
@@ -2195,6 +2197,12 @@ input {
   width: 2.4rem;
   height: auto;
   margin: 0.3rem 0.39rem;
+}
+
+.page2 .chunk2 div img {
+  height: 3rem;
+  width: 100%;
+  object-fit: cover;
 }
 
 .page2 .chunk3 {

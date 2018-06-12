@@ -79,52 +79,54 @@ export default {
 						</ul>
 					</div> -->
 				</div>
-				<div  v-for="(item,index) in dataList"  class="content" :key="index">
-					<div class="con-top">
-						<div class="date"><span>{{item.date | MM("M.D")}}</span></div>
-						<div class="title">
-							<img src="~@/assets/images/index/icon2.png"/>
-							{{item.title}}
+				<div class="content-container">
+					<div  v-for="(item,index) in dataList"  class="content" :key="index">
+						<div class="con-top">
+							<div class="date"><span>{{item.date | MM("M.D")}}</span></div>
+							<div class="title">
+								<img src="~@/assets/images/index/icon2.png"/>
+								{{item.title}}
+							</div>
+							<!-- <h3>“联西的六靠精神”书记工作室导师讲堂</h3> -->
 						</div>
-						<!-- <h3>“联西的六靠精神”书记工作室导师讲堂</h3> -->
+						<div class="activity" v-html="item.content"></div>
+						<!-- <div class="activity">
+							<div class="activity1">
+								<div class="title">
+									<span><i class="fa fa-file-text-o"></i></span>活动简介
+								</div>
+								<p>
+									邀请安亭镇书记工作室导师、联西村党总支书记唐祝平为辖区青年党员、后备干部
+									生动讲述联西村三十年的发展历程以及标志性事件、人物 、故事等，通过参观党建服务站以及交流分享
+									，让党员更直观的了解改革开放以来新农村发生的巨大变化和历史缩影，激励党员积极发挥先锋模范作用。
+								</p>
+							</div>
+							<div class="activity2">
+								<div class="title">
+									<span><i class="fa fa-clock-o"></i></span>活动时间
+								</div>
+								<p>
+									5月18日 13:30-15:00
+								</p>
+							</div>
+							<div class="activity3">
+								<div class="title">
+									<span><i class="fa fa-map-marker"></i></span>活动地点
+								</div>
+								<p>
+									联西村党建服务站（联西路28号）
+								</p>
+							</div>
+							<div class="activity4">
+								<div class="title">
+									<span><i class="fa fa-phone"></i></span>联系方式
+								</div>
+								<p>
+									陈艳：59561186
+								</p>
+							</div>
+						</div> -->
 					</div>
-					<div class="activity" v-html="item.content"></div>
-					<!-- <div class="activity">
-						<div class="activity1">
-							<div class="title">
-								<span><i class="fa fa-file-text-o"></i></span>活动简介
-							</div>
-							<p>
-								邀请安亭镇书记工作室导师、联西村党总支书记唐祝平为辖区青年党员、后备干部
-								生动讲述联西村三十年的发展历程以及标志性事件、人物 、故事等，通过参观党建服务站以及交流分享
-								，让党员更直观的了解改革开放以来新农村发生的巨大变化和历史缩影，激励党员积极发挥先锋模范作用。
-							</p>
-						</div>
-						<div class="activity2">
-							<div class="title">
-								<span><i class="fa fa-clock-o"></i></span>活动时间
-							</div>
-							<p>
-								5月18日 13:30-15:00
-							</p>
-						</div>
-						<div class="activity3">
-							<div class="title">
-								<span><i class="fa fa-map-marker"></i></span>活动地点
-							</div>
-							<p>
-								联西村党建服务站（联西路28号）
-							</p>
-						</div>
-						<div class="activity4">
-							<div class="title">
-								<span><i class="fa fa-phone"></i></span>联系方式
-							</div>
-							<p>
-								陈艳：59561186
-							</p>
-						</div>
-					</div> -->
 				</div>
 			</div>
 		</div>
@@ -146,28 +148,42 @@ export default {
 </template>
 
 <style lang="stylus">
+.wh_container
+	max-width none
+.wh_top_changge
+	height 1rem
+	align-items center
 .wh_top_changge li
-	color #666
+	color #a1302e
+	font-size 0.5rem
 .wh_jiantou2
 	border-top 2px solid #666
 	border-right 2px solid #666
+	width 0.25rem
+	height 0.25rem
 .wh_jiantou1
 	border-top 2px solid #666
 	border-left 2px solid #666
+	width 0.25rem
+	height 0.25rem
+.wh_content_li
+	font-size 0.5rem
 .wh_content_all
 	background-color transparent
 .wh_top_tag, .wh_item_date
 	color #666
-	border solid 1px #a7a7a7
-	background-color white
-	width 45px
-	height 45px
+	border solid 2px #a7a7a7
+	background-color #fff
+	width 1.2rem
+	height 1.2rem
 .wh_content
 	padding 0
 	justify-content space-between
 .wh_content_item
 	width 12%
-	margin 4px
+	margin 10px
+	height 1.2rem
+	font-size 0.5rem
 .wh_content_item .wh_isToday
 	background-color white
 	border-radius 0
@@ -179,4 +195,7 @@ export default {
 .wh_item_date.wh_chose_day
 	border-radius 0
 	background white
+.content-container
+	height 8.1rem
+	overflow-y scroll
 </style>
