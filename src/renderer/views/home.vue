@@ -28,7 +28,7 @@
 			<div class="main-con">
 				<div class="main-con1">
 					<div class="fl leftDiv">
-						<div class="baodao">
+						<div class="baodao" @click="showQrcode">
 							<div class="num">
 								报到人数<span class="f69">441</span><span class="f35">人</span>
 							</div>
@@ -175,6 +175,11 @@
 						嘉定区党建服务中心
 					</div>
 				</div>
+				<Modal
+					v-model="qrcode"
+					class-name="vertical-center-modal">
+					<img src="~@/assets/images/qrcode.jpg" width="100%" height="100%"/>
+			</Modal>
 			</div>
 
 			<div class="pop" v-if="selectedStatus > -1">
@@ -224,6 +229,7 @@ export default {
           disableOnInteraction: false
         }
       },
+      qrcode: false,
       weather: {},
       date: {},
       partyStatusList: [],
@@ -248,8 +254,11 @@ export default {
     onSlideChange(swiper) {
       this.currenGongyixingIndex = this.$refs[swiper].swiper.activeIndex;
     },
+    showQrcode() {
+      this.qrcode = true;
+    },
     wating() {
-      alert("施工中...");
+      alert("两学一做内容即将上线");
     }
   },
   async mounted() {
@@ -301,5 +310,13 @@ export default {
 };
 </script>
 
-<style stylus scoped>
+<style lang="stylus">
+.vertical-center-modal
+	display flex
+	align-items center
+	justify-content center
+	.ivu-modal
+		top 0
+.ivu-icon-ios-close-empty, .ivu-modal-footer
+	display none
 </style>

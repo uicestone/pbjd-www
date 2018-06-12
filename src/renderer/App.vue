@@ -1,7 +1,7 @@
 <template lang="pug">
   div#app
     div
-      div.button-back-debug(@click="$router.go(-1)") 返回
+      //- div.button-back-debug(@click="$router.go(-1)") 返回
     router-view
 </template>
 
@@ -13,7 +13,7 @@ export default {
 
 <style lang="less">
 // https://github.com/iview/iview/blob/2.0/src/styles/custom.less
-// @import "~iview/src/styles/index.less";
+@import "~iview/src/styles/index.less";
 @import "~leaflet/dist/leaflet.css";
 @import "./assets/css/style.css";
 // @import "./assets/css/font-awesome.css";

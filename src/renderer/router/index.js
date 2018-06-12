@@ -56,8 +56,8 @@ export default new Router({
     },
     {
       path: "/",
-      name: "test",
-      component: require("@/views/test").default
+      name: "/",
+      component: require("@/views/home").default
     },
     {
       path: "*",
