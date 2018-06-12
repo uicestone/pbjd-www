@@ -21,7 +21,7 @@
 								<span class="wendu">{{weather.temperature}}℃</span>
 							</div>
 						</div>
-						<img :src="weather.icon" style="width: 40px; object-fit: contain"/>													
+						<img :src="weather.icon" style="width: 100px; object-fit: contain"/>													
 					</div>
 				</div>
 			</div>

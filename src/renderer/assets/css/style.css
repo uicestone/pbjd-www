@@ -369,12 +369,13 @@ input {
 .page3 .caidan .yuedu .yue-num {
   font-size: 0.3rem;
   text-align: center;
-  margin-top: 0.25rem;
+  margin-top: 0.40rem;
   margin-bottom: 0.65rem;
+  padding-left: 0.2rem;
 }
 
 .page3 .caidan .yuedu .yue-num .f101 {
-  font-size: 1.01rem;
+  font-size: 1.2rem;
 }
 
 .page3 .caidan .yuedu .yue-btn {
@@ -512,7 +513,7 @@ input {
 .page3 .main-con3 ul li.li2 {
   width: 3.05rem;
   /*margin: 0 0.1rem;*/
-  /* margin-left: 0.05rem; */
+   margin-left: 0.05rem; 
 }
 
 .page3 .main-con3 ul li.li2 div {
@@ -552,7 +553,7 @@ input {
 
 .page3 .main-con3 ul li.li5 {
   width: 3.05rem;
-  /* margin-left: 0.05rem; */
+   margin-left: 0.05rem; 
 }
 
 .page3 .main-con3 ul li.li5 div {
