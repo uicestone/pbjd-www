@@ -280,6 +280,7 @@ export default {
     setInterval(async () => {
       this.weather = await request.getWeather();
     }, 300000);
+
     this.date = {
       ll: moment().format("LL"),
       dddd: moment().format("dddd"),
@@ -287,6 +288,15 @@ export default {
       T: moment().format("MM"),
       A: moment().format("A")
     };
+    setInterval(async () => {
+      this.date = {
+        ll: moment().format("LL"),
+        dddd: moment().format("dddd"),
+        L: moment().format("HH"),
+        T: moment().format("MM"),
+        A: moment().format("A")
+      };
+    }, 60000);
   }
 };
 </script>

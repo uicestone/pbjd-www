@@ -46,9 +46,13 @@ export default {
   },
   methods: {
     playAudio(index) {
+      if (index == this.currentPlayIndex && !this.currentPlayer.paused) {
+        this.currentPlayer.pause();
+        return;
+      }
       this.currentPlayIndex = index;
       let data = this.musicList[index];
-      this.currentPlayer.load(data.url);
+      this.currentPlayer.src = data.url;
       this.currentPlayer.play();
     }
   }
@@ -95,10 +99,10 @@ export default {
 				    		</div>
 				    	    
 				    	    <ul v-if="currentTag == 3"  class="chunk chunk3">
-				    	    	<li v-for="(item, index) in musicList" @click="playAudio(index)">
+				    	    	<li v-for="(item, index) in musicList" :class="{played: index == currentPlayIndex}" @click="playAudio(index)">
 				    	    		<span>{{item.title}}</span>
 				    	    		<!-- <audio class="myaudio" :src="item.url" :ref="`audio${index}`" preload="auto" loop="loop"></audio> -->
-				    	    		<i class="fa fa-play-circle-o" aria-hidden="true"></i>				    	    		
+				    	    		<i :class="{fa: true, 'fa-play-circle-o': currentPlayIndex != index, 'fa-volume-up': currentPlayIndex == index}" aria-hidden="true"></i>				    	    		
 				    	    	</li>
 				    	    </ul>
 				    	</div>

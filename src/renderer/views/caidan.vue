@@ -86,10 +86,10 @@ export default {
 							<img src="~@/assets/images/index/icon2.png"/>
 							{{item.title}}
 						</div>
-						<h3>“联西的六靠精神”书记工作室导师讲堂</h3>
+						<!-- <h3>“联西的六靠精神”书记工作室导师讲堂</h3> -->
 					</div>
 					<div class="activity" v-html="item.content"></div>
-					<div class="activity">
+					<!-- <div class="activity">
 						<div class="activity1">
 							<div class="title">
 								<span><i class="fa fa-file-text-o"></i></span>活动简介
@@ -124,7 +124,7 @@ export default {
 								陈艳：59561186
 							</p>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -177,4 +177,7 @@ export default {
 	border-radius 0
 	background white
 	font-weight bold
+.wh_item_date.wh_chose_day
+	border-radius 0
+	background white
 </style>

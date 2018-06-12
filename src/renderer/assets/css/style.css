@@ -1,7 +1,7 @@
 html {
   font-family: "微软雅黑", Tahoma, Helvetica, Arial, sans-serif;
-  font-size: calc(100vw / 11);
-  font-size: -webkit-calc(100vw/11);
+  font-size: calc(100vw / 10.8);
+  font-size: -webkit-calc(100vw/10.8);
   -webkit-text-size-adjust: 100%;
 }
 
@@ -100,7 +100,6 @@ input {
 }
 
 .page3 .main-con1 {
-  display: flex;
   overflow: hidden;
   margin-top: 0.35rem;
 }
@@ -265,7 +264,6 @@ input {
 
 .page3 .main-con2 {
   overflow: hidden;
-  display: flex;
   margin-top: 0.1rem;
   /*padding-top: 0.25rem;*/
   height: 3.82rem;
@@ -451,7 +449,7 @@ input {
   text-overflow: ellipsis;
 }
 
-.page3 .caidan .cd-list ul li .text > div.tag-time {
+.page3 .caidan .cd-list ul li .text>div.tag-time {
   font-size: 0.13rem;
   overflow: hidden;
   background: #ae2227;
@@ -635,7 +633,7 @@ input {
   .page3 .baodao .f69 {
     margin: 0;
   }
-  .page3 .caidan .cd-list ul li .text > div.tag-time {
+  .page3 .caidan .cd-list ul li .text>div.tag-time {
     display: none;
   }
 }
@@ -691,27 +689,27 @@ input {
   width: 100%;
 }
 
-.page3 .pop .textDiv > div {
+.page3 .pop .textDiv>div {
   overflow: hidden;
   line-height: 0.55rem;
 }
 
-.page3 .pop .textDiv > div span {
+.page3 .pop .textDiv>div span {
   display: inline-block;
   /*width: 1.8rem;*/
   text-align: justify;
 }
 
-.page3 .pop .textDiv > div div {
+.page3 .pop .textDiv>div div {
   display: inline-block;
   max-width: 6.8rem;
 }
 
-.page3 .pop .textDiv > div.intro {
+.page3 .pop .textDiv>div.intro {
   margin-top: 0.2rem;
 }
 
-.page3 .pop .textDiv > div p {
+.page3 .pop .textDiv>div p {
   text-indent: 2em;
   line-height: 0.55rem;
 }
@@ -759,7 +757,7 @@ input {
   line-height: 1.5rem;
 }
 
-.page .formDiv .inputDiv > span {
+.page .formDiv .inputDiv>span {
   display: inline-block;
   width: 2.2rem;
   font-size: 0.4rem;
@@ -811,7 +809,7 @@ input {
   color: #222;
 }
 
-.page .formDiv .inputDiv > div {
+.page .formDiv .inputDiv>div {
   float: left;
   height: 1.5rem;
   line-height: 1.5rem;
@@ -820,7 +818,7 @@ input {
   margin-left: 0.2rem;
 }
 
-.page .formDiv .inputDiv > div span {
+.page .formDiv .inputDiv>div span {
   font-size: 0.4rem;
   float: left;
   display: inline-block;
@@ -836,7 +834,7 @@ input {
   color: #909090;
 }
 
-.page .formDiv .inputDiv > div span.check {
+.page .formDiv .inputDiv>div span.check {
   color: #b42628;
   border: 0;
   background: url(../images/sex-bg.png) no-repeat center center;
@@ -911,11 +909,11 @@ input {
   overflow: hidden;
 }
 
-.page9 .list .list-text > img {
+.page9 .list .list-text>img {
   width: 100%;
 }
 
-.page9 .list .list-text > ul > li {
+.page9 .list .list-text>ul>li {
   padding: 0.3rem 0.2rem;
   background: #e6e6e6;
   height: 0.9rem;
@@ -926,7 +924,7 @@ input {
   margin-bottom: 0.3rem;
 }
 
-.page9 .list .list-text > ul > li span {
+.page9 .list .list-text>ul>li span {
   font-size: 0.24rem;
   position: relative;
   top: 0.03rem;
@@ -1024,14 +1022,17 @@ input {
 .page9 .activity {
   padding: 0.3rem 0.9rem;
 }
+
 .page9 .activity h1 {
   font-size: 0.4rem;
   color: #4d4d4e;
   text-align: center;
+  line-height: 1rem
 }
 
 .page9 .activity h2 {
-  font-size: 0.2rem;
+  font-size: 0.23rem;
+  color: #ae2227;
 }
 
 .page9 .activity .title {
@@ -1056,15 +1057,18 @@ input {
   color: #515152;
   text-indent: 2em;
   text-align: justify;
+  border-bottom: 1px solid #ae2227;
+  margin: .1rem 0;
+  padding: .1rem 0
 }
 
-.page9 .activity > div {
+.page9 .activity>div {
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
   border-bottom: 1px solid #ae2227;
 }
 
-.page9 .activity > div.activity4 {
+.page9 .activity>div.activity4 {
   border: 0;
 }
 
@@ -1111,7 +1115,7 @@ input {
   background: #fff;
 }
 
-.page6 .list .list-text > ul > li {
+.page6 .list .list-text>ul>li {
   padding: 0.3rem 0.2rem;
   background: #cccccb;
   height: 0.9rem;
@@ -1287,7 +1291,7 @@ input {
   background: #fff;
 }
 
-.page8 .list .list-text > ul > li {
+.page8 .list .list-text>ul>li {
   padding: 0.3rem 0.2rem;
   background: #e6e6e6;
   height: 0.9rem;
@@ -1489,7 +1493,7 @@ input {
   margin-top: 0.25rem;
 }
 
-.page5 .list .list-text > ul > li {
+.page5 .list .list-text>ul>li {
   padding: 0.3rem 0.2rem;
   background: #e6e6e6;
   height: 0.9rem;
@@ -1500,7 +1504,7 @@ input {
   margin-bottom: 0.3rem;
 }
 
-.page5 .list .list-text > ul > li span.title {
+.page5 .list .list-text>ul>li span.title {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
@@ -1508,7 +1512,7 @@ input {
   max-width: 70%;
 }
 
-.page5 .list .list-text > ul > li span.fr {
+.page5 .list .list-text>ul>li span.fr {
   font-size: 0.24rem;
   position: relative;
   top: 0.03rem;
@@ -1605,27 +1609,27 @@ input {
   width: 100%;
 }
 
-.page5 .pop .textDiv > div {
+.page5 .pop .textDiv>div {
   overflow: hidden;
   line-height: 0.55rem;
 }
 
-.page5 .pop .textDiv > div span {
+.page5 .pop .textDiv>div span {
   display: inline-block;
   /*width: 1.8rem;*/
   text-align: justify;
 }
 
-.page5 .pop .textDiv > div div {
+.page5 .pop .textDiv>div div {
   display: inline-block;
   max-width: 6.8rem;
 }
 
-.page5 .pop .textDiv > div.intro {
+.page5 .pop .textDiv>div.intro {
   margin-top: 0.2rem;
 }
 
-.page5 .pop .textDiv > div p {
+.page5 .pop .textDiv>div p {
   text-indent: 2em;
   line-height: 0.55rem;
 }
@@ -1667,7 +1671,7 @@ input {
   background: #fff;
 }
 
-.page7 .list .list-text > ul > li {
+.page7 .list .list-text>ul>li {
   padding: 0.3rem 0.2rem;
   background: #cccccb;
   height: 0.9rem;
@@ -1678,7 +1682,7 @@ input {
   margin-bottom: 0.3rem;
 }
 
-.page7 .list .list-text > ul > li.first {
+.page7 .list .list-text>ul>li.first {
   background: #ec2027;
   color: #fff;
   font-size: 0.33rem;
@@ -1770,27 +1774,27 @@ input {
   width: 100%;
 }
 
-.page7 .pop .textDiv > div {
+.page7 .pop .textDiv>div {
   overflow: hidden;
   line-height: 0.55rem;
 }
 
-.page7 .pop .textDiv > div span {
+.page7 .pop .textDiv>div span {
   display: inline-block;
   /*width: 1.8rem;*/
   text-align: justify;
 }
 
-.page7 .pop .textDiv > div div {
+.page7 .pop .textDiv>div div {
   display: inline-block;
   max-width: 6.8rem;
 }
 
-.page7 .pop .textDiv > div.intro {
+.page7 .pop .textDiv>div.intro {
   margin-top: 0.2rem;
 }
 
-.page7 .pop .textDiv > div p {
+.page7 .pop .textDiv>div p {
   text-indent: 2em;
   line-height: 0.55rem;
 }
@@ -2443,6 +2447,7 @@ figcaption {
   -webkit-animation: 1s linear infinite condemned_blink_effect;
   animation: 1s linear infinite condemned_blink_effect;
 }
+
 @-webkit-keyframes condemned_blink_effect {
   0% {
     visibility: hidden;
@@ -2454,6 +2459,7 @@ figcaption {
     visibility: visible;
   }
 }
+
 @keyframes condemned_blink_effect {
   0% {
     visibility: hidden;
