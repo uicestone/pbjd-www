@@ -57,6 +57,14 @@ input {
   background-size: 100% 100%;
 }
 
+.page4 .header, .page5 .header, .page6 .header, .page7 .header, .page8 .header {
+  position: fixed; left: 0; right: 0;
+}
+
+.page4 .list, .page5 .list, .page6 .list, .page7 .list, .page8 .list {
+  padding-top: 2rem !important;
+}
+
 /************************************ 首页 *********************************************/
 
 .page3 .topDiv {
