@@ -6,38 +6,38 @@ import * as request from "../utils/request";
 export default {
   data() {
     return {
-      zhutidangriRaw: [],
-      zhutidangriEntity: {},
-      zhutidangriList: {},
+      dangdaibiaoRaw: [],
+      dangdaibiaoEntity: {},
+      dangdaibiaoList: {},
       selectedList: "",
       selectedDetail: ""
     };
   },
   computed: {
     selectListData() {
-      const selectEntity = this.zhutidangriList[this.selectedList] || [];
-      return selectEntity.map(entity => this.zhutidangriEntity[entity]);
+      const selectEntity = this.dangdaibiaoList[this.selectedList] || [];
+      return selectEntity.map(entity => this.dangdaibiaoEntity[entity]);
     },
     selectDetailData() {
-      return this.zhutidangriEntity[this.selectedDetail] || {};
+      return this.dangdaibiaoEntity[this.selectedDetail] || {};
     }
   },
   async mounted() {
     handleLoading();
-    this.zhutidangriRaw = await request.getPosts({
+    this.dangdaibiaoRaw = await request.getPosts({
       query: {
         category: "党代表工作室",
         limit: -1
       }
     });
-    this.zhutidangriRaw.forEach(i => {
+    this.dangdaibiaoRaw.forEach(i => {
       const { id, categories } = i;
       const category = categories.find(i => i !== "党代表工作室");
-      if (!this.zhutidangriList[category]) {
-        this.$set(this.zhutidangriList, category, []);
+      if (!this.dangdaibiaoList[category]) {
+        this.$set(this.dangdaibiaoList, category, []);
       }
-      this.zhutidangriList[category].push(id);
-      this.zhutidangriEntity[id] = i;
+      this.dangdaibiaoList[category].push(id);
+      this.dangdaibiaoEntity[id] = i;
     });
   },
   methods: {
@@ -138,9 +138,9 @@ export default {
 				<span><img src="~@/assets/images/index/icon4.png"/>党代表工作室</span>
 			</div>
 			<div class="list">
-				<div class="list-text">
+				<div class="list-text" v-bind:class="{'selected-list':selectedList}">
 					<ul v-if="!selectedList">
-						<li v-for="(item, key) in zhutidangriList" :key="key" @click="selectedList = key">
+						<li v-for="(item, key) in dangdaibiaoList" :key="key" @click="selectedList = key">
 							{{key}}
 						</li>
 					</ul>
@@ -163,25 +163,12 @@ export default {
 			</div>
 			<div class="pop" v-if="selectedDetail">
 				<span class="back"  @click="selectedDetail=null "><i class="fa fa-chevron-left" aria-hidden="true"></i><font>返回</font></span>
-          	  	<div class="title">{{selectedList}}</div>
-          	  	<div class="content">
-      	   	     	<div class="roll">
-					    <div class="swiper-container swiper-no-swiping swiper-containerA">
-					        <div class="swiper-wrapper">
-											<div class="swiper-slide"><img :src="selectDetailData.posterUrl" width="100%" height="100%"></div>
-					            <!-- <div class="swiper-slide"><img src="~@/assets/images/img2.jpg" width="100%"height="100%"></div>
-					            <div class="swiper-slide"><img src="~@/assets/images/img2.jpg" width="100%"height="100%"></div>
-					            <div class="swiper-slide"><img src="~@/assets/images/img2.jpg" width="100%"height="100%"></div> -->
-					        </div>
-					    </div>
-				        <!-- Add Pagination -->
-				        <div class="swiper-button-next"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
-				        <div class="swiper-button-prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>								    
-      	   	     	</div>
-      	   	      	<p>{{selectDetailData.title}}</p>
-          	   </div>
-          	</div>
-                      
+				<div class="content">
+					<h1 class="title">{{ selectDetailData.title }}</h1>
+					<div class="textDiv" v-html="selectDetailData.content">
+					</div>
+				</div>
+			</div>
 		</div>
 		<!--等待-->
 		<div class="pre_load" >
