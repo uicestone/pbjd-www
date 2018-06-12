@@ -185,9 +185,10 @@
 			<div class="pop" v-if="selectedStatus > -1">
 				<span class="back" @click="selectedStatus = -1"><i class="fa fa-chevron-left" aria-hidden="true"></i><font>返回</font></span>
 				<div class="content">
+					<h1 class="title">{{ selectedStatusData.title }}</h1>
 					<div class="textDiv" v-html="selectedStatusData.content">
-						</div>
 					</div>
+				</div>
 			</div>	
 		</div>	
 		<!--等待-->

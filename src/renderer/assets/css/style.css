@@ -671,8 +671,8 @@ input {
   font-size: 0.57rem;
   color: #fff;
   text-align: center;
-  margin-top: 4rem;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .page3 .content {
@@ -710,14 +710,14 @@ input {
   margin-top: 0.2rem;
 }
 
-.page3 .pop .textDiv>div p {
+.page3 .pop .textDiv p {
   text-indent: 2em;
   line-height: 0.55rem;
+  margin-bottom: 0.5em;
 }
 
 .page3 .pop .textDiv img {
-  margin: 0 auto;
-  margin-top: 0.4rem;
+  margin: 0.4rem auto;
   border: 0.1rem solid #fff;
   width: 100%;
 }
