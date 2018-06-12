@@ -5,17 +5,23 @@
 				<img src="~@/assets/images/index/banner.png" width="100%">
 				<div class="top-text">
 					<div class="fl dateDiv">
-						<div class="ymd">2018年5月9日 星期三</div>
+						<div class="ymd">{{date.ll}} {{date.dddd}}</div>
 						<div class="time">
-							<span class="hm">14: 44</span> PM
+							<span class="hm">{{date.L}}</span>  
+							<span class="hm blink" style="margin-right: 2px ">:</span>
+							<span class="hm">{{date.T}} </span>  
+							{{date.A}}
 						</div>
 					</div>
-					<div class="fr city-weather">
-						<div class="city">嘉定，上海</div>
-						<div class="weather">
-							<span class="text">小雨</span>
-							<span class="wendu">16℃ - 20℃</span>
+					<div class="fr city-weather" style="display: flex; align-items: center">
+						<div>
+							<div class="city">嘉定，上海</div>
+							<div class="weather">
+								<span class="text">{{weather.text}}</span>
+								<span class="wendu">{{weather.temperature}}℃</span>
+							</div>
 						</div>
+						<img :src="weather.icon" style="width: 40px; object-fit: contain"/>													
 					</div>
 				</div>
 			</div>
@@ -50,10 +56,10 @@
 						</div>
 						<div class="dt-list">
 							<ul>
-								<a v-for="(item,index) in partyStatusList" @click="selectedStatus = index">
+								<a v-for="(item,index) in partyStatusList" @click="selectedStatus = index" :key="index">
 									<li class="">
 										<span class="fl">{{item.title}}</span>
-										<span class="fr">{{item.createdAt}} <i class="fa fa-angle-right"></i></span>
+										<span class="fr">{{item.createdAt | MM("YYYY-MM-DD") }} <i class="fa fa-angle-right"></i></span>
 									</li>
 								</a>
 							</ul>
@@ -63,17 +69,19 @@
 				<div class="main-con2">
 					<div class="fl leftDiv">
 						<div class="gyx">
-							<div class="gyx-title"><img src="~@/assets/images/index/xin.png"/><span>公益行</span></div>
+							<div class="gyx-title" @click="$router.push('/gongyi')"><img src="~@/assets/images/index/xin.png"/><span>公益行</span></div>
 							<div class="lunbo">
-								<img src="~@/assets/images/index/gyx-img.jpg"/>
+								<!-- <img src="~@/assets/images/index/gyx-img.jpg"/> -->
+								<swiper :options="swiperOption" ref="GongyixingSwiper" @slideChange="onSlideChange('GongyixingSwiper')">
+									<swiper-slide v-for="(item,index) in gonyixingList" :key="index">
+										<img class="img" :src="item.url" width="100%" height="100%" @click="$router.push('/gongyi')">
+									</swiper-slide>
+								</swiper>
 								<div class="lb-page">
 									<ul>
-										<li><img src="~@/assets/images/index/left-arrow1.png"/></li>
-										<li class="active"><span></span></li>
-										<li><span></span></li>
-										<li><span></span></li>
-										<li><span></span></li>
-										<li><img src="~@/assets/images/index/right-arrow1.png"/></li>
+										<li><img src="~@/assets/images/index/left-arrow1.png" @click="prevSwiper('GongyixingSwiper')"/></li>
+											<li v-for="(item,index) in gonyixingList" :class="{active: currenGongyixingIndex == index}" :key="index"><span></span></li>										
+										<li><img src="~@/assets/images/index/right-arrow1.png" @click="nextSwiper('GongyixingSwiper')"/></li>
 									</ul>
 								</div>
 							</div>
@@ -94,7 +102,7 @@
 						</div>
 						<div class="fl cd-list">
 							<ul @click="$router.push('/caidan')">
-								<li v-for="(item, index) in monthMenu">
+								<li v-for="(item, index) in monthMenu" :key="index">
 									<div class="fl index">{{index+ 1}}</div>
 									<div class="fl text">
 										<div class="title">{{item.title}}</div>
@@ -106,7 +114,7 @@
 								</li>
 							</ul>
 							<div class="xiaIcon">
-								<i class="fa fa-chevron-down"></i>
+								<!-- <i class="fa fa-chevron-down"></i> -->
 							</div>
 							
 						</div>
@@ -198,15 +206,31 @@
 import { handleLoading } from "../utils/utils";
 import * as request from "../utils/request";
 import moment from "moment";
+import { setTimeout, setInterval } from "timers";
 let currentDate = moment().format("YYYY-MM");
+moment.locale("zh-cn");
+moment.updateLocale("zh-cn", {
+  meridiem: hour => (hour < 12 ? "AM" : "PM")
+});
 
 export default {
   data() {
     return {
+      swiperOption: {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false
+        }
+      },
+      weather: {},
+      date: {},
       partyStatusList: [],
       monthMenu: [],
       gonyixingList: [],
-      selectedStatus: -1
+      selectedStatus: -1,
+      currenGongyixingIndex: 0
     };
   },
   computed: {
@@ -215,6 +239,15 @@ export default {
     }
   },
   methods: {
+    prevSwiper(swiper) {
+      this.$refs[swiper].swiper.slidePrev();
+    },
+    nextSwiper(swiper) {
+      this.$refs[swiper].swiper.slideNext();
+    },
+    onSlideChange(swiper) {
+      this.currenGongyixingIndex = this.$refs[swiper].swiper.activeIndex;
+    },
     wating() {
       alert("施工中...");
     }
@@ -243,6 +276,17 @@ export default {
         limit: 4
       }
     });
+    this.weather = await request.getWeather();
+    setInterval(async () => {
+      this.weather = await request.getWeather();
+    }, 300000);
+    this.date = {
+      ll: moment().format("LL"),
+      dddd: moment().format("dddd"),
+      L: moment().format("HH"),
+      T: moment().format("MM"),
+      A: moment().format("A")
+    };
   }
 };
 </script>

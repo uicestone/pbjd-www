@@ -36,7 +36,7 @@ export default {
 			<div class="list">
 				<div class="list-text">
 					<ul>
-						<li :class="{first: index == currentSelect}" v-for="(item,index) in dadaList" @click="currentSelect = index">{{item.title}}</li>
+						<li :class="{first: index == currentSelect}" v-for="(item,index) in dadaList"   :key="index" @click="currentSelect = index">{{item.title}}</li>
 						<!-- <li class="first">区级党课</li>
 						<li>安亭镇</li>
 						<li>嘉定新城（马陆镇）</li>
@@ -93,7 +93,6 @@ export default {
 				</div>
       </div>
                       
-		</div>
 		<!--等待-->
 		<div class="pre_load" >
 		  <div class="wrapper">

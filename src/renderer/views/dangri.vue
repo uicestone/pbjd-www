@@ -6,6 +6,14 @@ import * as request from "../utils/request";
 export default {
   data() {
     return {
+      swiperOption: {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false
+        }
+      },
       zhutidangriRaw: [],
       zhutidangriEntity: {},
       zhutidangriList: {},
@@ -19,7 +27,7 @@ export default {
       return selectEntity.map(entity => this.zhutidangriEntity[entity]);
     },
     selectDetailData() {
-      return this.zhutidangriEntity[this.selectedDetail] || {};
+      return this.selectListData[this.selectedDetail] || {};
     }
   },
   async mounted() {
@@ -46,6 +54,15 @@ export default {
         return (this.selectedList = "");
       }
       this.$router.go(-1);
+    },
+    prevSwiper(swiper) {
+      this.$refs[swiper].swiper.slidePrev();
+    },
+    nextSwiper(swiper) {
+      this.$refs[swiper].swiper.slideNext();
+    },
+    onSlideChange(swiper) {
+      this.selectedDetail = this.$refs[swiper].swiper.activeIndex;
     }
   }
 };
@@ -61,15 +78,15 @@ export default {
 			<div class="list">
 				<div class="list-text">
 					<ul v-if="!selectedList">
-						<li v-for="(item, key) in zhutidangriList" @click="selectedList = key">
+						<li v-for="(item, key) in zhutidangriList" @click="selectedList = key" :key="key">
 							{{key}}
 						</li>
 					</ul>
-					<ul v-if="selectedList">
+					<!-- <ul v-if="selectedList">
 						<li v-for="(item, key) in selectListData" @click="selectedDetail = item.id">
 							{{item.title}}
 						</li>
-					</ul>
+					</ul> -->
 					<!-- <div class="list-page">
 						<ul>
 							<li><img src="~@/assets/images/index/left-arrow.png"/></li>
@@ -82,24 +99,23 @@ export default {
 					</div> -->
 				</div>
 			</div>
-			<div class="pop" v-if="selectedDetail">
-				<span class="back"  @click="selectedDetail=null "><i class="fa fa-chevron-left" aria-hidden="true"></i><font>返回</font></span>
+			<div class="pop" v-if="selectedList">
+				<span class="back"  @click="selectedList=null "><i class="fa fa-chevron-left" aria-hidden="true"></i><font>返回</font></span>
           	  	<div class="title">{{selectedList}}</div>
           	  	<div class="content">
       	   	     	<div class="roll">
 					    <div class="swiper-container swiper-no-swiping swiper-containerA">
-					        <div class="swiper-wrapper">
-											<div class="swiper-slide"><img :src="selectDetailData.url" width="100%"height="100%"></div>
-					            <!-- <div class="swiper-slide"><img src="~@/assets/images/img2.jpg" width="100%"height="100%"></div>
-					            <div class="swiper-slide"><img src="~@/assets/images/img2.jpg" width="100%"height="100%"></div>
-					            <div class="swiper-slide"><img src="~@/assets/images/img2.jpg" width="100%"height="100%"></div> -->
-					        </div>
+					        <swiper :options="swiperOption" ref="swiper" @slideChange="onSlideChange('swiper')">
+										<swiper-slide v-for="(item,index) in selectListData" :key="index">
+												<img class="img" :src="item.url" width="100%" height="100%">    
+      	   	      			<p>{{item.title}}</p>												      
+										</swiper-slide>
+								</swiper>
 					    </div>
 				        <!-- Add Pagination -->
-				        <div class="swiper-button-next"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
-				        <div class="swiper-button-prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>								    
-      	   	     	</div>
-      	   	      	<p>{{selectDetailData.title}}</p>
+				        <div class="swiper-button-next" @click="nextSwiper('swiper')"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+				        <div class="swiper-button-prev" @click="prevSwiper('swiper')"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>								    
+      	   	  </div>
           	   </div>
           	</div>
                       

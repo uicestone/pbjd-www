@@ -40,7 +40,7 @@ export default {
 				</div>
 				<div class="list-text">
 					<ul>
-						 <li @click="currentSelect = index" v-for="(item,index) in dadaList">
+						 <li @click="currentSelect = index" v-for="(item,index) in dadaList" :key="index">
 							 <span class="title">
 								 {{item.title}}</span><span class="fr">{{item.createdAt}}
 								</span>

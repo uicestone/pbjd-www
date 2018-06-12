@@ -140,12 +140,12 @@ export default {
 			<div class="list">
 				<div class="list-text">
 					<ul v-if="!selectedList">
-						<li v-for="(item, key) in zhutidangriList" @click="selectedList = key">
+						<li v-for="(item, key) in zhutidangriList" :key="key" @click="selectedList = key">
 							{{key}}
 						</li>
 					</ul>
 					<ul v-if="selectedList">
-						<li v-for="(item, key) in selectListData" @click="selectedDetail = item.id">
+						<li v-for="(item, key) in selectListData" :key="key" @click="selectedDetail = item.id">
 							{{item.title}}
 						</li>
 					</ul>
@@ -168,7 +168,7 @@ export default {
       	   	     	<div class="roll">
 					    <div class="swiper-container swiper-no-swiping swiper-containerA">
 					        <div class="swiper-wrapper">
-											<div class="swiper-slide"><img :src="selectDetailData.posterUrl" width="100%"height="100%"></div>
+											<div class="swiper-slide"><img :src="selectDetailData.posterUrl" width="100%" height="100%"></div>
 					            <!-- <div class="swiper-slide"><img src="~@/assets/images/img2.jpg" width="100%"height="100%"></div>
 					            <div class="swiper-slide"><img src="~@/assets/images/img2.jpg" width="100%"height="100%"></div>
 					            <div class="swiper-slide"><img src="~@/assets/images/img2.jpg" width="100%"height="100%"></div> -->
