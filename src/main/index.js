@@ -25,16 +25,17 @@ function createWindow() {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    width: 414,
-    height: 736,
+    width: 1080,
+    height: 1920,
     useContentSize: true,
-    resizable: true
+    resizable: true,
+    fullscreen: true
   });
 
   mainWindow.loadURL(winURL);
 
   // debug
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   mainWindow.on("closed", () => {
     mainWindow = null;
