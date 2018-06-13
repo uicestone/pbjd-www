@@ -15,19 +15,19 @@ export default {
       },
       customDatas: {
         春风: {
-          popImage: "./static/images/chun.png",
+          popImage: "static/images/chun.png",
           popColor: "#bfe2eb"
         },
         夏花: {
-          popImage: "./static/images/xia.png",
+          popImage: "static/images/xia.png",
           popColor: "#cde3af"
         },
         秋收: {
-          popImage: "./static/images/qiu.png",
+          popImage: "static/images/qiu.png",
           popColor: "#fbe66c"
         },
         冬暖: {
-          popImage: "./static/images/dong.png",
+          popImage: "static/images/dong.png",
           popColor: "#e6e6e6"
         }
       },
