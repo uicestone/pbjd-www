@@ -149,53 +149,53 @@ export default {
 
 <style lang="stylus">
 .wh_container
-	max-width none
+	max-width none !important
 .wh_top_changge
-	height 1rem
-	align-items center
+	height 1rem !important
+	align-items center !important
 .wh_top_changge li
-	color #a1302e
-	font-size 0.5rem
+	color #a1302e !important
+	font-size 0.5rem !important
 .wh_jiantou2
-	border-top 2px solid #666
-	border-right 2px solid #666
-	width 0.25rem
-	height 0.25rem
+	border-top 2px solid #666 !important
+	border-right 2px solid #666 !important
+	width 0.25rem !important
+	height 0.25rem !important
 .wh_jiantou1
-	border-top 2px solid #666
-	border-left 2px solid #666
-	width 0.25rem
-	height 0.25rem
+	border-top 2px solid #666 !important
+	border-left 2px solid #666 !important
+	width 0.25rem !important
+	height 0.25rem !important
 .wh_content_li
-	font-size 0.5rem
+	font-size 0.5rem !important
 .wh_content_all
-	background-color transparent
+	background-color transparent !important
 .wh_top_tag, .wh_item_date
-	color #666
-	border solid 2px #a7a7a7
-	background-color #fff
-	width 1.2rem
-	height 1.2rem
+	color #666 !important
+	border solid 2px #a7a7a7 !important
+	background-color #fff !important
+	width 1.2rem !important
+	height 1.2rem !important
 .wh_content
-	padding 0
-	justify-content space-between
+	padding 0 !important
+	justify-content space-between !important
 .wh_content_item
-	width 12%
-	margin 10px
-	height 1.2rem
-	font-size 0.5rem
+	width 12% !important
+	margin 10px !important
+	height 1.2rem !important
+	font-size 0.5rem !important
 .wh_content_item .wh_isToday
-	background-color white
-	border-radius 0
-	color #af2028
+	background-color white !important
+	border-radius 0 !important
+	color #af2028 !important
 .wh_content_item>.wh_isMark
-	border-radius 0
-	background white
-	font-weight bold
+	border-radius 0 !important
+	background white !important
+	font-weight bold !important
 .wh_item_date.wh_chose_day
-	border-radius 0
-	background white
+	border-radius 0 !important
+	background white !important
 .content-container
-	height 8.1rem
-	overflow-y scroll
+	height 8.1rem !important
+	overflow-y scroll !important
 </style>
