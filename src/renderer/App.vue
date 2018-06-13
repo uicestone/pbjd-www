@@ -2,8 +2,7 @@
   div#app
     div
       //- div.button-back-debug(@click="$router.go(-1)") 返回
-    transition(name="fade")
-      router-view
+    router-view
 </template>
 
 <script>
@@ -22,21 +21,6 @@ export default {
 @import "./assets/css/mobileSelect.css";
 @import "./assets/css/swiper.min.css";
 @import "./assets/css/font-awesome.css";
-
-.fade-enter-active,
-.fade-leave-active {
-  transition-property: opacity;
-  transition-duration: 0.25s;
-}
-
-.fade-enter-active {
-  transition-delay: 0.25s;
-}
-
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
-}
 
 // @link-color: #000000;
 // html {
