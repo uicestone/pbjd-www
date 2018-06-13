@@ -80,7 +80,7 @@ export default {
 					</div> -->
 				</div>
 				<div class="content-container">
-					<div  v-for="(item,index) in dataList"  class="content" :key="index">
+					<div v-bind:id="item.date" v-for="(item,index) in dataList"  class="content" :key="index">
 						<div class="con-top">
 							<div class="date"><span>{{item.date | MM("M.D")}}</span></div>
 							<div class="title">
@@ -189,9 +189,9 @@ export default {
 	border-radius 0 !important
 	color #af2028 !important
 .wh_content_item>.wh_isMark
-	border-radius 0 !important
-	background white !important
-	font-weight bold !important
+	border-radius: 0 !important;
+	background: #ae2227 !important;
+	color: white !important;
 .wh_item_date.wh_chose_day
 	border-radius 0 !important
 	background white !important
