@@ -17,10 +17,35 @@ export const obj2query = obj => {
   return queryString.substr(1);
 };
 
-export const request = (url, options) => {
+export const request = async (url, options = {}) => {
+  const { cacheable = true } = options;
   url = `${config.apiRoot}${url}`;
-  return fetch(url, options).then(parseJson);
+  const cacheData = JSON.parse(localStorage.getItem(url));
+  let remoteData = null;
+  if (cacheable && cacheData) {
+    console.log("Cache data founded.");
+    _fetch(url, options)
+      .then(data => {
+        localStorage.setItem(url, JSON.stringify(data));
+        console.log("Cache data.");
+      })
+      .catch(e => {
+        console.error("Network error fetching data.");
+      });
+
+    return cacheData;
+  } else {
+    console.log("Not found cached data, get data from remote server.");
+
+    remoteData = await _fetch(url, options);
+    localStorage.setItem(url, JSON.stringify(remoteData));
+    console.log("Cache data.");
+
+    return remoteData;
+  }
 };
+
+export const _fetch = (url, options) => fetch(url, options).then(parseJson);
 
 export const getPosts = datas => {
   const { query } = datas;
@@ -33,5 +58,7 @@ export const getAttachments = datas => {
 };
 
 export const getWeather = datas => {
-  return request(`weather`);
+  return request(`weather`, {
+    cacheable: false
+  });
 };

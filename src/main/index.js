@@ -1,7 +1,4 @@
-import {
-  app,
-  BrowserWindow
-} from "electron";
+import { app, BrowserWindow } from "electron";
 
 // require("electron-debug")({ showDevTools: true });
 /**
@@ -16,9 +13,9 @@ if (process.env.NODE_ENV !== "development") {
 
 let mainWindow;
 const winURL =
-  process.env.NODE_ENV === "development" ?
-  `http://localhost:9080` :
-  `file://${__dirname}/index.html`;
+  process.env.NODE_ENV === "development"
+    ? `http://localhost:9080`
+    : `file://${__dirname}/index.html`;
 
 function createWindow() {
   /**
@@ -28,8 +25,8 @@ function createWindow() {
     width: 1080,
     height: 1920,
     useContentSize: true,
-    resizable: true,
-    fullscreen: true
+    resizable: true
+    // fullscreen: true
   });
 
   mainWindow.loadURL(winURL);
