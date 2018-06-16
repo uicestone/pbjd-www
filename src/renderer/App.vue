@@ -2,7 +2,8 @@
   div#app
     div
       //- div.button-back-debug(@click="$router.go(-1)") 返回
-    router-view
+    transition(name="fade")
+      router-view
 </template>
 
 <script>
@@ -21,6 +22,27 @@ export default {
 @import "./assets/css/mobileSelect.css";
 @import "./assets/css/swiper.min.css";
 @import "./assets/css/font-awesome.css";
+
+.fade-enter-active {
+  animation: fade-in 2s;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+.fade-leave-active {
+  animation: fade-in 2s reverse;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 // @link-color: #000000;
 // html {
