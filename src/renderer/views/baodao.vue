@@ -12,8 +12,9 @@ export default {
     handleLoading();
   },
   methods: {
-    submit() {
-      request('baodao-profile', {
+    submit(e) {
+      e.preventDefault();
+      request('sign-in', {
         method:'POST', 
         body:JSON.stringify(this.profile)
       }).then(result => {
@@ -37,6 +38,7 @@ export default {
       <div class="header">
         <a href="###" class="fl back"><i class="fa fa-angle-left"></i> 党员报道</a>
       </div>
+      <form @submit="submit">
       <div class="formDiv">
         <div class="inputDiv">
           <span class="fl">姓名</span>
@@ -77,8 +79,9 @@ export default {
         </div>
       </div>
       <div class="btnDiv">
-        <input type="button" @click="submit" value="报到" class="btn"/>
+        <input type="submit" value="报到" class="btn"/>
       </div>
+      </form>
     </div>
     <!--等待-->
     <div class="pre_load" >

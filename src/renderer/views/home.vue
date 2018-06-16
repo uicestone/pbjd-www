@@ -28,7 +28,7 @@
 			<div class="main-con">
 				<div class="main-con1">
 					<div class="fl leftDiv">
-						<div class="baodao" @click="showQrcode">
+						<div class="baodao" @click="goToSignIn">
 							<div class="num">
 								报到人数<span class="f69">{{ signedInMemberCount }}</span><span class="f35">人</span>
 							</div>
@@ -255,8 +255,12 @@ export default {
     onSlideChange(swiper) {
       this.currenGongyixingIndex = this.$refs[swiper].swiper.activeIndex;
     },
-    showQrcode() {
-      this.qrcode = true;
+    goToSignIn() {
+      if (window && window.process && window.process.type) {
+        this.qrcode = true;
+      } else {
+        this.$router.push('/baodao')
+      }
     },
     wating() {
       alert("两学一做内容即将上线");
@@ -291,12 +295,9 @@ export default {
       this.weather = await request.getWeather();
     }, 300000);
 
-    async function getSignedInMemberCount() {
-      const signedInMemberCount = await request.getSignedInMemberCount();
-      if (isNaN(signedInMemberCount)) {
-        return;
-      }
-      this.signedInMemberCount = signedInMemberCount;
+    const getSignedInMemberCount = async () => {
+      const { count = 0 } = await request.getSignedInMemberCount();
+      this.signedInMemberCount = count;
     }
     getSignedInMemberCount();
     setInterval(getSignedInMemberCount, 60000);
