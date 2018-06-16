@@ -26,7 +26,7 @@ function createWindow() {
     height: 1920,
     useContentSize: true,
     resizable: true,
-    fullscreen: true
+    fullscreen: process.env.NODE_ENV === 'production'
   });
 
   mainWindow.loadURL(winURL);
