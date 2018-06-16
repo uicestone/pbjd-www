@@ -71,3 +71,9 @@ export const getWeather = datas => {
     cacheable: false
   });
 };
+
+export const getSignedInMemberCount = datas => {
+  return request(`signed-in-member-count`, {
+    cacheable: false
+  });
+};

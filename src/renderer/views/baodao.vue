@@ -40,15 +40,15 @@ export default {
       <div class="formDiv">
         <div class="inputDiv">
           <span class="fl">姓名</span>
-          <input type="text" v-model="profile.name" placeholder="您的真实姓名"/>
+          <input type="text" v-model="profile.name" placeholder="您的真实姓名" required />
         </div>
         <div class="inputDiv">
           <span class="fl">身份证</span>
-          <input type="text" v-model="profile.idCard" placeholder="用以核实您的身份"/>
+          <input type="text" v-model="profile.idCard" placeholder="用以核实您的身份" required />
         </div>
         <div class="inputDiv">
           <span class="fl">手机</span>
-          <input type="text" v-model="profile.mobile" placeholder="手机号码"/>
+          <input type="text" v-model="profile.mobile" placeholder="手机号码" required />
         </div>
         <div class="inputDiv">
           <span class="fl">单位</span>

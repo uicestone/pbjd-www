@@ -30,7 +30,7 @@
 					<div class="fl leftDiv">
 						<div class="baodao" @click="showQrcode">
 							<div class="num">
-								报到人数<span class="f69">0</span><span class="f35">人</span>
+								报到人数<span class="f69">{{ signedInMemberCount }}</span><span class="f35">人</span>
 							</div>
 						</div>
 						<div class="shici" @click="$router.push('/shici')">
@@ -231,6 +231,7 @@ export default {
       },
       qrcode: false,
       weather: {},
+      signedInMemberCount: 0,
       date: {},
       partyStatusList: [],
       monthMenu: [],
@@ -289,6 +290,16 @@ export default {
     setInterval(async () => {
       this.weather = await request.getWeather();
     }, 300000);
+
+    async function getSignedInMemberCount() {
+      const signedInMemberCount = await request.getSignedInMemberCount();
+      if (isNaN(signedInMemberCount)) {
+        return;
+      }
+      this.signedInMemberCount = signedInMemberCount;
+    }
+    getSignedInMemberCount();
+    setInterval(getSignedInMemberCount, 60000);
 
     this.date = {
       ll: moment().format("LL"),
