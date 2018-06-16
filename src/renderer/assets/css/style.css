@@ -881,6 +881,10 @@ input {
   font-size: 0.57rem;
   text-align: center;
   padding: 0 0.5rem;
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  z-index: 1;
 }
 
 .page9 .header a {
@@ -906,6 +910,15 @@ input {
 
 .page9 .list {
   padding: 0rem 0.55rem;
+}
+
+.page9 .list .list-text {
+  position: fixed;
+  top: 9vh;
+  left: 0;
+  padding: 0rem 0.55rem;
+  z-index: 1;
+  background: rgba(242, 242, 243, 0.9);
 }
 
 .page9 .list .list-text .text-top {
@@ -971,6 +984,10 @@ input {
 
 .page9 .list-page ul li.active span {
   background: #690000;
+}
+
+.page9 .list .content-container {
+  padding-top: 58vh;
 }
 
 .page9 .list .content {

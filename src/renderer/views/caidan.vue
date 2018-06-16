@@ -5,6 +5,7 @@ import moment from "moment";
 let currentDate = moment().format("YYYY-MM");
 
 import Calendar from "vue-calendar-component";
+import VueScrollTo from "vue-scrollto";
 
 export default {
   components: {
@@ -28,9 +29,15 @@ export default {
     this.fetchDate({ date: currentDate });
   },
   methods: {
-    changeDate(data) {
-      let date = moment(data).format("YYYY-MM");
+    changeMonth(data) {
+      const date = moment(data).format("YYYY-MM");
       this.fetchDate({ date });
+    },
+    choseDay(data) {
+    	const date = moment(data).format('YYYY-MM-DD');
+    	VueScrollTo.scrollTo(`#date-${date}`, {offset:() => {
+    		return -1120 / 1920 * window.innerHeight
+    	}});
     },
     async fetchDate({ date }) {
       this.currentDate = date;
@@ -67,7 +74,7 @@ export default {
 						<span class="fr">June</span>
 					</div> -->
 					<!-- <img src="~@/assets/images/cal.png"/> -->
-					<Calendar :markDate="eventDates" @changeMonth="changeDate"></Calendar>
+					<Calendar :markDate="eventDates" @changeMonth="changeMonth" @choseDay="choseDay"></Calendar>
 					<!-- <div class="list-page">
 						<ul>
 							<li><img src="~@/assets/images/index/left-arrow.png"/></li>
@@ -80,7 +87,7 @@ export default {
 					</div> -->
 				</div>
 				<div class="content-container">
-					<div v-bind:id="item.date" v-for="(item,index) in dataList"  class="content" :key="index">
+					<div v-bind:id="'date-' + item.date" v-for="(item,index) in dataList"  class="content" :key="index">
 						<div class="con-top">
 							<div class="date"><span>{{item.date | MM("M.D")}}</span></div>
 							<div class="title">
@@ -188,14 +195,11 @@ export default {
 	background-color white !important
 	border-radius 0 !important
 	color #af2028 !important
-.wh_content_item>.wh_isMark
-	border-radius: 0 !important;
-	background: #ae2227 !important;
-	color: white !important;
-.wh_item_date.wh_chose_day
-	border-radius 0 !important
+.wh_content_item .wh_chose_day
 	background white !important
-.content-container
-	height 8.1rem !important
-	overflow-y scroll !important
+	border-radius 0 !important
+.wh_content_item .wh_isMark
+	border-radius 0 !important
+	background #ae2227 !important
+	color: white !important
 </style>

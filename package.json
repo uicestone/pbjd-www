@@ -44,6 +44,7 @@
     "vue-calendar-component": "^2.6.0",
     "vue-electron": "^1.0.6",
     "vue-router": "^2.5.3",
+    "vue-scrollto": "^2.11.0",
     "vue-socket.io": "^2.1.1-b",
     "vue2-slot-calendar": "^2.1.4",
     "vuex": "^2.3.1",
