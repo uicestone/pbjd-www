@@ -1,7 +1,5 @@
 <template lang="pug">
   div#app
-    div
-      //- div.button-back-debug(@click="$router.go(-1)") 返回
     transition(name="fade")
       router-view
 </template>
@@ -43,24 +41,7 @@ export default {
     opacity: 1;
   }
 }
-
-// @link-color: #000000;
-// html {
-//   font-size: 10px;
-// }
-// input,
-// textarea,
-// select {
-//   -webkit-appearance: none;
-//   border: none;
-//   outline: none;
-// }
-// li {
-//   list-style-type: none;
-// }
-.button-back-debug {
-  position: absolute;
-  font-size: 0.5rem;
-  z-index: 100;
+body::-webkit-scrollbar {
+  display: none;
 }
 </style>
