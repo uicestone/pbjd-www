@@ -172,7 +172,7 @@ export default {
 	background-color transparent !important
 .wh_top_tag, .wh_item_date
 	color #666 !important
-	border solid 2px #a7a7a7 !important
+	border solid 0.02rem #a7a7a7 !important
 	background-color #fff !important
 	width 1.2rem !important
 	height 1.2rem !important
@@ -181,7 +181,7 @@ export default {
 	justify-content space-between !important
 .wh_content_item
 	width 12% !important
-	margin 10px !important
+	margin 0.085rem !important
 	height 1.2rem !important
 	font-size 0.5rem !important
 .wh_content_item .wh_isToday
