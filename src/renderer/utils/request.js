@@ -3,6 +3,7 @@ import config from "../config";
 const parseJson = async res => {
   try {
     let data = await res.json();
+    data._ok = res.ok;
     return data;
   } catch (e) {
     throw new Error("服务器错误");
@@ -18,10 +19,17 @@ export const obj2query = obj => {
 };
 
 export const request = async (url, options = {}) => {
-  const { cacheable = true } = options;
+  
+  let { cacheable = true } = options;
+  
+  if (options.method && options.method !== 'GET') {
+    cacheable = false;
+  }
+
   url = `${config.apiRoot}${url}`;
   const cacheData = JSON.parse(localStorage.getItem(url));
   let remoteData = null;
+
   if (cacheable && cacheData) {
     // console.log("Cache data founded.");
     _fetch(url, options)
