@@ -2,11 +2,13 @@
   div#app
     transition(name="fade")
       router-view
-    div(v-if="cacheable" ref="hidden" style="display: none")
-      div(v-for="(item, index) in data")
-        img(v-if="item.type == 'image'" :src="item.url")
-        audio(v-if="item.type == 'audio'" :src="item.url" preload=true)
-        video(v-if="item.type == 'video'" :src="item.url" preload=true)
+    div(v-if="cachingAttachments.length" ref="hidden")
+      div.caching-media-indicator 正在缓存媒体资源… 剩余 {{ cachingAttachments.length }} 项
+      div.caching-media
+        div(v-if="cachingAttachments.length" v-for="(item, index) in cachingAttachments")
+          img(v-if="item.type == 'image'" :src="item.url" @load="mediaLoaded(item)")
+          audio(v-if="item.type == 'audio'" :src="item.url" preload="auto" @loadeddata="mediaLoaded(item)")
+          video(v-if="item.type == 'video'" :src="item.url" preload="auto" @loadeddata="mediaLoaded(item)")
 </template>
 
 <script>
@@ -14,40 +16,39 @@ import * as request from "./utils/request";
 
 export default {
   name: "app",
-  data(){
+  data() {
     return {
-      cacheable: true,
-      data: [],
-      t: null
+      cacheMedia: window.process && window.process.env.NODE_ENV === 'production', // cache media only in production electron version
+      cachingAttachments: [],
+      goHomeTimeout: null
     }
   },
   methods:{
-    goHome(){
-      const {meta:{homeName}} = this.$route 
-      console.log(homeName)
+    goHome() {
+      const {meta: {homeName}} = this.$route 
 
       if(homeName){
         this.$router.replace({name: homeName})
       }
+    },
+    mediaLoaded(attachment) {
+      this.cachingAttachments = this.cachingAttachments.filter(a => a.url !== attachment.url);
     }
   },
   async mounted(){
-    this.data = await request.getAllResources();
-    // 暂时设为5秒后删除隐藏DOM
-    setTimeout(() =>{
-      this.cacheable = false
-      this.data = null
-    },5000)
+    if (this.cacheMedia) {
+      this.cachingAttachments = await request.getAllResources();
+    }
 
     let events = ["click"," touchstart", "keydown"]
 
-    this.t = setTimeout(() => this.goHome(),3000)
+    this.goHomeTimeout = setTimeout(() => this.goHome(), 3000)
     events.forEach(i => {
       document.addEventListener(i, e => {
-        if(this.t){
-          clearTimeout(this.t)
+        if(this.goHomeTimeout){
+          clearTimeout(this.goHomeTimeout)
         }
-        this.t = setTimeout(() => this.goHome(),3000)
+        this.goHomeTimeout = setTimeout(() => this.goHome(), 3000)
       })
     })
   }
@@ -87,5 +88,15 @@ export default {
 }
 body::-webkit-scrollbar {
   display: none;
+}
+.caching-media {
+  display: none;
+}
+.caching-media-indicator {
+  font-size: 1vw;
+  color: grey;
+  position: absolute;
+  left: 1vw;
+  top: 98vh;
 }
 </style>
