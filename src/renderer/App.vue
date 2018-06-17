@@ -21,6 +21,16 @@ export default {
       t: null
     }
   },
+  methods:{
+    goHome(){
+      const {meta:{homeName}} = this.$route 
+      console.log(homeName)
+
+      if(homeName){
+        this.$router.replace({name: homeName})
+      }
+    }
+  },
   async mounted(){
     this.data = await request.getAllResources();
     // 暂时设为5秒后删除隐藏DOM
