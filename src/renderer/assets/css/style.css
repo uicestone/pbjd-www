@@ -100,6 +100,12 @@ input {
   margin-top: 0.04rem;
 }
 
+.page3 .city-weather .weather-icon {
+  margin-left: 2vw;
+  width: 10vw;
+  object-fit: contain;
+}
+
 .page3 .main-con {
   padding: 0 0.6rem 0 0.35rem;
 }

@@ -21,7 +21,7 @@
 								<span class="wendu">{{weather.temperature}}℃</span>
 							</div>
 						</div>
-						<img :src="weather.icon" style="width: 100px; object-fit: contain"/>													
+						<img :src="weather.icon" class="weather-icon" />													
 					</div>
 				</div>
 			</div>
@@ -300,7 +300,7 @@ export default {
       this.signedInMemberCount = count;
     }
     getSignedInMemberCount();
-    setInterval(getSignedInMemberCount, 60000);
+    setInterval(getSignedInMemberCount, 10000);
 
     this.date = {
       ll: moment().format("LL"),
