@@ -8,51 +8,88 @@ export default new Router({
       path: "/home",
       name: "home",
       component: require("@/views/home").default
+
     },
     {
       path: "/shequ",
       name: "shequ",
-      component: require("@/views/shequ").default
+      component: require("@/views/shequ").default,
+      meta: {
+        homeName: "home"
+      }
+
     },
     {
       path: "/shici",
       name: "shici",
-      component: require("@/views/shici").default
+      component: require("@/views/shici").default,
+      meta: {
+        homeName: "home"
+      }
+
     },
     {
       path: "/shuji",
       name: "shuji",
-      component: require("@/views/shuji").default
+      component: require("@/views/shuji").default,
+      meta: {
+        homeName: "home"
+      }
+
     },
     {
       path: "/baodao",
       name: "baodao",
-      component: require("@/views/baodao").default
+      component: require("@/views/baodao").default,
+      meta: {
+        homeName: "home"
+      }
+
     },
     {
       path: "/caidan",
       name: "caidan",
-      component: require("@/views/caidan").default
+      component: require("@/views/caidan").default,
+      meta: {
+        homeName: "home"
+      }
+
     },
     {
       path: "/dangdaibiao",
       name: "dangdaibiao",
-      component: require("@/views/dangdaibiao").default
+      component: require("@/views/dangdaibiao").default,
+      meta: {
+        homeName: "home"
+      }
+
     },
     {
       path: "/dangri",
       name: "dangri",
-      component: require("@/views/dangri").default
+      component: require("@/views/dangri").default,
+      meta: {
+        homeName: "home"
+      }
+
     },
     {
       path: "/gongyi",
       name: "gongyi",
-      component: require("@/views/gongyi").default
+      component: require("@/views/gongyi").default,
+      meta: {
+        homeName: "home"
+      }
+
     },
     {
       path: "/fengcai",
       name: "fengcai",
-      component: require("@/views/fengcai").default
+      component: require("@/views/fengcai").default,
+      meta: {
+        homeName: "home"
+      }
+
     },
     {
       path: "/",

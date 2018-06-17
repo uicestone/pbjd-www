@@ -17,7 +17,8 @@ export default {
   data(){
     return {
       cacheable: true,
-      data: []
+      data: [],
+      t: null
     }
   },
   async mounted(){
@@ -27,6 +28,18 @@ export default {
       this.cacheable = false
       this.data = null
     },5000)
+
+    let events = ["click"," touchstart", "keydown"]
+
+    this.t = setTimeout(() => this.goHome(),3000)
+    events.forEach(i => {
+      document.addEventListener(i, e => {
+        if(this.t){
+          clearTimeout(this.t)
+        }
+        this.t = setTimeout(() => this.goHome(),3000)
+      })
+    })
   }
 };
 </script>
