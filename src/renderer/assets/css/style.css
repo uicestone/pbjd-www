@@ -2341,9 +2341,10 @@ input {
 .page2 .header a.back {
   font-size: 0.4rem;
   color: #4d4d4e;
-  position: absolute;
+  position: fixed;
   left: 0.5rem;
   top: 0.3rem;
+  z-index: 10;
 }
 
 .page2 .header a i {
