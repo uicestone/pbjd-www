@@ -2,11 +2,32 @@
   div#app
     transition(name="fade")
       router-view
+    div(v-if="cacheable" ref="hidden" style="display: none")
+      div(v-for="(item, index) in data")
+        img(v-if="item.type == 'image'" :src="item.url")
+        audio(v-if="item.type == 'audio'" :src="item.url" preload=true)
+        video(v-if="item.type == 'video'" :src="item.url" preload=true)
 </template>
 
 <script>
+import * as request from "./utils/request";
+
 export default {
-  name: "app"
+  name: "app",
+  data(){
+    return {
+      cacheable: true,
+      data: []
+    }
+  },
+  async mounted(){
+    this.data = await request.getAllResources();
+    // 暂时设为5秒后删除隐藏DOM
+    setTimeout(() =>{
+      this.cacheable = false
+      this.data = null
+    },5000)
+  }
 };
 </script>
 

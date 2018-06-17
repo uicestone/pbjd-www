@@ -77,3 +77,13 @@ export const getSignedInMemberCount = datas => {
     cacheable: false
   });
 };
+
+
+export const getAllResources = datas => {
+  const query = {
+    limit: -1
+  }
+  return request(`attachments?${obj2query(query)}`, {
+    method: "GET"
+  })
+}
