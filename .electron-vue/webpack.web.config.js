@@ -88,7 +88,7 @@ let webConfig = {
     new webpack.NoEmitOnErrorsPlugin()
   ],
   output: {
-    filename: "[name].js",
+    filename: `[name]-${(new Date()).getTime()}.js`,
     path: path.join(__dirname, "../dist/web")
   },
   resolve: {
