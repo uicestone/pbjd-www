@@ -7,6 +7,7 @@ import router from "./router";
 import store from "./store";
 import moment from "moment";
 import VueAwesomeSwiper from "vue-awesome-swiper";
+
 Vue.use(VueAwesomeSwiper);
 
 Vue.filter("dt", (val, format) => (val > 10 ? val : "0" + val));
@@ -20,6 +21,10 @@ Vue.http = Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 
 window.$ = $;
+
+if (!process.env.IS_WEB) {
+  require('electron').webFrame.setZoomLevelLimits(1, 1)
+}
 
 /* eslint-disable no-new */
 new Vue({
