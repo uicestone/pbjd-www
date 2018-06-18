@@ -20,13 +20,18 @@ export default {
       }).then(result => {
         if (result._ok) {
           alert('党员报到成功！');
-          if (history.length) {
-            history.back();
-          } else {
-            window.close();
-          }
+          this.goBack();
         }
       });
+    },
+    goBack() {
+      if (history.length <= 1) {
+        window.close();
+        if (window.WeixinJSBridge) {
+          window.WeixinJSBridge.invoke('closeWindow');            
+        }
+      }
+      history.back();
     }
   }
 };
@@ -36,7 +41,7 @@ export default {
     <body>
     <div class="main page">
       <div class="header">
-        <a href="###" class="fl back"><i class="fa fa-angle-left"></i> 党员报道</a>
+        <a class="fl back" @click="goBack"><i class="fa fa-angle-left"></i> 党员报道</a>
       </div>
       <form @submit="submit">
       <div class="formDiv">
