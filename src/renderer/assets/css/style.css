@@ -1417,10 +1417,8 @@ input {
   width: 100%;
   font-size: 0.27rem;
   text-align: center;
-  padding: 0.3rem 0;
+  padding: 0.3rem;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   color: #231f20;
 }
 
@@ -2041,10 +2039,8 @@ input {
   width: 100%;
   font-size: 0.36rem;
   text-align: center;
-  padding: 0.3rem 0;
+  padding: 0.3rem;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .page1 .swiper-container {

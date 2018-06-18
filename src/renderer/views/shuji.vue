@@ -104,8 +104,6 @@ export default {
                 <div class="hint">
                  	<div class="name">{{currentSelectData.title}}</div>
                  	<p class="infor" v-html="currentSelectData.content"></p>
-                	<img src="~@/assets/images/img.png"/>
-         			<img src="~@/assets/images/img.png"/>
                 </div>
                  <i class="fa fa-close close" aria-hidden="true" @click="currentSelect = -1"></i>
             </div>
