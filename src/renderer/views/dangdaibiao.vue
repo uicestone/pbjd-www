@@ -5,10 +5,16 @@ import * as request from "../utils/request";
 
 export default {
   data() {
+
+    const dangdaibiaoList = {};
+    this.$parent.towns.forEach(town => {
+      dangdaibiaoList[town] = [];
+    });
+
     return {
       dangdaibiaoRaw: [],
       dangdaibiaoEntity: {},
-      dangdaibiaoList: {},
+      dangdaibiaoList,
       selectedList: "",
       selectedDetail: ""
     };
@@ -27,7 +33,8 @@ export default {
     this.dangdaibiaoRaw = await request.getPosts({
       query: {
         category: "党代表工作室",
-        limit: -1
+        limit: -1,
+        order: 'asc'
       }
     });
     this.dangdaibiaoRaw.forEach(i => {

@@ -5,6 +5,12 @@ import * as request from "../utils/request";
 
 export default {
   data() {
+    
+    const zhutidangriList = {};
+    this.$parent.towns.forEach(town => {
+      zhutidangriList[town] = [];
+    });
+
     return {
       swiperOption: {
         spaceBetween: 30,
@@ -16,7 +22,7 @@ export default {
       },
       zhutidangriRaw: [],
       zhutidangriEntity: {},
-      zhutidangriList: {},
+      zhutidangriList,
       selectedList: "",
       selectedDetail: ""
     };
