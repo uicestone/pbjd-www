@@ -41,6 +41,10 @@ export default {
       this.cachingAttachments = await request.getAllResources();
     }
 
+    setTimeout(() => {
+      this.cachingAttachments = [];
+    }, 60000)
+
     const resetGoHomeTimeout = () => {
       if (this.goHomeTimeout) {
         clearTimeout(this.goHomeTimeout);
