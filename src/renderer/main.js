@@ -9,10 +9,6 @@ import moment from "moment";
 import VueAwesomeSwiper from "vue-awesome-swiper";
 Vue.use(VueAwesomeSwiper);
 
-import FastClick from "fastclick"
-FastClick.attach(document.body);
-
-
 Vue.filter("dt", (val, format) => (val > 10 ? val : "0" + val));
 Vue.filter("MM", (val, format) => moment(val).format(format));
 

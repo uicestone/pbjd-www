@@ -40,17 +40,26 @@ export default {
       this.cachingAttachments = await request.getAllResources();
     }
 
-    let events = ["click"," touchstart", "keydown"]
+    const resetGoHomeTimeout = () => {
+      if (this.goHomeTimeout) {
+        clearTimeout(this.goHomeTimeout);
+      }
+      this.goHomeTimeout = setTimeout(() => this.goHome(), 300000);
+    };
 
-    this.goHomeTimeout = setTimeout(() => this.goHome(), 3000)
-    events.forEach(i => {
+    resetGoHomeTimeout();
+
+    ['click','touchstart', 'keydown', 'scroll'].forEach(i => {
       document.addEventListener(i, e => {
-        if(this.goHomeTimeout){
-          clearTimeout(this.goHomeTimeout)
-        }
-        this.goHomeTimeout = setTimeout(() => this.goHome(), 3000)
+        resetGoHomeTimeout();
       })
-    })
+    });
+
+    ['scroll'].forEach(i => {
+      document.addEventListener(i, e => {
+        resetGoHomeTimeout();
+      })
+    });
   }
 };
 </script>
@@ -67,13 +76,13 @@ export default {
 @import "./assets/css/font-awesome.css";
 
 .fade-enter-active {
-  animation: fade-in 2s;
+  animation: fade-in 1s;
   position: absolute;
   width: 100vw;
   height: 100vh;
 }
 .fade-leave-active {
-  animation: fade-in 2s reverse;
+  animation: fade-in 1s reverse;
   position: absolute;
   width: 100vw;
   height: 100vh;
