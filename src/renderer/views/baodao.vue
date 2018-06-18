@@ -46,20 +46,16 @@ export default {
       <form @submit="submit">
       <div class="formDiv">
         <div class="inputDiv">
-          <span class="fl">姓名</span>
+          <span class="fl">姓名*</span>
           <input type="text" v-model="profile.name" placeholder="您的真实姓名" required />
         </div>
         <div class="inputDiv">
-          <span class="fl">身份证</span>
-          <input type="text" v-model="profile.idCard" placeholder="用以核实您的身份" required />
-        </div>
-        <div class="inputDiv">
-          <span class="fl">手机</span>
+          <span class="fl">手机*</span>
           <input type="text" v-model="profile.mobile" placeholder="手机号码" required />
         </div>
         <div class="inputDiv">
-          <span class="fl">单位</span>
-          <input type="text" v-model="profile.unit" placeholder="您所在的工作单位"/>
+          <span class="fl">身份证</span>
+          <input type="text" v-model="profile.idCard" placeholder="用以核实您的身份" />
         </div>
         <div class="inputDiv">
           <span class="fl">性别</span>
@@ -67,6 +63,10 @@ export default {
             <span class="sex" @click="profile.sex='男'" :class="{check:profile.sex=='男'}">男</span>
             <span class="sex" @click="profile.sex='女'" :class="{check:profile.sex=='女'}">女</span>
           </div>
+        </div>
+        <div class="inputDiv">
+          <span class="fl">单位</span>
+          <input type="text" v-model="profile.unit" placeholder="您所在的工作单位"/>
         </div>
         <div class="inputDiv">
           <span class="fl">所在党组织</span>
