@@ -20,10 +20,10 @@ export default {
 <template lang="pug">
   .main.page-root
     .entries
-      a.entry
+      router-link.entry(to="/home")
         img(src="~@/assets/images/root-link-pb.svg")
         .entry-name 嘉定区<br>党建服务中心
-      a.entry
+      router-link.entry(to="/quntuan")
         img(src="~@/assets/images/root-link-qt.svg")
         .entry-name 嘉定区<br>群团服务中心
 </template>
@@ -53,4 +53,5 @@ export default {
         font-weight bold
         line-height 1.1
         margin-top 2vh
+
 </style>

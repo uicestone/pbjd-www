@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-
+      scaleItems: {}
     };
   },
   computed: {
@@ -12,7 +12,12 @@ export default {
 
   },
   methods: {
-    
+    scale(item) {
+      this.$set(this.scaleItems, item, true);
+      setTimeout(() => {
+        this.$set(this.scaleItems, item, false);
+      }, 1000)
+    }
   }
 };
 </script>
@@ -20,22 +25,8 @@ export default {
 <template lang="pug">
   .main.page-quntuan
     .entries
-      a.entry.qt1
-        img(src="~@/assets/images/qt-item-1.svg")
-      a.entry.qt2
-        img(src="~@/assets/images/qt-item-2.svg")
-      a.entry.qt3
-        img(src="~@/assets/images/qt-item-3.svg")
-      a.entry.qt4
-        img(src="~@/assets/images/qt-item-4.svg")
-      a.entry.qt5
-        img(src="~@/assets/images/qt-item-5.svg")
-      a.entry.qt6
-        img(src="~@/assets/images/qt-item-6.svg")
-      a.entry.qt7
-        img(src="~@/assets/images/qt-item-7.svg")
-      a.entry.qt8
-        img(src="~@/assets/images/qt-item-8.svg")
+      a.entry(v-for="index in 8" :class="{['qt'+(index)]:true,scale:scaleItems['entry-'+index]}" @click="scale('entry-'+index)")
+        img(:src="'static/images/qt-item-'+index+'.svg'")
 </template>
 
 <style lang="stylus" scoped>
@@ -63,9 +54,18 @@ export default {
       display flex
       align-items center
       img
-        height 18vw
+        height 60%
         margin auto
-        padding 0 0.5vw 1.5vw 0
+        padding 0 1% 4% 0
       &.qt2 img
-        height 15vw
+        height 47%
+@keyframes scale
+  0%
+    transform scale(1)
+  50%
+    transform scale(1.3)
+  100%
+    transform scale(1)
+.scale
+  animation scale 0.3s ease-in-out
 </style>
