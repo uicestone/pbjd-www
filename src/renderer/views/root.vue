@@ -19,6 +19,7 @@ export default {
 
 <template lang="pug">
   .main.page-root
+    .bg-bottom
     .entries
       router-link.entry(to="/home")
         img(src="~@/assets/images/root-link-pb.svg")
@@ -36,6 +37,14 @@ export default {
   background-size cover
   display flex
   align-items center
+  .bg-bottom
+    position absolute
+    bottom 0
+    left 0
+    width 100vw
+    height 25vh
+    background url('~@/assets/images/root-bg-bottom.png') bottom repeat-x
+    animation move 30s linear infinite
   .entries
     width 100vw
     display flex
@@ -53,5 +62,9 @@ export default {
         font-weight bold
         line-height 1.1
         margin-top 2vh
-
+@keyframes move
+  0%
+    background-position 0vw 100%
+  100%
+    background-position 100vw 100%
 </style>
