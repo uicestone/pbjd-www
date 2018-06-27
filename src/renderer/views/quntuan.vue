@@ -29,6 +29,8 @@ export default {
       this.showingPost = this.posts.filter(post => post.slug === slug)[0];
     },
     closePost() {
+      const { detail } = this.$refs;
+      detail.scrollTop = 0;
       this.showingPost = null;
     }
   }
@@ -42,8 +44,8 @@ export default {
       span 返回
     .entries(:class="{blur:showingPost}")
       a.entry(v-for="index in 8" :class="{['qt'+(index)]:true,scale:scaleItems['entry-'+index]}" @click="scale('entry-'+index);showPost('qt-'+index)")
-        img(:src="'static/images/qt-item-'+index+'.svg'")
-    .detail(v-if="showingPost" :class="{'fade-in': showingPost}")
+        img(:src="'static/images/qt-item-'+index+'.svg'" draggable="false")
+    .detail(ref="detail" v-if="showingPost" :class="{'fade-in': showingPost}")
       a.back(v-if="showingPost" @click="closePost")
         i.fa.fa-chevron-left
         span 返回
@@ -63,7 +65,8 @@ export default {
   align-items center
   .entries
     width 100vw
-    padding 8vh 8vw 16vh
+    height 100vh
+    padding 5vh 8vw 16vh
     display flex
     justify-content space-around
     align-items center
@@ -97,6 +100,9 @@ export default {
     color white
     font-size 4vw
     text-align justify
+    &::-webkit-scrollbar {
+      display: none;
+    }
     h1
       font-size 2em
       text-align center
