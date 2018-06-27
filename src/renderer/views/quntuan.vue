@@ -80,6 +80,8 @@ export default {
       height 30vw
       display flex
       align-items center
+      &.qt8
+        background url('~@/assets/images/quntuan-item-bg-white.png') no-repeat 50%
       img
         height 60%
         margin auto
