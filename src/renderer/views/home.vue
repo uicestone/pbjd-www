@@ -43,16 +43,13 @@
 					<div class="fr rightDiv">
 						<div class="dt-title">
 							<div class="fl"><img src="~@/assets/images/index/dt-icon.png"/><span>党建动态</span></div>
-							<!-- <div class="dt-page fr">
+							<div class="dt-page fr">
 								<ul>
-									<li><img src="~@/assets/images/index/left-arrow.png"/></li>
-									<li class="active"><span></span></li>
-									<li><span></span></li>
-									<li><span></span></li>
-									<li><span></span></li>
-									<li><img src="~@/assets/images/index/right-arrow.png"/></li>
+									<li @click="partyStatusPage>1&&partyStatusPage--" :class="{disabled:partyStatusPage==1}"><img src="~@/assets/images/index/left-arrow.png" draggable="false"/></li>
+									<li v-for="i in partyStatusTotalPages" :class="{active:i==partyStatusPage}"><span></span></li>
+									<li @click="partyStatusPage<partyStatusTotalPages&&partyStatusPage++" :class="{disabled:partyStatusPage==partyStatusTotalPages}"><img src="~@/assets/images/index/right-arrow.png" draggable="false"/></li>
 								</ul>
-							</div> -->
+							</div>
 						</div>
 						<div class="dt-list">
 							<ul>
@@ -234,6 +231,8 @@ export default {
       signedInMemberCount: 0,
       date: {},
       partyStatusList: [],
+      partyStatusPage: 1,
+      partyStatusTotalPages: null,
       monthMenu: [],
       gonyixingList: [],
       selectedStatus: -1,
@@ -243,6 +242,20 @@ export default {
   computed: {
     selectedStatusData() {
       return this.partyStatusList[this.selectedStatus] || {};
+    }
+  },
+  watch: {
+    partyStatusPage: async function (val) {
+      const query = {
+        category: "党建动态",
+        limit: 4
+      };
+
+      if (val > 1) {
+        query.page = this.partyStatusPage;
+      }
+
+      this.partyStatusList = await request.getPosts({ query });
     }
   },
   methods: {
@@ -272,8 +285,14 @@ export default {
       query: {
         category: "党建动态",
         limit: 4
+      },
+      options: {
+      	cacheable: false
       }
     });
+
+    this.partyStatusTotalPages = this.partyStatusList._totalPages;
+
     let cachedMonthMenu = await request.getPosts({
       query: {
         category: "月度菜单",
@@ -324,11 +343,15 @@ export default {
 
 <style lang="stylus">
 .vertical-center-modal
-	display flex
-	align-items center
-	justify-content center
-	.ivu-modal
-		top 0
+  display flex
+  align-items center
+  justify-content center
+  .ivu-modal
+    top 0
 .ivu-icon-ios-close-empty, .ivu-modal-footer
-	display none
+  display none
+.dt-page
+  ul
+    li.disabled
+      opacity 0.4
 </style>

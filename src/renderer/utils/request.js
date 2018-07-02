@@ -3,6 +3,9 @@ import config from "../config";
 const parseJson = async res => {
   try {
     let data = await res.json();
+    if (res.headers.get('x-wp-totalpages')) {
+      data._totalPages = Number(res.headers.get('x-wp-totalpages'));
+    }
     data._ok = res.ok;
     return data;
   } catch (e) {
@@ -56,9 +59,9 @@ export const request = async (url, options = {}) => {
 
 export const _fetch = (url, options) => fetch(url, options).then(parseJson);
 
-export const getPosts = datas => {
-  const { query } = datas;
-  return request(`posts/?${obj2query(query)}`);
+export const getPosts = (datas) => {
+  const { query, options } = datas;
+  return request(`posts/?${obj2query(query)}`, options);
 };
 
 export const getAttachments = datas => {
