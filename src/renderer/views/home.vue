@@ -90,7 +90,7 @@
 								<img src="~@/assets/images/index/caidan.png"/><span>月度菜单</span>
 							</div>
 							<div class="yue-num">
-								<span class="f101">6</span>月
+								<span class="f101">{{currentMonth}}</span>月
 							</div>
 							<!-- <div class="yue-btn">
 								<span class="first"><i class="fa fa-chevron-left"></i>上月</span>
@@ -234,6 +234,7 @@ export default {
       partyStatusPage: 1,
       partyStatusTotalPages: null,
       monthMenu: [],
+      currentMonth: moment().month()+1,
       gonyixingList: [],
       selectedStatus: -1,
       currenGongyixingIndex: 0
