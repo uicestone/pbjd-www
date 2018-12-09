@@ -75,18 +75,19 @@ input {
   right: 0.6rem;
   color: #690000;
   overflow: hidden;
+  font-weight: bold;
 }
 
 .page3 .dateDiv .ymd {
-  font-size: 0.2rem;
+  font-size: 0.23rem;
 }
 
 .page3 .dateDiv .time {
-  font-size: 0.1rem;
+  font-size: 0.15rem;
 }
 
 .page3 .dateDiv .time .hm {
-  font-size: 0.33rem;
+  font-size: 0.6rem;
 }
 
 .page3 .city-weather .city {
@@ -95,7 +96,7 @@ input {
 }
 
 .page3 .city-weather .weather {
-  font-size: 0.25rem;
+  font-size: 0.4rem;
   text-align: right;
   margin-top: 0.04rem;
 }
@@ -108,6 +109,7 @@ input {
 
 .page3 .main-con {
   padding: 0 0.6rem 0 0.35rem;
+  margin-top: 0.6rem;
 }
 
 .page3 .main-con1 {
@@ -120,10 +122,10 @@ input {
 }
 
 .page3 .main-con1 .leftDiv .baodao {
-  background: url(../images/index/baodao.png) no-repeat -0.02rem top;
-  background-size: 100%;
+  background: url(../images/index/baodao.png) no-repeat -0.05rem top;
+  background-size: 104%;
   color: #fff;
-  height: 2.32rem;
+  height: 3.45rem;
   font-size: 0.2rem;
   position: relative;
 }
@@ -133,6 +135,13 @@ input {
   position: absolute;
   bottom: 0.35rem;
   width: 100%;
+  font-weight: bold;
+}
+
+.page3 .baodao .baodaorenshu {
+  vertical-align: sub;
+  margin-right: 0.15rem;
+  font-size: 0.22rem;
 }
 
 .page3 .baodao .f69 {
@@ -176,14 +185,17 @@ input {
 
 .page3 .main-con1 .rightDiv {
   width: 6.35rem;
+  margin-top: 0.2rem;
 }
 
 .page3 .rightDiv .dt-title {
   overflow: hidden;
+  font-weight: bold;
+  height: 0.7rem;
 }
 
 .page3 .rightDiv .dt-title .fl {
-  font-size: 0.3rem;
+  font-size: 0.35rem;
   color: #690000;
 }
 
@@ -243,7 +255,8 @@ input {
 
 .page3 .dt-list ul li .fl {
   color: #ad2126;
-  font-size: 0.16rem;
+  font-size: 0.18rem;
+  font-weight: bold;
   padding-left: 0.25rem;
   max-width: 70%;
   display: inline-block;
@@ -284,31 +297,35 @@ input {
   width: 3.45rem;
 }
 
-.page3 .leftDiv .gyx {
+.page3 .leftDiv .fczs {
   width: 3.05rem;
+  height: 3.44rem;
   margin: 0 auto;
-  background: #662f90;
+  background: #b6302c;
   padding: 0.2rem 0.17rem;
   box-shadow: 0px 0px 0.2rem 0.05rem #a7a6a7;
 }
 
-.page3 .leftDiv .gyx .gyx-title {
+.page3 .leftDiv .fczs .fczs-title {
   font-size: 0.3rem;
   color: #fff;
+  height: 0.5rem;
+  font-weight: bold;
 }
 
-.page3 .leftDiv .gyx .gyx-title img {
+.page3 .leftDiv .fczs .fczs-title img {
   display: inline-block;
-  width: 0.49rem;
-  margin-right: 0.2rem;
+  width: 0.45rem;
+  margin-right: 0.15rem;
+  margin-left: 0.1rem;
 }
 
-.page3 .leftDiv .gyx .gyx-title span {
+.page3 .leftDiv .fczs .fczs-title span {
   position: relative;
-  top: -0.1rem;
+  top: -0.17rem;
 }
 
-.page3 .gyx .lunbo .img {
+.page3 .fczs .lunbo .img {
   margin: 0.2rem 0;
   width: 100%;
 }
@@ -365,11 +382,13 @@ input {
 
 .page3 .caidan .yuedu .yue-top {
   font-size: 0.3rem;
+  font-weight: bold;
 }
 
 .page3 .caidan .yuedu .yue-top img {
   display: inline-block;
   width: 0.44rem;
+  margin-right: 0.05rem;
 }
 
 .page3 .caidan .yuedu .yue-top span {
@@ -380,9 +399,10 @@ input {
 .page3 .caidan .yuedu .yue-num {
   font-size: 0.3rem;
   text-align: center;
-  margin-top: 0.40rem;
+  margin-top: 0.2rem;
   margin-bottom: 0.65rem;
   padding-left: 0.2rem;
+  font-weight: bold;
 }
 
 .page3 .caidan .yuedu .yue-num .f101 {
@@ -437,24 +457,27 @@ input {
 }
 
 .page3 .caidan .cd-list ul li .index {
-  font-size: 0.3rem;
+  font-size: 0.4rem;
   display: block;
   background: #ae2227;
   text-align: center;
-  width: 0.45rem;
-  height: 0.45rem;
-  line-height: 0.45rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  line-height: 0.5rem;
   margin-right: 0.05rem;
+  margin-top: 0.04rem;
+  font-weight: bold;
 }
 
 .page3 .caidan .cd-list ul li .text {
   height: 0.45rem;
-  width: 3.1rem;
+  width: 3rem;
+  font-weight: bold;
 }
 
 .page3 .caidan .cd-list ul li .text .title {
-  font-size: 0.14rem;
-  margin-bottom: 0.04rem;
+  font-size: 0.22rem;
+  /*margin-bottom: 0.04rem;*/
   display: block;
   white-space: nowrap;
   overflow: hidden;
@@ -462,10 +485,10 @@ input {
 }
 
 .page3 .caidan .cd-list ul li .text>div.tag-time {
-  font-size: 0.13rem;
+  font-size: 0.17rem;
   overflow: hidden;
   background: #ae2227;
-  padding: 0.02rem 0.1rem 0.03rem;
+  padding: 0 0.1rem;
 }
 
 .page3 .cd-list .xiaIcon {
@@ -496,7 +519,7 @@ input {
 .page3 .main-con3 ul li div {
   width: 3.05rem;
   margin: 0 auto;
-  box-shadow: 0px 0.1rem 30px #a7a6a7;
+  box-shadow: 0px 0.1rem 0.2rem #a7a6a7;
   height: 2.2rem;
   text-align: center;
   font-size: 0.3rem;
@@ -507,18 +530,21 @@ input {
   margin: 0 auto;
   padding-top: 0.3rem;
   margin-bottom: 0.2rem;
+  width: 2rem;
+  height: 1.3rem;
+  object-fit: contain;
+}
+
+.page3 .main-con3 ul li span {
+  font-weight: bold;
 }
 
 .page3 .main-con3 ul li.li1 {
   /*margin-left: 0.15rem;*/
 }
 
-.page3 .main-con3 ul li.li1 img {
-  width: 1.21rem;
-}
-
 .page3 .main-con3 ul li.li1 div {
-  background: #fbb03a;
+  background: #87237f;
 }
 
 .page3 .main-con3 ul li.li2 {
@@ -528,13 +554,7 @@ input {
 }
 
 .page3 .main-con3 ul li.li2 div {
-  background: #f79420;
-  box-shadow: 0px 0.1rem 35px #a7a6a7;
-}
-
-.page3 .main-con3 ul li.li2 img {
-  width: 1.04rem;
-  padding-top: 0.35rem;
+  background: #e79b32;
 }
 
 .page3 .main-con3 ul li.li3 {
@@ -542,12 +562,7 @@ input {
 }
 
 .page3 .main-con3 ul li.li3 div {
-  background: #f58342;
-}
-
-.page3 .main-con3 ul li.li3 img {
-  width: 1.17rem;
-  padding-top: 0.5rem;
+  background: #5a2682;
 }
 
 .page3 .main-con3 ul li.li4 {
@@ -555,11 +570,7 @@ input {
 }
 
 .page3 .main-con3 ul li.li4 div {
-  background: #f15a26;
-}
-
-.page3 .main-con3 ul li.li4 img {
-  width: 1.21rem;
+  background: #da5f2d;
 }
 
 .page3 .main-con3 ul li.li5 {
@@ -568,13 +579,7 @@ input {
 }
 
 .page3 .main-con3 ul li.li5 div {
-  background: #ec2020;
-  box-shadow: 0px 0.1rem 35px #a7a6a7;
-}
-
-.page3 .main-con3 ul li.li5 img {
-  width: 0.99rem;
-  padding-top: 0.43rem;
+  background: #efb84a;
 }
 
 .page3 .main-con3 ul li.li6 {
@@ -582,19 +587,54 @@ input {
 }
 
 .page3 .main-con3 ul li.li6 div {
-  background: #c1272d;
+  background: #d42f29;
 }
 
-.page3 .main-con3 ul li.li6 img {
-  width: 0.92rem;
-  padding-top: 0.28rem;
+.page3 .main-con3 ul li.li7 {
+  /*margin-left: 0.15rem;*/
+}
+
+.page3 .main-con3 ul li.li7 div {
+  background: #51a7dc;
+}
+
+.page3 .main-con3 ul li.li8 {
+  width: 3.05rem;
+   margin-left: 0.05rem; 
+}
+
+.page3 .main-con3 ul li.li8 div {
+  background: #39a299;
+}
+
+.page3 .main-con3 ul li.li9 {
+  float: right;
+}
+
+.page3 .main-con3 ul li.li9 div {
+  background: #49a96f;
 }
 
 .page3 .main-con3 .text {
   font-size: 0.23rem;
-  color: #3f1100;
-  text-align: center;
-  padding-bottom: 0.23rem;
+  color: black;
+  padding: 0.1rem 0.3rem 0.23rem;
+  line-height: 0.4rem;
+}
+
+.page3 .main-con3 .text p {
+  padding-left: 0.15rem;
+  font-size: 0.2rem;
+  font-weight: bold;
+}
+
+.page3 .main-con3 .text p i {
+  font-size: 0.25rem;
+  margin-right: 0.1rem;
+}
+
+.page3 .main-con3 .text p span {
+  color: #888;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {
@@ -634,19 +674,16 @@ input {
     display: none;
   }
   .page3 .dt-list ul li .fl {
-    max-width: 50%;
+    max-width: 70%;
   }
   .page3 .dt-list ul li .fr {
-    max-width: 50%;
+    max-width: 30%;
   }
   .page3 .dt-list ul li i {
     margin-left: 0;
   }
   .page3 .baodao .f69 {
     margin: 0;
-  }
-  .page3 .caidan .cd-list ul li .text>div.tag-time {
-    display: none;
   }
 }
 

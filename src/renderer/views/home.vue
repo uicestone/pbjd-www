@@ -30,15 +30,17 @@
 					<div class="fl leftDiv">
 						<div class="baodao" @click="goToSignIn">
 							<div class="num">
-								报到人数<span class="f69">{{ signedInMemberCount }}</span><span class="f35">人</span>
+								<span class="baodaorenshu">报到人数</span>
+								<span class="f69">{{ signedInMemberCount }}</span>
+								<span class="f35">人</span>
 							</div>
 						</div>
-						<div class="shici" @click="$router.push('/shici')">
+						<!-- <div class="shici" @click="$router.push('/shici')">
 							<div class="bgc">
 								<img src="~@/assets/images/index/shici.png"/>
 								<span>誓词教育</span>
 							</div>
-						</div>
+						</div> -->
 					</div>
 					<div class="fr rightDiv">
 						<div class="dt-title">
@@ -65,13 +67,13 @@
 				</div>
 				<div class="main-con2">
 					<div class="fl leftDiv">
-						<div class="gyx">
-							<div class="gyx-title" @click="$router.push('/gongyi')"><img src="~@/assets/images/index/xin.png"/><span>公益行</span></div>
+						<div class="fczs">
+							<div class="fczs-title" @click="$router.push('/fengcai')"><img src="~@/assets/images/index/fengcai.png"/><span>风采展示</span></div>
 							<div class="lunbo">
 								<!-- <img src="~@/assets/images/index/gyx-img.jpg"/> -->
 								<swiper :options="swiperOption" ref="GongyixingSwiper" @slideChange="onSlideChange('GongyixingSwiper')">
 									<swiper-slide v-for="(item,index) in gonyixingList" :key="index">
-										<img class="img" :src="item.url" width="100%" height="100%" @click="$router.push('/gongyi')">
+										<img class="img" :src="item.url" width="100%" height="100%" @click="$router.push('/fengcai')">
 									</swiper-slide>
 								</swiper>
 								<div class="lb-page">
@@ -119,11 +121,11 @@
 				</div>
 				<div class="main-con3">
 					<ul>
-						<router-link to="/shuji">
+						<router-link to="/shici">
 							<li class="li1">
 								<div>
 									<img src="~@/assets/images/index/icon1.png"/>
-									<span>书记工作室</span>
+									<span>誓词教育</span>
 								</div>
 							</li>
 						</router-link>
@@ -135,14 +137,14 @@
 								</div>
 							</li>
 						</router-link>
-						<a @click="wating">
+						<router-link to="/shuji">
 							<li class="li3">
 								<div>
 									<img src="~@/assets/images/index/icon3.png"/>
-									<span>两学一做</span>
+									<span>公益行</span>
 								</div>
 							</li>
-						</a>
+						</router-link>
 						<router-link to="/dangdaibiao">
 							<li class="li4">
 								<div>
@@ -151,25 +153,52 @@
 								</div>
 							</li>
 						</router-link>
-						<router-link to="/shequ">
+						<router-link to="/shuji">
 							<li class="li5">
 								<div>
 									<img src="~@/assets/images/index/icon5.png"/>
+									<span>书记工作室</span>
+								</div>
+							</li>
+						</router-link>
+						<router-link to="/shequ">
+							<li class="li6">
+								<div>
+									<img src="~@/assets/images/index/icon6.png"/>
 									<span>社区党校</span>
 								</div>
 							</li>
 						</router-link>
-						<router-link to="/fengcai">
-							<li class="li6">
+						<router-link to="/yuyue">
+							<li class="li7">
 								<div>
-									<img src="~@/assets/images/index/icon6.png"/>
-									<span>风采展示</span>
+									<img src="~@/assets/images/index/icon7.png"/>
+									<span>活动预约</span>
+								</div>
+							</li>
+						</router-link>
+						<router-link to="/baoming">
+							<li class="li8">
+								<div>
+									<img src="~@/assets/images/index/icon8.png"/>
+									<span>活动报名</span>
+								</div>
+							</li>
+						</router-link>
+						<router-link to="/geren">
+							<li class="li9">
+								<div>
+									<img src="~@/assets/images/index/icon9.png"/>
+									<span>个人中心</span>
 								</div>
 							</li>
 						</router-link>
 					</ul>
 					<div class="text">
-						嘉定区党建服务中心
+						<h3>联系我们</h3>
+						<p><span><i class="fa fa-map-marker"></i>嘉定区党建服务中心：</span>嘉定区洪德路50号（近沪宜公路）</p>
+						<p><span><i class="fa fa-bus"></i>周边公交：</span>嘉定9路、嘉定14路、沪唐专线、嘉定64路（洪德路沪宜公路站）</p>
+						<p><span><i class="fa fa-phone"></i>联系电话：</span>021-59107253</p>
 					</div>
 				</div>
 				<Modal
