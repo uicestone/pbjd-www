@@ -2392,6 +2392,201 @@ input {
   position: relative;
 }
 
+/************************************ 活动报名  *********************************************/
+
+.page10.fixed {
+  position: fixed;
+}
+
+.page10 .header {
+  height: 1.6rem;
+  background: #39a299;
+  line-height: 1.6rem;
+  color: #fff;
+  font-size: 0.57rem;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+.page10 .header a {
+  font-size: 0.4rem;
+  color: #fff;
+  position: absolute;
+  left: 0.5rem;
+}
+
+.page10 .header a i {
+  font-size: 0.5rem;
+  top: 0.05rem;
+  position: relative;
+}
+
+.page10 .header img {
+  display: inline-block;
+  width: 0.9rem;
+  position: relative;
+  top: 0.2rem;
+  margin-right: 0.2rem;
+}
+
+.page10 .list {
+  padding: 0.6rem;
+}
+
+.page10 .list ul li {
+  margin-top: 0.4rem;
+  height: 3rem;
+  overflow: hidden;
+  border: 1px solid #39a299;
+  background: #fff;
+}
+
+.page10 .list ul li .imgDiv {
+  width: 4.2rem;
+  height: 3rem;
+  border-right: 1px solid #39a299;
+  float: left;
+}
+
+.page10 .list ul li .imgDiv img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.page10 .list ul li .textDiv {
+  float: left;
+  font-size: 0.47rem;
+  color: #4d4d4e;
+  text-align: center;
+  line-height: 3rem;
+  width: 5.3rem;
+}
+
+.page10 .pop {
+  width: 100%;
+  height: 91.6%;
+  position: fixed;
+  background: white;
+  top: 1.6rem;
+  z-index: 9;
+  /*padding: 0.5rem 0.5rem 0 0.5rem;*/
+  /*left: 50%;*/
+  /*margin-left: -46%;*/
+}
+
+.page10 .pop .back {
+  width: 3rem;
+  height: 1.2rem;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  font-size: 0.6rem;
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  color: #fff;
+}
+
+.page10 .pop .back font {
+  margin-left: 0.1rem;
+}
+
+.page10 .pop .hint {
+  width: 100%;
+  height: 90%;
+  overflow-y: auto;
+  padding: 0.6rem;
+}
+
+.page10 .pop .hint .name {
+  font-size: 0.81rem;
+  color: #000;
+  text-align: center;
+}
+
+.page10 .pop .hint p {
+  font-size: 0.43rem;
+  color: #000;
+  text-indent: 2em;
+  line-height: 0.8rem;
+  /*letter-spacing: 0.07rem;*/
+  margin-top: 0.5rem;
+  text-align: justify;
+}
+
+.page10 .pop .hint img {
+  width: 100%;
+  margin-top: 0.4rem;
+  border: 0.04rem solid #fff;
+}
+
+.page10 .attend {
+  margin: 0.2rem auto 0;
+  display: block;
+  background: #39a299;
+  width: 90%;
+  border: none;
+  height: 1.3rem;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: bold;
+  /* margin-top: 0.2rem; */
+  border-radius: 0.2rem;
+  outline: none;
+}
+
+.page10 .attend:active {
+  background: #246761;
+}
+
+.page10 .attend-form {
+  height: 90%;
+  background: #f7f8f8;
+  padding: .6rem;
+}
+
+.page10 .attend-form .item {
+  border: #ddd 1px solid;
+  padding: 0.3rem;
+  background: white;
+  font-size: 0.45rem;
+  margin-bottom: 0.25rem;
+}
+
+.page10 .attend-form label {
+  font-weight: bold;
+  margin-right: 0.3rem;
+  width: 22%;
+  display: inline-block;
+  text-align: center;
+}
+
+.page10 .attend-form ::placeholder {
+  color: #c8c8c8;
+}
+
+.page10 .modal {
+  background: rgba(127, 127, 127, 0.5);
+}
+
+.page10 .modal .message {
+  background: #39a299;
+  position: absolute;
+  top: 50%;
+  height: 2.7rem;
+  margin-top: -2rem;
+  left: 5vw;
+  width: 90vw;
+  padding: 0.5rem;
+  font-size: 0.65rem;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.4rem;
+  text-align: center;
+  line-height: 1.3;
+}
+
 /***********************************
 /* =WordPress Core
 -------------------------------------------------------------- */

@@ -96,6 +96,14 @@ export default new Router({
       }
     },
     {
+      path: "/baoming",
+      name: "baoming",
+      component: require("@/views/baoming").default,
+      meta: {
+        homeName: "root"
+      }
+    },
+    {
       path: "/",
       name: "/",
       component: require("@/views/root").default
