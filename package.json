@@ -49,6 +49,7 @@
     "vue-scrollto": "^2.11.0",
     "vue-socket.io": "^2.1.1-b",
     "vue2-slot-calendar": "^2.1.4",
+    "vuejs-datepicker": "^1.5.4",
     "vuex": "^2.3.1",
     "webrtc-adapter": "^6.1.5"
   },

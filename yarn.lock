@@ -7668,6 +7668,10 @@ vue@^2.3.3, vue@^2.4.4:
   version "2.5.16"
   resolved "https://registry.npmjs.org/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
 
+vuejs-datepicker@^1.5.4:
+  version "1.5.4"
+  resolved "http://registry.npm.taobao.org/vuejs-datepicker/download/vuejs-datepicker-1.5.4.tgz#dacdb5eb5ef44342c67cb59b93a0d5da9c1809b3"
+
 vuex@^2.3.1:
   version "2.5.0"
   resolved "https://registry.npmjs.org/vuex/-/vuex-2.5.0.tgz#20f0265ade6c9a5ac6724a405d3ffdb4726c9741"

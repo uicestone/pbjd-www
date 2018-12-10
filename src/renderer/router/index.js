@@ -104,6 +104,14 @@ export default new Router({
       }
     },
     {
+      path: "/yuyue",
+      name: "yuyue",
+      component: require("@/views/yuyue").default,
+      meta: {
+        homeName: "root"
+      }
+    },
+    {
       path: "/",
       name: "/",
       component: require("@/views/root").default
