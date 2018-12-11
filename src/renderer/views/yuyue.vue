@@ -45,7 +45,7 @@
   <body>
     <div class="main page-yuyue">
       <div class="header">
-        <a @click="back()" href="###" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
+        <a @click.prevent="back()" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
         <b><img src="~@/assets/images/index/icon7.png"/>活动预约</b>
       </div>
       <div class="content yuyue-menu" v-if="showing=='menu'">

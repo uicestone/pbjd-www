@@ -58,7 +58,7 @@ export default {
     <body>
     <div class="main page10" :class="{fixed:currentSelect>-1}">
       <div class="header">
-        <a @click="back()" href="###" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
+        <a @click.prevent="back()" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
         <span><img src="~@/assets/images/index/icon1.png"/>活动报名</span>
       </div>
       <div class="list">
