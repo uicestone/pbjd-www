@@ -141,7 +141,7 @@ export default {
   	<body>
 		<div class="main page6">
 			<div class="header">
-				<a  @click="back"  href="###" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
+				<a  @click.prevent="back" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
 				<span><img src="~@/assets/images/index/icon4.png"/>党代表工作室</span>
 			</div>
 			<div class="list">

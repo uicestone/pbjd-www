@@ -631,6 +631,8 @@ input {
 .page3 .main-con3 .text p i {
   font-size: 0.25rem;
   margin-right: 0.1rem;
+  width: 0.25rem;
+  text-align: center;
 }
 
 .page3 .main-con3 .text p span {
