@@ -112,6 +112,14 @@ export default new Router({
       }
     },
     {
+      path: "/geren",
+      name: "geren",
+      component: require("@/views/geren").default,
+      meta: {
+        homeName: "root"
+      }
+    },
+    {
       path: "/",
       name: "/",
       component: require("@/views/root").default
