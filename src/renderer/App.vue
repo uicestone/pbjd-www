@@ -1,7 +1,6 @@
 <template lang="pug">
   div#app
-    transition(name="fade")
-      router-view
+    router-view
     div(v-if="cachingAttachments.length" ref="hidden")
       div.caching-media-indicator 正在缓存媒体资源… 剩余 {{ cachingAttachments.length }} 项
       div.caching-media
