@@ -122,7 +122,7 @@ export default new Router({
     {
       path: "/",
       name: "/",
-      component: require("@/views/root").default
+      component: require("@/views/home").default
     },
     {
       path: "*",
