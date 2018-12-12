@@ -256,6 +256,7 @@
   .rooms {
     margin-top: 0.5rem;
     .room {
+      box-sizing: content-box;
       border: black 1px solid;
       margin-bottom: 0.3rem;
       font-size: 0.35rem;
