@@ -48,6 +48,11 @@
       <div class="yuyue">活动预约</div>
       <div class="dangxiao">五点半党校</div>
     </div>
+    <div class="contact">
+      <h3>联系我们</h3>
+      <p><span><i class="fa fa-map-marker"></i>昆山经济技术开发区党群服务中心：</span>昆山开发区南浜路兵希文体中心</p>
+      <p><span><i class="fa fa-phone"></i>联系电话：</span>0512-50138517、50138520</p>
+    </div>
   </div>
 </template>
 
@@ -124,7 +129,7 @@
 
 <style lang="less">
   .banner {
-    height: 57vw;
+    height: 44.4vw;
     background: url('~@/assets/images/index/banner.png') top center;
   }
 
@@ -232,6 +237,30 @@
     .zhuti {
       background: url('~@/assets/images/index/zhuti.png');
     }
+  }
+
+  .contact {
+    font-size: 2.3vw;
+    color: #333;
+    padding: 1.5vw 3vw;
+    line-height: 4vw;
+  }
+
+  .contact p {
+    padding-left: 1.5vw;
+    font-size: 2vw;
+    font-weight: bold;
+  }
+
+  .contact p i {
+    font-size: 2.5vw;
+    margin-right: 1vw;
+    width: 2.5vw;
+    text-align: center;
+  }
+
+  .contact p span {
+    color: #888;
   }
 
   .blink {
