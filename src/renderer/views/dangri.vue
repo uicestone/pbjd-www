@@ -78,7 +78,7 @@ export default {
   	<body>
 		<div class="main page8">
 			<div class="header">
-				<a  @click="back"  href="###" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
+				<a  @click="back" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
 				<span><img src="~@/assets/images/index/icon2.png"/>主题党日</span>
 			</div>
 			<div class="list">
