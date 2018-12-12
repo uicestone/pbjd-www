@@ -21,6 +21,7 @@
       },
       clearForm() {
         this.form = {};
+        this.submitModal = false;
       },
       show(layer) {
         if (this.showing) {
@@ -445,9 +446,6 @@
     }
     select {
       margin-left: -0.11rem;
-      option {
-        font-size: 0.5rem;
-      }
     }
     textarea {
       outline: none;
@@ -499,6 +497,7 @@
       margin-top: 0.5rem;
       p {
         margin-bottom: 0.7rem;
+        font-size: 0.3rem;
       }
     }
   }

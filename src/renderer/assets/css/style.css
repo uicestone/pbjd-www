@@ -2564,6 +2564,20 @@ input {
   width: 22%;
   display: inline-block;
   text-align: center;
+  vertical-align: middle;
+}
+
+.page10 .attend-form input, select, textarea {
+  outline: none;
+  font-family: inherit;
+  width: 62%;
+  background: none;
+  border: none;
+  vertical-align: middle;
+}
+
+.page10 .attend-form select {
+  margin-left: -0.11rem;
 }
 
 .page10 .attend-form ::placeholder {
