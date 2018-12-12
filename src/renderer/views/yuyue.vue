@@ -48,12 +48,12 @@
         <a @click.prevent="back()" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
         <b><img src="~@/assets/images/index/icon7.png"/>活动预约</b>
       </div>
-      <div class="content yuyue-menu" v-if="showing=='menu'">
+      <div v-if="showing=='menu'" class="content yuyue-menu">
         <div class="item" @click="show('floor')">场馆预约</div>
         <div class="item" @click="show('yuyue-dangqun')">预约参观党群服务中心</div>
         <div class="item" @click="show('traffic')">周边交通停车提示</div>
       </div>
-      <div class="content yuyue-menu floor" v-if="showing=='floor'">
+      <div v-if="showing=='floor'" class="content yuyue-menu floor">
         <div class="item" @click="show('1f')">1F</div>
         <div class="item" @click="show('2f')">2F</div>
         <div class="item" @click="show('3f')">3F</div>
@@ -179,6 +179,17 @@
         <button class="btn-block blue" @click="submit()">提交</button>
         <div class="modal" v-if="submitModal">
           <div class="message blue" @click="clearForm();back()">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
+        </div>
+      </div>
+      <div v-if="showing=='traffic'" class="content traffic">
+        <h2>周边交通停车提示</h2>
+        <div>
+          <img src="~@/assets/images/index/traffic.png"/>
+        </div>
+        <div class="hints">
+          <p>洪德楼：嘉定区洪德路50号（近沪宜公路）</p>
+          <p>周边公交：嘉定9路、嘉定14路、沪唐专线、嘉定64路（洪德路沪宜公路站），嘉定65路（沪宜公路洪德路站）</p>
+          <p>停车提示：“保利天琴宇”地下停车场</p>
         </div>
       </div>
     </div>
@@ -392,6 +403,14 @@
       border-radius: 0.4rem;
       text-align: center;
       line-height: 1.3;
+    }
+  }
+  .traffic {
+    .hints {
+      margin-top: 0.5rem;
+      p {
+        margin-bottom: 0.7rem;
+      }
     }
   }
   .orange {
