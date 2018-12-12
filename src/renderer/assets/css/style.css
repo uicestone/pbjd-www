@@ -489,6 +489,8 @@ input {
   overflow: hidden;
   background: #ae2227;
   padding: 0 0.1rem;
+  height: 0.21rem;
+  line-height: 0.21rem;
 }
 
 .page3 .cd-list .xiaIcon {

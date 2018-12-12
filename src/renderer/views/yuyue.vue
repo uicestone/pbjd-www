@@ -50,7 +50,7 @@
       </div>
       <div v-if="showing=='menu'" class="content yuyue-menu">
         <div class="item" @click="show('floor')">场馆预约</div>
-        <div class="item" @click="show('yuyue-dangqun')">预约参观党群服务中心</div>
+        <div class="item" @click="show('canguan')">预约参观党群服务中心</div>
         <div class="item" @click="show('traffic')">周边交通停车提示</div>
       </div>
       <div v-if="showing=='floor'" class="content yuyue-menu floor">
@@ -95,9 +95,9 @@
           </span>
           <span class="hint-text">场馆最大容纳40人，请提前一周预约。使用红厅需要八步骤，约20分钟</span>
         </div>
-        <button class="btn-block blue" @click="show('form-changguan-hongting')">预约</button>
+        <button class="btn-block blue" @click="show('form-hongting')">预约</button>
       </div>
-      <div v-if="showing=='form-changguan-hongting'" class="content form changguan-hongting">
+      <div v-if="showing=='form-hongting'" class="content form hongting">
         <h2>场馆预约登记表</h2>
         <div class="item">
           <label>单位名称</label>
@@ -134,7 +134,7 @@
           <div class="message blue" @click="clearForm();back()">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
         </div>
       </div>
-      <div v-if="showing=='form'" class="content form changguan-hongting">
+      <div v-if="showing=='form'" class="content form hongting">
         <h2>场馆预约登记表</h2>
         <div class="item">
           <label>单位名称</label>
@@ -181,6 +181,43 @@
           <div class="message blue" @click="clearForm();back()">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
         </div>
       </div>
+      <div v-if="showing=='form-canguan'" class="content form">
+        <h2>参观预约登记表</h2>
+        <div class="item">
+          <label>单位名称</label>
+          <input v-model="form.unitName" placeholder="单位名称" />
+        </div>
+        <div class="item">
+          <label>预约日期</label>
+          <datepicker v-model="form.date" :language="zh" format="yyyy-MM-dd" />
+        </div>
+        <div class="item">
+          <label>预约时间</label>
+          <select v-model="form.time">
+            <option value="09:00">09:00~10:00</option>
+            <option value="10:00">10:00~11:00</option>
+            <option value="13:00">13:00~14:00</option>
+            <option value="14:00">14:00~15:00</option>
+            <option value="15:00">15:00~16:00</option>
+          </select>
+        </div>
+        <div class="item">
+          <label>联系人</label>
+          <input v-model="form.contact" placeholder="联系人" />
+        </div>
+        <div class="item">
+          <label>联系电话</label>
+          <input v-model="form.phone" placeholder="电话" />
+        </div>
+        <div class="item">
+          <label>参加人数</label>
+          <input v-model="form.attendees" placeholder="人数" />
+        </div>
+        <button class="btn-block blue" @click="submit()">提交</button>
+        <div class="modal" v-if="submitModal">
+          <div class="message blue" @click="clearForm();back()">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
+        </div>
+      </div>
       <div v-if="showing=='traffic'" class="content traffic">
         <h2>周边交通停车提示</h2>
         <div>
@@ -191,6 +228,13 @@
           <p>周边公交：嘉定9路、嘉定14路、沪唐专线、嘉定64路（洪德路沪宜公路站），嘉定65路（沪宜公路洪德路站）</p>
           <p>停车提示：“保利天琴宇”地下停车场</p>
         </div>
+      </div>
+      <div v-if="showing=='canguan'" class="content canguan">
+        <img src="~@/assets/images/index/红厅.png"/>
+        <h2>参观党群服务中心</h2>
+        <h3><i class="fa fa-file-text"></i>活动简介</h3>
+        <p>邀请安亭镇书记工作室导师、联西村党总支书记唐祝平为辖区青年党员、后备干部生动讲述联西村三十年的发展历程以及标志性事件、人物、故事等，通过参观党建服务站及交流分享，让党员更直观的了解改革开放以来新农村发生的巨大变化和历史缩影，激励党员积极发挥先锋模范作用。</p>
+        <button class="btn-block blue" @click="show('form-canguan')">预约</button>
       </div>
     </div>
     <!--等待-->
@@ -232,15 +276,15 @@
     .item {
       background: #edeeed;
       color: #51a7dc;
-      padding: 0.7rem;
       margin-bottom: 0.5rem;
       font-size: 0.65rem;
       font-weight: bold;
       text-align: center;
+      height: 2.4rem;
+      line-height: 2.4rem;
     }
     &.floor {
       .item {
-        padding: 0 0.7rem;
         font-size: 1.7rem;
         font-weight: 300;
       }
@@ -327,6 +371,31 @@
       }
     }
   }
+  .canguan {
+    img {
+      width: calc(100% + 0.6rem);
+      margin-left: -0.3rem;
+    }
+    h2 {
+      color: #51504e;
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 0.5rem;
+    }
+    h3 {
+      i {
+        margin-right: 0.2rem;
+      }
+      color: #51a7dc;
+      font-size: 0.36rem;
+      margin-bottom: 0.3rem;
+    }
+    p {
+      font-size: 0.29rem;
+      text-indent: 2em;
+      color: #000;
+    }
+  }
   .btn-block {
     margin: 0.2rem auto 0;
     display: block;
@@ -361,22 +430,41 @@
       width: 33%;
       display: inline-block;
       text-align: center;
+      vertical-align: middle;
     }
     ::placeholder {
       color: #c8c8c8;
     }
-    select {
+    /deep/ input, select, textarea {
       outline: none;
-      margin-left: -3px;
       font-family: inherit;
       width: 62%;
+      background: none;
+      border: none;
+      vertical-align: middle;
+    }
+    select {
+      margin-left: -0.11rem;
+      option {
+        font-size: 0.5rem;
+      }
     }
     textarea {
       outline: none;
       width: 62%;
     }
-    .vdp-datepicker {
+    /deep/ .vdp-datepicker {
       display: inline-block;
+      .vdp-datepicker__calendar {
+        width: 8rem;
+        header {
+          line-height: 1rem;
+        }
+        .cell {
+          height: 1rem;
+          line-height: 1rem;
+        }
+      }
     }
     /deep/ .vdp-datepicker__calendar {
       left: -2.2rem !important;
