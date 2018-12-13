@@ -1,5 +1,6 @@
 <script>
   import Datepicker from 'vuejs-datepicker';
+  import moment from 'moment';
   import {zh} from 'vuejs-datepicker/dist/locale';
   import { handleLoading } from "../utils/utils";
   import * as request from "../utils/request";
@@ -41,6 +42,9 @@
       },
       setRoom(index) {
         this.room = this.rooms[index];
+        if (this.room.title && this.room.title !== '红厅') {
+          this.form['会议室/培训室'] = this.room.title;
+        }
       },
       back() {
         if (this.showed.length) {
@@ -53,6 +57,12 @@
     computed: {
       floorImage() {
         return `${__dirname}/../assets/images/index/${this.floor}F.png`;
+      },
+      disabledDatesProp() {
+        return {
+          to: moment().add(1, 'day').toDate(),
+          from: moment().add(7, 'days').toDate()
+        };
       }
     },
     mounted() {
@@ -105,15 +115,15 @@
         <h2>场馆预约登记表</h2>
         <div class="item">
           <label>单位名称</label>
-          <input v-model="form.unitName" placeholder="单位名称" />
+          <input v-model="form['单位名称']" placeholder="单位名称" />
         </div>
         <div class="item">
           <label>预约日期</label>
-          <datepicker v-model="form.date" :language="zh" format="yyyy-MM-dd" />
+          <datepicker v-model="form['预约日期']" :language="zh" format="yyyy-MM-dd" :disabledDates="disabledDatesProp" />
         </div>
         <div class="item">
           <label>预约时间</label>
-          <select v-model="form.time">
+          <select v-model="form['预约时间']">
             <option value="09:00">09:00~10:00</option>
             <option value="10:00">10:00~11:00</option>
             <option value="13:00">13:00~14:00</option>
@@ -123,16 +133,17 @@
         </div>
         <div class="item">
           <label>联系人</label>
-          <input v-model="form.contact" placeholder="联系人" />
+          <input v-model="form['联系人']" placeholder="联系人" />
         </div>
         <div class="item">
           <label>联系电话</label>
-          <input v-model="form.phone" placeholder="电话" />
+          <input v-model="form['联系电话']" placeholder="电话" />
         </div>
         <div class="item">
           <label>参加人数</label>
-          <input v-model="form.attendees" placeholder="参加人数" />
+          <input v-model="form['参加人数']" placeholder="参加人数" />
         </div>
+        <input type="hidden" v-model="form['会议室/培训室']" value="红厅" />
         <button class="btn-block blue" @click="submit()">提交</button>
         <div class="modal" v-if="submitModal">
           <div class="message blue" @click="clearForm();back()">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
@@ -142,19 +153,19 @@
         <h2>场馆预约登记表</h2>
         <div class="item">
           <label>单位名称</label>
-          <input v-model="form.unitName" placeholder="单位名称" />
+          <input v-model="form['单位名称']" placeholder="单位名称" />
         </div>
         <div class="item">
           <label>活动名称</label>
-          <input v-model="form.eventName" placeholder="名称" />
+          <input v-model="form['活动名称']" placeholder="名称" />
         </div>
         <div class="item">
           <label>预约日期</label>
-          <datepicker v-model="form.date" :language="zh" format="yyyy-MM-dd" />
+          <datepicker v-model="form['预约日期']" :language="zh" format="yyyy-MM-dd" :disabledDates="disabledDatesProp" />
         </div>
         <div class="item">
           <label>预约时间</label>
-          <select v-model="form.time">
+          <select v-model="form['预约时间']">
             <option value="上午">上午</option>
             <option value="下午">下午</option>
             <option value="全天">全天</option>
@@ -162,23 +173,23 @@
         </div>
         <div class="item">
           <label>参加人数</label>
-          <input v-model="form.attendees" placeholder="人数" />
+          <input v-model="form['参加人数']" placeholder="人数" />
         </div>
         <div class="item">
           <label>联系人</label>
-          <input v-model="form.contact" placeholder="联系人" />
+          <input v-model="form['联系人']" placeholder="联系人" />
         </div>
         <div class="item">
           <label>联系电话</label>
-          <input v-model="form.phone" placeholder="电话" />
+          <input v-model="form['联系电话']" placeholder="电话" />
         </div>
         <div class="item">
           <label>会议室/培训室</label>
-          <input v-model="form.room" placeholder="会议室/培训室" />
+          <input v-model="form['会议室/培训室']" placeholder="会议室/培训室" />
         </div>
         <div class="item">
           <label style="position:relative;top:-0.5rem">备注</label>
-          <textarea v-model="form.remarks" placeholder="备注"></textarea> 
+          <textarea v-model="form['备注']" placeholder="备注"></textarea> 
         </div>
         <button class="btn-block blue" @click="submit()">提交</button>
         <div class="modal" v-if="submitModal">
@@ -189,15 +200,15 @@
         <h2>参观预约登记表</h2>
         <div class="item">
           <label>单位名称</label>
-          <input v-model="form.unitName" placeholder="单位名称" />
+          <input v-model="form['单位名称']" placeholder="单位名称" />
         </div>
         <div class="item">
           <label>预约日期</label>
-          <datepicker v-model="form.date" :language="zh" format="yyyy-MM-dd" />
+          <datepicker v-model="form['预约日期']" :language="zh" format="yyyy-MM-dd" :disabledDates="disabledDatesProp" />
         </div>
         <div class="item">
           <label>预约时间</label>
-          <select v-model="form.time">
+          <select v-model="form['预约时间']">
             <option value="09:00">09:00~10:00</option>
             <option value="10:00">10:00~11:00</option>
             <option value="13:00">13:00~14:00</option>
@@ -207,15 +218,15 @@
         </div>
         <div class="item">
           <label>联系人</label>
-          <input v-model="form.contact" placeholder="联系人" />
+          <input v-model="form['联系人']" placeholder="联系人" />
         </div>
         <div class="item">
           <label>联系电话</label>
-          <input v-model="form.phone" placeholder="电话" />
+          <input v-model="form['联系电话']" placeholder="电话" />
         </div>
         <div class="item">
           <label>参加人数</label>
-          <input v-model="form.attendees" placeholder="人数" />
+          <input v-model="form['参加人数']" placeholder="人数" />
         </div>
         <button class="btn-block blue" @click="submit()">提交</button>
         <div class="modal" v-if="submitModal">
@@ -460,6 +471,9 @@
         width: 8rem;
         header {
           line-height: 1rem;
+          .prev:after, .next:after {
+            border-width: 0.2rem;
+          }
         }
         .cell {
           height: 1rem;
