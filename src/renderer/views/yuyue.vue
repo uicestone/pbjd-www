@@ -92,11 +92,11 @@
         <h2>{{ room.title }}</h2>
         <img class="feature" :src="room.thumbnail">
         <div v-html="room.content"></div>
-        <div class="hint">
+        <div class="hint" v-if="room.hint">
           <span class="icon">
             温馨提示
           </span>
-          <span v-if="room.hint" class="hint-text">{{ room.hint }}</span>
+          <span class="hint-text">{{ room.hint }}</span>
         </div>
         <button v-if="room.open" class="btn-block blue" @click="show('form'+(room.number==101?'-hongting':''))">预约</button>
       </div>
