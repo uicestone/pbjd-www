@@ -81,6 +81,9 @@ export const getSignedInMemberCount = datas => {
   });
 };
 
+export const getRooms = floor => {
+  return request(`rooms?floor=${floor}`);
+};
 
 export const getAllResources = datas => {
   const query = {

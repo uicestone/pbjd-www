@@ -2,6 +2,8 @@
   import Datepicker from 'vuejs-datepicker';
   import {zh} from 'vuejs-datepicker/dist/locale';
   import { handleLoading } from "../utils/utils";
+  import * as request from "../utils/request";
+
   export default {
     components: {
       Datepicker
@@ -12,7 +14,10 @@
         showed: [],
         form: {},
         zh,
-        submitModal: false
+        submitModal: false,
+        floor: null,
+        rooms: [],
+        room: null,
       };
     },
     methods: {
@@ -29,12 +34,24 @@
         }
         this.showing = layer;
       },
+      async setFloor(floor) {
+        this.floor = floor;
+        this.rooms = await request.getRooms(this.floor);
+      },
+      setRoom(index) {
+        this.room = this.rooms[index];
+      },
       back() {
         if (this.showed.length) {
           this.showing = this.showed.pop();
         } else {
           this.$router.back();
         }
+      }
+    },
+    computed: {
+      floorImage() {
+        return `${__dirname}/../assets/images/index/${this.floor}F.png`;
       }
     },
     mounted() {
@@ -55,48 +72,33 @@
         <div class="item" @click="show('traffic')">周边交通停车提示</div>
       </div>
       <div v-if="showing=='floor'" class="content yuyue-menu floor">
-        <div class="item" @click="show('1f')">1F</div>
-        <div class="item" @click="show('2f')">2F</div>
-        <div class="item" @click="show('3f')">3F</div>
-        <div class="item" @click="show('4f')">4F</div>
+        <div class="item" @click="setFloor(1);show('floor-detail')">1F</div>
+        <div class="item" @click="setFloor(2);show('floor-detail')">2F</div>
+        <div class="item" @click="setFloor(3);show('floor-detail')">3F</div>
+        <div class="item" @click="setFloor(4);show('floor-detail')">4F</div>
       </div>
-      <div v-if="showing=='1f'" class="content">
-        <div class="floor-name">1F</div>
-        <img class="floor-map" src="@/assets/images/index/1F.png"/>
+      <div v-if="showing=='floor-detail'" class="content">
+        <div class="floor-name">{{floor}}F</div>
+        <img class="floor-map" :src="floorImage"/>
         <div class="rooms">
-          <div class="room" @click="show('room-detail')">
-            <span class="icon orange"></span>
-            <span class="room-name">接待大厅</span>
-            <i class="fa fa-chevron-right"></i>
-          </div>
-          <div class="room" @click="show('room-detail')">
-            <span class="icon red"></span>
-            <span class="room-name">红厅</span>
-            <i class="fa fa-chevron-right"></i>
-          </div>
-          <div class="room" @click="show('room-detail')">
-            <span class="icon blue"></span>
-            <span class="room-name">信仰之碑</span>
-            <i class="fa fa-chevron-right"></i>
-          </div>
-          <div class="room" @click="show('room-detail')">
-            <span class="icon green"></span>
-            <span class="room-name">我嘉书房</span>
+          <div v-for="(room, index) in rooms" class="room" @click="show('room-detail');setRoom(index)">
+            <span class="icon" :style="{background:room.color}"></span>
+            <span class="room-name">{{ room.title }}</span>
             <i class="fa fa-chevron-right"></i>
           </div>
         </div>
       </div>
       <div v-if="showing=='room-detail'" class="room-detail content">
-        <h2>红厅</h2>
-        <img class="feature" src="~@/assets/images/index/红厅.png">
-        <p>红厅，又称誓词教育大厅。分宣誓之墙和精神之墙两块区域，配备嵌入式大屏幕，可以同步播放完整的8步骤宣誓仪式，同时便于各级基层党组织来此开展宣誓仪式和各类主题活动等。</p>
+        <h2>{{ room.title }}</h2>
+        <img class="feature" :src="room.thumbnail">
+        <div v-html="room.content"></div>
         <div class="hint">
           <span class="icon">
             温馨提示
           </span>
-          <span class="hint-text">场馆最大容纳40人，请提前一周预约。使用红厅需要八步骤，约20分钟</span>
+          <span v-if="room.hint" class="hint-text">{{ room.hint }}</span>
         </div>
-        <button class="btn-block blue" @click="show('form-hongting')">预约</button>
+        <button v-if="room.open" class="btn-block blue" @click="show('form'+(room.number==101?'-hongting':''))">预约</button>
       </div>
       <div v-if="showing=='form-hongting'" class="content form hongting">
         <h2>场馆预约登记表</h2>
@@ -330,7 +332,7 @@
     img.feature {
       margin-bottom: 0.3rem;
     }
-    p {
+    /deep/ p {
       font-size: 0.4rem;
       text-align: justify;
       margin-bottom: 1em;
