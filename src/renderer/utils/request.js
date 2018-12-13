@@ -13,6 +13,12 @@ const parseJson = async res => {
   }
 };
 
+export const $ = (obj, cb) => {
+  for (let [key, val] of Object.entries(obj)) {
+    cb(key, val);
+  }
+};
+
 export const obj2query = obj => {
   let queryString = "";
   for (let [key, value] of Object.entries(obj)) {
@@ -83,6 +89,17 @@ export const getSignedInMemberCount = datas => {
 
 export const getRooms = floor => {
   return request(`rooms?floor=${floor}`);
+};
+
+export const submitAppointment = form => {
+  const formData = new FormData();
+  $(form, (key, val) => {
+    formData.append(key, val);
+  });
+  return request(`appointments`, {
+    method: "POST",
+    body: formData
+  });
 };
 
 export const getAllResources = datas => {
