@@ -130,7 +130,7 @@
         <div class="item">
           <label>预约时间</label>
           <select v-model="form['预约时间']">
-            <option value="09:00">09:00~10:00</option>
+            <option value="09:00" selected>09:00~10:00</option>
             <option value="10:00">10:00~11:00</option>
             <option value="13:00">13:00~14:00</option>
             <option value="14:00">14:00~15:00</option>
@@ -171,7 +171,7 @@
         <div class="item">
           <label>预约时间</label>
           <select v-model="form['预约时间']">
-            <option value="上午">上午</option>
+            <option value="上午" selected>上午</option>
             <option value="下午">下午</option>
             <option value="全天">全天</option>
           </select>
@@ -214,7 +214,7 @@
         <div class="item">
           <label>预约时间</label>
           <select v-model="form['预约时间']">
-            <option value="09:00">09:00~10:00</option>
+            <option value="09:00" selected>09:00~10:00</option>
             <option value="10:00">10:00~11:00</option>
             <option value="13:00">13:00~14:00</option>
             <option value="14:00">14:00~15:00</option>
