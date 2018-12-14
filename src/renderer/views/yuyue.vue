@@ -74,7 +74,7 @@
   }
 </script>
 <template>
-  <body>
+  <body class="yuyue-view">
     <div class="main page-yuyue">
       <div class="header">
         <a @click.prevent="back()" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
@@ -274,13 +274,14 @@
   </body>
 </template>
 
-<style lang="less" scoped>
+<style lang="less">
+.yuyue-view {
   .content {
     padding: 0.7rem;
     height: calc(100vh - 1.6rem);
     overflow-y: auto;
     padding-bottom: 1.5rem !important;
-    /deep/ img {
+    img {
       width: 100%;
     }
     h2 {
@@ -349,7 +350,7 @@
     img.feature {
       margin-bottom: 0.3rem;
     }
-    /deep/ p {
+    p {
       font-size: 0.4rem;
       text-align: justify;
       margin-bottom: 1em;
@@ -455,7 +456,7 @@
     ::placeholder {
       color: #c8c8c8;
     }
-    /deep/ input, select, textarea {
+    input, select, textarea {
       outline: none;
       font-family: inherit;
       width: 62%;
@@ -470,7 +471,7 @@
       outline: none;
       width: 62%;
     }
-    /deep/ .vdp-datepicker {
+    .vdp-datepicker {
       display: inline-block;
       .vdp-datepicker__calendar {
         width: 8rem;
@@ -486,7 +487,7 @@
         }
       }
     }
-    /deep/ .vdp-datepicker__calendar {
+    .vdp-datepicker__calendar {
       left: -2.2rem !important;
     }
     .modal {
@@ -535,5 +536,5 @@
   .green {
     background-color: #84c5cf;
   }
-
+}
 </style>

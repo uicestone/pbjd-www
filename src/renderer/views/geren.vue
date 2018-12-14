@@ -67,7 +67,7 @@
   }
 </script>
 <template>
-  <body>
+  <body class="geren-view">
     <div class="main page-yuyue">
       <div class="header">
         <a @click.prevent="back()" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
@@ -133,7 +133,8 @@
   </body>
 </template>
 
-<style lang="less" scoped>
+<style lang="less">
+.geren-view {
   .header {
     background: #49a96f;
   }
@@ -246,7 +247,7 @@
     .vdp-datepicker {
       display: inline-block;
     }
-    /deep/ .vdp-datepicker__calendar {
+    .vdp-datepicker__calendar {
       left: -2.2rem !important;
     }
     .modal {
@@ -314,5 +315,5 @@
   .green {
     background-color: #84c5cf;
   }
-
+}
 </style>
