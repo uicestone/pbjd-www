@@ -64,7 +64,7 @@ export default {
   <body>
 		<div class="main page9">
 			<div class="header">
-				<a @click="$router.go(-1)" href="###" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
+				<a @click="$router.go(-1)" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
 				<span><img src="~@/assets/images/index/caidan.png"/>月度菜单</span>
 			</div>
 			<div class="list">

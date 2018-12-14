@@ -87,7 +87,7 @@ export default {
 		<div class="main page1">
 			<img src="~@/assets/images/title.png" width="100%">
 			<div class="header">
-				<a @click="$router.go(-1)" href="###" class="back"><i class="fa fa-chevron-left"></i> 返回</a>
+				<a @click="$router.go(-1)" class="back"><i class="fa fa-chevron-left"></i> 返回</a>
 			</div>
 			<div class="imgBox">
 				<div class="imag">

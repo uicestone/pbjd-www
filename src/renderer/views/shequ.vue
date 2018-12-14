@@ -32,7 +32,7 @@ export default {
 		<div class="main page7">
 			<div class="header">
 				<img src="~@/assets/images/shequ.png"/>
-				<a @click ="$router.go(-1)" href="###" class="back"><i class="fa fa-chevron-left"></i> 返回</a>
+				<a @click ="$router.go(-1)" class="back"><i class="fa fa-chevron-left"></i> 返回</a>
 			</div>
 			<div class="list">
 				<div class="list-text">
