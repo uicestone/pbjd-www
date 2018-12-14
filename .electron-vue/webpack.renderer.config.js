@@ -10,6 +10,7 @@ const BabiliWebpackPlugin = require("babili-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 /**
  * List of node_modules to include in webpack bundle
@@ -61,13 +62,31 @@ let rendererConfig = {
         use: {
           loader: "vue-loader",
           options: {
-            extractCSS: process.env.NODE_ENV === "production",
-            loaders: {
-              sass: "vue-style-loader!css-loader!sass-loader?indentedSyntax=1",
-              scss: "vue-style-loader!css-loader!sass-loader"
-            }
+            extractCSS: process.env.NODE_ENV === "production"
           }
         }
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'less-loader'
+        ]
+      },
+      {
+        test: /\.stylus$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'stylus-loader'
+        ]
+      },
+      {
+        test: /\.pug$/,
+        use: [
+          'pug-plain-loader'
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -119,7 +138,8 @@ let rendererConfig = {
           : false
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new VueLoaderPlugin()
   ],
   output: {
     filename: "[name].js",
