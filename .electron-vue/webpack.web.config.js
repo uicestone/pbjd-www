@@ -9,6 +9,7 @@ const BabiliWebpackPlugin = require("babili-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 let webConfig = {
   devtool: "#cheap-module-eval-source-map",
@@ -17,13 +18,6 @@ let webConfig = {
   },
   module: {
     rules: [
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
-        })
-      },
       {
         test: /\.html$/,
         use: "vue-html-loader"
@@ -39,13 +33,31 @@ let webConfig = {
         use: {
           loader: "vue-loader",
           options: {
-            extractCSS: true,
-            loaders: {
-              sass: "vue-style-loader!css-loader!sass-loader?indentedSyntax=1",
-              scss: "vue-style-loader!css-loader!sass-loader"
-            }
+            extractCSS: true
           }
         }
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'less-loader'
+        ]
+      },
+      {
+        test: /\.stylus$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'stylus-loader'
+        ]
+      },
+      {
+        test: /\.pug$/,
+        use: [
+          'pug-plain-loader'
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -85,7 +97,8 @@ let webConfig = {
       "process.env.IS_WEB": "true"
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new VueLoaderPlugin()
   ],
   output: {
     filename: `[name]-${(new Date()).getTime()}.js`,
