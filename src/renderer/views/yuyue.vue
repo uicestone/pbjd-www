@@ -35,6 +35,9 @@
           this.showed.push(this.showing);
         }
         this.showing = layer;
+        if (layer === 'form-hongting') {
+          this.form['会议室/培训室'] = '红厅';
+        }
       },
       async setFloor(floor) {
         this.floor = floor;
@@ -143,7 +146,6 @@
           <label>参加人数</label>
           <input v-model="form['参加人数']" placeholder="参加人数" />
         </div>
-        <input type="hidden" v-model="form['会议室/培训室']" value="红厅" />
         <button class="btn-block blue" @click="submit()">提交</button>
         <div class="modal" v-if="submitModal">
           <div class="message blue" @click="clearForm();back()">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>

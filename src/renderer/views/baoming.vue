@@ -9,15 +9,15 @@ export default {
       attending: -1,
       attendModal: false,
       attendInfo: {
-        name: '',
-        phone: ''
+        type: '活动报名',
+        event_id: null
       },
-      shujiList: []
+      eventList: []
     };
   },
   computed: {
     currentSelectData() {
-      return this.shujiList[this.currentSelect] || {};
+      return this.eventList[this.currentSelect] || {};
     }
   },
   methods: {
@@ -32,18 +32,20 @@ export default {
     },
     attend(index) {
       this.attending = index;
+      this.attendInfo.event_id = this.eventList[this.attending].id;
     },
     submit() {
       this.attendModal = true
+      request.submitAppointment(this.attendInfo);
     },
     clearAttendForm() {
       this.attendModal = false;
-      this.attendInfo = {name: '', phone: ''}
+      this.attendInfo = {type: '活动报名', event_id: null}
     }
   },
   async mounted() {
     handleLoading();
-    this.shujiList = await request.getPosts({
+    this.eventList = await request.getPosts({
       query: {
         category: "书记工作室",
         limit: 12
@@ -63,7 +65,7 @@ export default {
       </div>
       <div class="list">
         <ul>
-          <li v-for="(item, index) in shujiList" @click="currentSelect = index">
+          <li v-for="(item, index) in eventList" @click="currentSelect = index">
             <div class="imgDiv">
               <img :src="item.posterUrl"/>
             </div>
@@ -139,11 +141,11 @@ export default {
           <div class="attend-form">
             <div class="item">
               <label>联系人</label>
-              <input v-model="attendInfo.name" placeholder="姓名" />
+              <input v-model="attendInfo['联系人']" placeholder="姓名" />
             </div>
             <div class="item">
               <label>联系电话</label>
-              <input v-model="attendInfo.phone" placeholder="电话" />
+              <input v-model="attendInfo['联系电话']" placeholder="电话" />
             </div>
           </div>
           <button @click="submit" class="attend">提交</button>
