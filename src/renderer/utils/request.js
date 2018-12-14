@@ -91,6 +91,10 @@ export const getRooms = floor => {
   return request(`rooms?floor=${floor}`);
 };
 
+export const getEvents = () => {
+  return request(`events`);
+};
+
 export const submitAppointment = form => {
   const formData = new FormData();
   $(form, (key, val) => {

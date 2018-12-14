@@ -45,12 +45,7 @@ export default {
   },
   async mounted() {
     handleLoading();
-    this.eventList = await request.getPosts({
-      query: {
-        category: "书记工作室",
-        limit: 12
-      }
-    });
+    this.eventList = await request.getEvents();
   }
 };
 </script>
@@ -70,7 +65,7 @@ export default {
               <img :src="item.posterUrl"/>
             </div>
             <div class="textDiv">
-              {{item.title.trim()}}
+              <span>{{item.title.trim()}}</span>
             </div>
           </li>
           <!-- <li>
@@ -134,7 +129,7 @@ export default {
             <div class="name">{{currentSelectData.title}}</div>
             <p class="infor" v-html="currentSelectData.content"></p>
           </div>
-          <button @click="attend(currentSelect)" class="attend">报名</button>
+          <button v-if="currentSelectData.open" @click="attend(currentSelect)" class="attend">报名</button>
       </div>
       <div class="pop" v-if="attending > -1">
           <!--<span class="back"><i class="fa fa-chevron-left" aria-hidden="true"></i><font>返回</font></span>-->
