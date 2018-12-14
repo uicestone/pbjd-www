@@ -22,7 +22,7 @@ export default {
     .bg-bottom
     .entries
       router-link.entry(to="/home")
-        img(src="~@/assets/images/root-link-pb.svg")
+        img(src="~@/assets/images/root-link-p.svg")
         .entry-name 嘉定区<br>党建服务中心
       router-link.entry(to="/quntuan")
         img(src="~@/assets/images/root-link-qt.svg")
