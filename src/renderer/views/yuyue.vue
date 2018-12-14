@@ -150,8 +150,8 @@
           <input v-model="form['参加人数']" placeholder="参加人数" />
         </div>
         <button class="btn-block blue" @click="submit()">提交</button>
-        <div class="modal" v-if="submitModal">
-          <div class="message blue" @click="clearForm();back()">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
+        <div class="modal" v-if="submitModal" @click="clearForm();back()">
+          <div class="message blue">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
         </div>
       </div>
       <div v-if="showing=='form'" class="content form hongting">
@@ -197,8 +197,8 @@
           <textarea v-model="form['备注']" placeholder="备注"></textarea> 
         </div>
         <button class="btn-block blue" @click="submit()">提交</button>
-        <div class="modal" v-if="submitModal">
-          <div class="message blue" @click="clearForm();back()">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
+        <div class="modal" v-if="submitModal" @click="clearForm();back()">
+          <div class="message blue">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
         </div>
       </div>
       <div v-if="showing=='form-canguan'" class="content form">
@@ -234,8 +234,8 @@
           <input v-model="form['参加人数']" placeholder="人数" />
         </div>
         <button class="btn-block blue" @click="submit()">提交</button>
-        <div class="modal" v-if="submitModal">
-          <div class="message blue" @click="clearForm();back()">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
+        <div class="modal" v-if="submitModal" @click="clearForm();back()">
+          <div class="message blue">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
         </div>
       </div>
       <div v-if="showing=='traffic'" class="content traffic">
@@ -358,11 +358,12 @@
     .hint {
       border: black 1px solid;
       color: white;
-      margin-bottom: 0.3rem;
       font-size: 0.35rem;
       font-weight: normal;
       height: 1.5rem;
       line-height: 1.5rem;
+      box-sizing: content-box;
+      margin: 0 auto 0.3rem;
       .hint-text {
         display: inline-block;
         color: black;

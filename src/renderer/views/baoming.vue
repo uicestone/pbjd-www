@@ -150,8 +150,8 @@ export default {
           </div>
           <button @click="submit" class="attend">提交</button>
       </div>
-      <div class="pop modal" v-if="attendModal">
-        <div class="message" @click="clearAttendForm();back()">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
+      <div class="pop modal" v-if="attendModal" @click="clearAttendForm();back()">
+        <div class="message">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
       </div>
     </div>
     <!--等待-->

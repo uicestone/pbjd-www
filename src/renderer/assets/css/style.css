@@ -2586,6 +2586,8 @@ input {
 
 .page10 .modal {
   background: rgba(127, 127, 127, 0.5);
+  height: 100%;
+  top: 0;
 }
 
 .page10 .modal .message {
@@ -2626,6 +2628,7 @@ input {
   font-size: 0.4rem;
   color: #fff;
   position: absolute;
+  z-index: 0;
   left: 0.5rem; top: 0;
 }
 
