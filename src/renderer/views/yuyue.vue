@@ -93,7 +93,10 @@
       </div>
       <div v-if="showing=='floor-detail'" class="content">
         <div class="floor-name">{{floor}}F</div>
-        <img class="floor-map" :src="floorImage"/>
+        <img class="floor-map" v-if="floor==1" src="@/assets/images/index/1F.png"/>
+        <img class="floor-map" v-if="floor==2" src="@/assets/images/index/2F.png"/>
+        <img class="floor-map" v-if="floor==3" src="@/assets/images/index/3F.png"/>
+        <img class="floor-map" v-if="floor==4" src="@/assets/images/index/4F.png"/>
         <div class="rooms">
           <div v-for="(room, index) in rooms" class="room" @click="show('room-detail');setRoom(index)">
             <span class="icon" :style="{background:room.color}"></span>
