@@ -277,7 +277,7 @@
     height: calc(100vh - 1.6rem);
     overflow-y: auto;
     padding-bottom: 1.5rem !important;
-    img {
+    /deep/ img {
       width: 100%;
     }
     h2 {
@@ -318,7 +318,7 @@
     margin-top: 0.5rem;
     .room {
       box-sizing: content-box;
-      border: black 1px solid;
+      border: black 0.01rem solid;
       margin-bottom: 0.3rem;
       font-size: 0.35rem;
       font-weight: normal;
