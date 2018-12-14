@@ -188,8 +188,8 @@
                 </div>
               </li>
             </router-link>
-            <router-link to="/geren">
-              <li class="li9">
+            <router-link to="/geren" disabled>
+              <li class="li9" style="opacity: 0.5">
                 <div>
                   <img src="~@/assets/images/index/icon9.png"/>
                   <span>个人中心</span>
