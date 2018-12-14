@@ -466,6 +466,7 @@
     }
     select {
       margin-left: -0.11rem;
+      -webkit-appearance: none;
     }
     textarea {
       outline: none;
