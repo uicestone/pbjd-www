@@ -3,7 +3,7 @@
     <div class="main page3">
       <a @click="back" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
       <div class="topDiv">
-        <img src="~@/assets/images/index/banner.png" width="100%">
+        <img src="~@/assets/images/index/banner-p.png" width="100%">
         <div class="top-text">
           <div class="fl dateDiv">
             <div class="ymd">{{date.ll}} {{date.dddd}}</div>
