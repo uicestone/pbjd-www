@@ -140,7 +140,7 @@
                 </div>
               </li>
             </router-link>
-            <router-link to="/shuji">
+            <router-link to="/gongyi">
               <li class="li3">
                 <div>
                   <img src="~@/assets/images/index/icon3.png"/>
