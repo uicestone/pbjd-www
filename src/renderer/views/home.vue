@@ -49,7 +49,9 @@
               <div class="dt-page fr">
                 <ul>
                   <li @click="partyStatusPage>1&&partyStatusPage--" :class="{disabled:partyStatusPage==1}"><img src="~@/assets/images/index/left-arrow.png" draggable="false"/></li>
-                  <li v-for="i in partyStatusTotalPages" :class="{active:i==partyStatusPage}"><span></span></li>
+                  <!-- <li v-for="i in partyStatusTotalPages" :class="{active:i==partyStatusPage}"><span></span></li> -->
+                  <li :class="{active:partyStatusPage==1}"><span></span></li>
+                  <li :class="{active:partyStatusPage>1}"><span></span></li>
                   <li @click="partyStatusPage<partyStatusTotalPages&&partyStatusPage++" :class="{disabled:partyStatusPage==partyStatusTotalPages}"><img src="~@/assets/images/index/right-arrow.png" draggable="false"/></li>
                 </ul>
               </div>
