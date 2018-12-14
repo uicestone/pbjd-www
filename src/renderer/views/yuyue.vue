@@ -321,7 +321,7 @@
     margin-top: 0.5rem;
     .room {
       box-sizing: content-box;
-      border: black 0.01rem solid;
+      border: #8c8c8c 0.01rem solid;
       margin-bottom: 0.3rem;
       font-size: 0.35rem;
       font-weight: normal;
@@ -342,7 +342,7 @@
       display: inline-block;
       width: 1.5rem;
       height: 1.5rem;
-      border-right: black 1px solid;
+      border-right: #8c8c8c 1px solid;
     }
   }
   .room-detail {
