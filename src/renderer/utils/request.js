@@ -91,6 +91,10 @@ export const getRooms = floor => {
   return request(`rooms?floor=${floor}`);
 };
 
+export const getRoom = number => {
+  return request(`rooms/${number}`);
+};
+
 export const getEvents = () => {
   return request(`events`);
 };

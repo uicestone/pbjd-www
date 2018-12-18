@@ -68,8 +68,9 @@
         };
       }
     },
-    mounted() {
+    async mounted() {
       handleLoading();
+      this.canguan = await request.getRoom(0);
     }
   }
 </script>
@@ -250,10 +251,10 @@
         </div>
       </div>
       <div v-if="showing=='canguan'" class="content canguan">
-        <img src="~@/assets/images/index/红厅.png"/>
-        <h2>参观党群服务中心</h2>
+        <img :src="canguan.thumbnail"/>
+        <h2>{{ canguan.title }}</h2>
         <h3><i class="fa fa-file-text"></i>活动简介</h3>
-        <p>邀请安亭镇书记工作室导师、联西村党总支书记唐祝平为辖区青年党员、后备干部生动讲述联西村三十年的发展历程以及标志性事件、人物、故事等，通过参观党建服务站及交流分享，让党员更直观的了解改革开放以来新农村发生的巨大变化和历史缩影，激励党员积极发挥先锋模范作用。</p>
+        <div v-html="canguan.content"></div>
         <button class="btn-block blue" @click="form.type='参观预约';show('form-canguan')">预约</button>
       </div>
     </div>
