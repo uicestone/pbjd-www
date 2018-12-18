@@ -18,7 +18,8 @@
         submitModal: false,
         floor: null,
         rooms: [],
-        room: null,
+        room: {},
+        building: null
       };
     },
     methods: {
@@ -35,19 +36,33 @@
           this.showed.push(this.showing);
         }
         this.showing = layer;
+        this.form['room_numer'] = this.room.number;
+        if (layer.match(/^form/)) {
+          this.clearForm();
+          this.form['会议室/培训室'] = this.room.title;
+          this.form['room_numer'] = this.room.number;
+          this.getRoomDetail();
+        }
         if (layer === 'form-hongting') {
           this.form['会议室/培训室'] = '红厅';
+          this.form['type'] = '场馆预约';
+        }
+        if (layer === 'form') {
+          this.form['type'] = '场馆预约';
+        }
+        if (layer === 'form-canguan') {
+          this.form['type'] = '参观预约';
         }
       },
       async setFloor(floor) {
         this.floor = floor;
         this.rooms = await request.getRooms(this.floor);
       },
-      setRoom(index) {
+      async setRoom(index) {
         this.room = this.rooms[index];
-        if (this.room.title && this.room.title !== '红厅') {
-          this.form['会议室/培训室'] = this.room.title;
-        }
+      },
+      async getRoomDetail() {
+        this.room = await request.getRoom(this.room.number);
       },
       back() {
         if (this.showed.length) {
@@ -63,14 +78,21 @@
       },
       disabledDatesProp() {
         return {
-          to: moment().add(1, 'day').toDate(),
-          from: moment().add(7, 'days').toDate()
+          to: moment().startOf('day').add(1, 'day').toDate(),
+          from: moment().startOf('day').add(7, 'days').toDate(),
+          dates: this.room.fullDates ? this.room.fullDates.map(d => moment(d).toDate()) : []
         };
+      },
+      appointmentDate() {
+        if (!this.form['预约日期']) {
+          return;
+        }
+        return moment(this.form['预约日期']).format('YYYY-MM-DD');
       }
     },
     async mounted() {
       handleLoading();
-      this.canguan = await request.getRoom(0);
+      this.building = await request.getRoom(0);
     }
   }
 </script>
@@ -83,7 +105,7 @@
       </div>
       <div v-if="showing=='menu'" class="content yuyue-menu">
         <div class="item" @click="show('floor')">场馆预约</div>
-        <div class="item" @click="show('canguan')">预约参观党群服务中心</div>
+        <div class="item" @click="show('canguan');room=building">预约参观党群服务中心</div>
         <div class="item" @click="show('traffic')">周边交通停车提示</div>
       </div>
       <div v-if="showing=='floor'" class="content yuyue-menu floor">
@@ -108,7 +130,7 @@
       </div>
       <div v-if="showing=='room-detail'" class="room-detail content">
         <h2>{{ room.title }}</h2>
-        <img class="feature" :src="room.thumbnail">
+        <img v-if="room.thumbnail" class="feature" :src="room.thumbnail">
         <div v-html="room.content"></div>
         <div class="hint" v-if="room.hint">
           <span class="icon">
@@ -116,97 +138,98 @@
           </span>
           <span class="hint-text">{{ room.hint }}</span>
         </div>
-        <button v-if="room.open" class="btn-block blue" @click="form.type='场馆预约';show('form'+(room.number==101?'-hongting':''))">预约</button>
+        <button v-if="room.open" class="btn-block blue" @click="show('form'+(room.number==101?'-hongting':''))">预约</button>
       </div>
       <div v-if="showing=='form-hongting'" class="content form hongting">
+        <form @submit.prevent="submit()">
         <h2>场馆预约登记表</h2>
         <div class="item">
           <label>单位名称</label>
-          <input v-model="form['单位名称']" placeholder="单位名称" />
+          <input v-model="form['单位名称']" placeholder="单位名称" required/>
         </div>
         <div class="item">
           <label>预约日期</label>
-          <datepicker v-model="form['预约日期']" :language="zh" format="yyyy-MM-dd" :disabledDates="disabledDatesProp" />
+          <datepicker v-model="form['预约日期']" :language="zh" format="yyyy-MM-dd" :disabledDates="disabledDatesProp" required/>
         </div>
         <div class="item">
           <label>预约时间</label>
-          <select v-model="form['预约时间']">
-            <option value="09:00" selected>09:00~10:00</option>
-            <option value="10:00">10:00~11:00</option>
-            <option value="13:00">13:00~14:00</option>
-            <option value="14:00">14:00~15:00</option>
-            <option value="15:00">15:00~16:00</option>
+          <select v-model="form['预约时间']" required>
+            <option v-if="form['预约日期']" v-for="(timeSlot, index) in ['09:00~10:00', '10:00:11:00', '13:00~14:00', '14:00~15:00', '15:00~16:00']" :value="timeSlot" :selected="!index" :disabled="room.appointments && room.appointments[appointmentDate] && room.appointments[appointmentDate].indexOf(timeSlot)>-1">{{ timeSlot }}</option>
           </select>
         </div>
         <div class="item">
           <label>联系人</label>
-          <input v-model="form['联系人']" placeholder="联系人" />
+          <input v-model="form['联系人']" placeholder="联系人" required/>
         </div>
         <div class="item">
           <label>联系电话</label>
-          <input v-model="form['联系电话']" placeholder="电话" />
+          <input v-model="form['联系电话']" placeholder="电话" required/>
         </div>
         <div class="item">
           <label>参加人数</label>
-          <input v-model="form['参加人数']" placeholder="参加人数" />
+          <input v-model="form['参加人数']" placeholder="参加人数" required/>
         </div>
-        <button class="btn-block blue" @click="submit()">提交</button>
-        <div class="modal" v-if="submitModal" @click="clearForm();back()">
+        <button type="submit" class="btn-block blue">提交</button>
+        <div class="modal" v-if="submitModal" @click="back()">
           <div class="message blue">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
         </div>
+        </form>
       </div>
       <div v-if="showing=='form'" class="content form hongting">
+        <form @submit.prevent="submit()">
         <h2>场馆预约登记表</h2>
         <div class="item">
           <label>单位名称</label>
-          <input v-model="form['单位名称']" placeholder="单位名称" />
+          <input v-model="form['单位名称']" placeholder="单位名称" required/>
         </div>
         <div class="item">
           <label>活动名称</label>
-          <input v-model="form['活动名称']" placeholder="名称" />
+          <input v-model="form['活动名称']" placeholder="名称" required/>
         </div>
         <div class="item">
           <label>预约日期</label>
-          <datepicker v-model="form['预约日期']" :language="zh" format="yyyy-MM-dd" :disabledDates="disabledDatesProp" />
+          <datepicker v-model="form['预约日期']" :language="zh" format="yyyy-MM-dd" :disabledDates="disabledDatesProp" required/>
         </div>
         <div class="item">
           <label>预约时间</label>
-          <select v-model="form['预约时间']">
-            <option value="上午" selected>上午</option>
-            <option value="下午">下午</option>
-            <option value="全天">全天</option>
+          <select v-model="form['预约时间']" required>
+            <option v-if="form['预约日期']" v-for="(timeSlot, index) in ['上午', '下午']" :value="timeSlot" :selected="!index" :disabled="room.appointments && room.appointments[appointmentDate] && room.appointments[appointmentDate].indexOf(timeSlot)>-1">{{ timeSlot }}</option>
+            <option v-if="form['预约日期']" value="全天" :disabled="room.appointments && room.appointments[appointmentDate] && room.appointments[appointmentDate].length">全天</option>
           </select>
         </div>
         <div class="item">
           <label>参加人数</label>
-          <input v-model="form['参加人数']" placeholder="人数" />
+          <input v-model="form['参加人数']" placeholder="人数" required/>
         </div>
         <div class="item">
           <label>联系人</label>
-          <input v-model="form['联系人']" placeholder="联系人" />
+          <input v-model="form['联系人']" placeholder="联系人" required/>
         </div>
         <div class="item">
           <label>联系电话</label>
-          <input v-model="form['联系电话']" placeholder="电话" />
+          <input v-model="form['联系电话']" placeholder="电话" required/>
         </div>
         <div class="item">
           <label>会议室/培训室</label>
-          <input v-model="form['会议室/培训室']" placeholder="会议室/培训室" />
+          <input v-model="form['会议室/培训室']" placeholder="会议室/培训室" required/>
+          <input type="hidden" v-model="form['room_number']" />
         </div>
         <div class="item">
           <label style="position:relative;top:-0.5rem">备注</label>
           <textarea v-model="form['备注']" placeholder="备注"></textarea> 
         </div>
-        <button class="btn-block blue" @click="submit()">提交</button>
-        <div class="modal" v-if="submitModal" @click="clearForm();back()">
+        <button type="submit" class="btn-block blue">提交</button>
+        <div class="modal" v-if="submitModal" @click="back()">
           <div class="message blue">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
         </div>
+        </form>
       </div>
       <div v-if="showing=='form-canguan'" class="content form">
+        <form @submit.prevent="submit()">
         <h2>参观预约登记表</h2>
         <div class="item">
           <label>单位名称</label>
-          <input v-model="form['单位名称']" placeholder="单位名称" />
+          <input v-model="form['单位名称']" placeholder="单位名称" required/>
         </div>
         <div class="item">
           <label>预约日期</label>
@@ -214,30 +237,27 @@
         </div>
         <div class="item">
           <label>预约时间</label>
-          <select v-model="form['预约时间']">
-            <option value="09:00" selected>09:00~10:00</option>
-            <option value="10:00">10:00~11:00</option>
-            <option value="13:00">13:00~14:00</option>
-            <option value="14:00">14:00~15:00</option>
-            <option value="15:00">15:00~16:00</option>
+          <select v-model="form['预约时间']" required>
+            <option v-if="form['预约日期']" v-for="timeSlot in ['09:00~10:00', '10:00:11:00', '13:00~14:00', '14:00~15:00', '15:00~16:00']" :value="timeSlot" selected :disabled="room.appointments && room.appointments[appointmentDate] && room.appointments[appointmentDate].indexOf(timeSlot)>-1">{{ timeSlot }}</option>
           </select>
         </div>
         <div class="item">
           <label>联系人</label>
-          <input v-model="form['联系人']" placeholder="联系人" />
+          <input v-model="form['联系人']" placeholder="联系人" required/>
         </div>
         <div class="item">
           <label>联系电话</label>
-          <input v-model="form['联系电话']" placeholder="电话" />
+          <input v-model="form['联系电话']" placeholder="电话" required/>
         </div>
         <div class="item">
           <label>参加人数</label>
-          <input v-model="form['参加人数']" placeholder="人数" />
+          <input v-model="form['参加人数']" placeholder="人数" required/>
         </div>
-        <button class="btn-block blue" @click="submit()">提交</button>
-        <div class="modal" v-if="submitModal" @click="clearForm();back()">
+        <button type="submit" class="btn-block blue">提交</button>
+        <div class="modal" v-if="submitModal" @click="back()">
           <div class="message blue">您已提交成功，正在审核中，工作人员会尽快与您联系。</div>
         </div>
+        </form>
       </div>
       <div v-if="showing=='traffic'" class="content traffic">
         <h2>周边交通停车提示</h2>
@@ -251,11 +271,11 @@
         </div>
       </div>
       <div v-if="showing=='canguan'" class="content canguan">
-        <img :src="canguan.thumbnail"/>
-        <h2>{{ canguan.title }}</h2>
+        <img :src="room.thumbnail"/>
+        <h2>{{ room.title }}</h2>
         <h3><i class="fa fa-file-text"></i>活动简介</h3>
-        <div v-html="canguan.content"></div>
-        <button class="btn-block blue" @click="form.type='参观预约';show('form-canguan')">预约</button>
+        <div v-html="room.content"></div>
+        <button class="btn-block blue" @click="show('form-canguan')">预约</button>
       </div>
     </div>
     <!--等待-->

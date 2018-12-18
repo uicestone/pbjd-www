@@ -92,7 +92,7 @@ export const getRooms = floor => {
 };
 
 export const getRoom = number => {
-  return request(`rooms/${number}`);
+  return request(`rooms/${number}`, {cacheable: false});
 };
 
 export const getEvents = () => {
