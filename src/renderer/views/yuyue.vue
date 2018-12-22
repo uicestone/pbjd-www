@@ -150,12 +150,12 @@
         </div>
         <div class="item">
           <label>预约日期</label>
-          <datepicker v-model="form['预约日期']" :language="zh" format="yyyy-MM-dd" :disabledDates="disabledDatesProp" required/>
+          <datepicker v-model="form['预约日期']" placeholder="预约日期" :language="zh" format="yyyy-MM-dd" :disabledDates="disabledDatesProp" required/>
         </div>
         <div class="item">
           <label>预约时间</label>
           <select v-model="form['预约时间']" required>
-            <option v-if="form['预约日期']" v-for="(timeSlot, index) in ['09:00~10:00', '10:00:11:00', '13:00~14:00', '14:00~15:00', '15:00~16:00']" :value="timeSlot" :selected="!index" :disabled="room.appointments && room.appointments[appointmentDate] && room.appointments[appointmentDate].indexOf(timeSlot)>-1">{{ timeSlot }}</option>
+            <option v-if="form['预约日期']" v-for="(timeSlot, index) in ['09:00~10:00', '10:00~11:00', '13:00~14:00', '14:00~15:00', '15:00~16:00']" :value="timeSlot" :selected="!index" :disabled="room.appointments && room.appointments[appointmentDate] && room.appointments[appointmentDate].indexOf(timeSlot)>-1">{{ timeSlot }}</option>
           </select>
         </div>
         <div class="item">
@@ -189,7 +189,7 @@
         </div>
         <div class="item">
           <label>预约日期</label>
-          <datepicker v-model="form['预约日期']" :language="zh" format="yyyy-MM-dd" :disabledDates="disabledDatesProp" required/>
+          <datepicker v-model="form['预约日期']" placeholder="预约日期" :language="zh" format="yyyy-MM-dd" :disabledDates="disabledDatesProp" required/>
         </div>
         <div class="item">
           <label>预约时间</label>
@@ -234,12 +234,12 @@
         </div>
         <div class="item">
           <label>预约日期</label>
-          <datepicker v-model="form['预约日期']" :language="zh" format="yyyy-MM-dd" :disabledDates="disabledDatesProp" />
+          <datepicker v-model="form['预约日期']" placeholder="预约日期" :language="zh" format="yyyy-MM-dd" :disabledDates="disabledDatesProp" />
         </div>
         <div class="item">
           <label>预约时间</label>
           <select v-model="form['预约时间']" required>
-            <option v-if="form['预约日期']" v-for="timeSlot in ['09:00~10:00', '10:00:11:00', '13:00~14:00', '14:00~15:00', '15:00~16:00']" :value="timeSlot" selected :disabled="room.appointments && room.appointments[appointmentDate] && room.appointments[appointmentDate].indexOf(timeSlot)>-1">{{ timeSlot }}</option>
+            <option v-if="form['预约日期']" v-for="timeSlot in ['09:00~10:00', '10:00~11:00', '13:00~14:00', '14:00~15:00', '15:00~16:00']" :value="timeSlot" selected :disabled="room.appointments && room.appointments[appointmentDate] && room.appointments[appointmentDate].indexOf(timeSlot)>-1">{{ timeSlot }}</option>
           </select>
         </div>
         <div class="item">
