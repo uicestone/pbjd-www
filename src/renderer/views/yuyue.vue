@@ -78,9 +78,10 @@
       },
       disabledDatesProp() {
         return {
-          to: moment().startOf('day').add(1, 'day').toDate(),
-          from: moment().startOf('day').add(7, 'days').toDate(),
-          dates: this.room.fullDates ? this.room.fullDates.map(d => moment(d).toDate()) : []
+          to: moment().startOf('day').add(7, 'days').toDate(),
+          from: moment().startOf('day').add(7, 'days').add(3, 'months').toDate(),
+          dates: this.room.fullDates ? this.room.fullDates.map(d => moment(d).toDate()) : [],
+          days: (this.room.number === '101' || this.room.number === '0') ? [0, 6] : []
         };
       },
       appointmentDate() {
