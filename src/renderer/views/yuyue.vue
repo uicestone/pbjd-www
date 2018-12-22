@@ -216,8 +216,26 @@
           <input type="hidden" v-model="form['room_number']" />
         </div>
         <div class="item">
-          <label style="position:relative;top:-0.5rem">备注</label>
+          <label>备注</label>
           <textarea v-model="form['备注']" placeholder="备注"></textarea> 
+        </div>
+        <div class="fapiao">
+          <h3>开票信息</h3>
+          <div class="item">
+            <input v-model="form['公司名称']" placeholder="公司名称" required/>
+          </div>
+          <div class="item">
+            <input v-model="form['税号']" placeholder="税号" required/>
+          </div>
+          <div class="item">
+            <input v-model="form['账号']" placeholder="账号" required/>
+          </div>
+          <div class="item">
+            <input v-model="form['开户银行']" placeholder="开户银行" required/>
+          </div>
+          <div class="item">
+            <input v-model="form['单位地址']" placeholder="单位地址" required/>
+          </div>
         </div>
         <button type="submit" class="btn-block blue">提交</button>
         <div class="modal" v-if="submitModal" @click="back()">
@@ -546,6 +564,18 @@
         margin-bottom: 0.7rem;
         font-size: 0.3rem;
       }
+    }
+  }
+  .fapiao {
+    h3 {
+      font-size: 0.45rem;
+      text-align: center;
+      margin-bottom: 0.1rem;
+      margin-top: 0.5rem;
+    }
+    .item {
+      padding: 0.1rem 0.3rem;
+      min-height: 1rem;
     }
   }
   .orange {
