@@ -36,11 +36,11 @@
           this.showed.push(this.showing);
         }
         this.showing = layer;
-        this.form['room_numer'] = this.room.number;
+        this.form['room_number'] = this.room.number;
         if (layer.match(/^form/)) {
           this.clearForm();
           this.form['会议室/培训室'] = this.room.title;
-          this.form['room_numer'] = this.room.number;
+          this.form['room_number'] = this.room.number;
           this.getRoomDetail();
         }
         if (layer === 'form-hongting') {
