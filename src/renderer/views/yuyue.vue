@@ -222,19 +222,19 @@
         <div class="fapiao">
           <h3>开票信息</h3>
           <div class="item">
-            <input v-model="form['公司名称']" placeholder="公司名称" required/>
+            <input v-model="form['开票信息_公司名称']" placeholder="公司名称" required/>
           </div>
           <div class="item">
-            <input v-model="form['税号']" placeholder="税号" required/>
+            <input v-model="form['开票信息_税号']" placeholder="税号" required/>
           </div>
           <div class="item">
-            <input v-model="form['账号']" placeholder="账号" required/>
+            <input v-model="form['开票信息_账号']" placeholder="账号" required/>
           </div>
           <div class="item">
-            <input v-model="form['开户银行']" placeholder="开户银行" required/>
+            <input v-model="form['开票信息_开户银行']" placeholder="开户银行" required/>
           </div>
           <div class="item">
-            <input v-model="form['单位地址']" placeholder="单位地址" required/>
+            <input v-model="form['开票信息_单位地址']" placeholder="单位地址" required/>
           </div>
         </div>
         <button type="submit" class="btn-block blue">提交</button>
