@@ -112,4 +112,39 @@ body::-webkit-scrollbar {
   left: 1vw;
   top: 98vh;
 }
+.fl {
+  float: left;
+}
+.header {
+  height: 15vw;
+  padding: 0 3vw;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  a.back {
+    font-size: 4vw;
+    color: #fff;
+    top: 7vw;
+    font-weight: bold;
+    position: absolute;
+  }
+  span {
+    color: #fff;
+    font-size: 5vw;
+    left: calc(50% - 25vw);
+    width: 50vw;
+    text-align: center;
+    position: absolute;
+    bottom: 2vw;
+    img {
+      vertical-align: text-bottom;
+      margin-right: 1vw;
+    }
+  }
+  & + * {
+    padding-top: 15vw;
+  }
+}
+
 </style>

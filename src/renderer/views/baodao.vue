@@ -43,7 +43,7 @@ export default {
   <div class="main view-baodao">
     <div class="header">
       <a class="fl back" @click="goBack">
-        <i class="fa fa-chevron-left"></i>
+        <i class="fa fa-angle-left"></i>
         返回
       </a>
     </div>
@@ -99,16 +99,7 @@ export default {
 
 .view-baodao {
   .header {
-    height: 15vw;
     background: #c54a43;
-    // line-height: 15vw;
-    padding: 0 3vw;
-    a.back {
-      font-size: 4vw;
-      color: #fff;
-      margin-top: 8vw;
-      font-weight: bold;
-    }
   }
   .formDiv {
     padding: 3vw;
@@ -218,8 +209,5 @@ export default {
       letter-spacing: 2vw;
     }
   }
-}
-.fl {
-  float: left;
 }
 </style>

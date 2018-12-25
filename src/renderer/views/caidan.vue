@@ -63,8 +63,8 @@ export default {
 <template>
 <div class="main view-caidan">
   <div class="header">
-    <a @click="$router.go(-1)" href="###" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
-    <span><img src="~@/assets/images/index/caidan.png"/>月度菜单</span>
+    <a @click="$router.go(-1)" class="fl back"><i class="fa fa-angle-left"></i> 返回</a>
+    <span><img src="~@/assets/images/icons/caidan.png"/>月度菜单</span>
   </div>
   <div class="list">
     <div class="list-text">
@@ -141,35 +141,10 @@ export default {
 <style lang="stylus">
 .view-caidan
   .header
-    height 15vw
     background #d5ac50
-    line-height 15vw
-    color #fff
-    font-size 5.7vw
-    text-align center
-    padding 0 5vw
-    position fixed
-    left 0
-    width 100vw
-    z-index 1
-    a
-      font-size 4vw
-      color #fff
-      position absolute
-      left 5vw
-      i
-        font-size 5vw
-        top 0.5vw
-        position relative
-    img
-      display inline-block
-      width 7vw
-      position relative
-      top 1vw
-      margin-right 2vw
   .list
     .list-text
-      padding 15vw 2vw 0
+      padding 0 2vw
       z-index 1
       background rgba(242, 242, 243, 0.9)
       .text-top
