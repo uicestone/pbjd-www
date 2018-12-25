@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="menu">
-      <div class="baodao">
+      <div class="baodao" @click="$router.push('baodao')">
         <div class="content">
           <div class="title">报到人数</div>
           <div>
@@ -32,21 +32,21 @@
           </div>
         </div>
       </div>
-      <div class="dongtai col-2">党建动态</div>
-      <div class="caidan col-2">
+      <div class="dongtai col-2" @click="$router.push('dongtai')">党建动态</div>
+      <div class="caidan col-2" @click="$router.push('')">
         <div class="content">
           <div class="month-cn">{{ date.M }}<span class="unit">月</span></div>
           <div class="month-en">{{ date.MMMM }}</div>
           <div class="title">月度菜单</div>
         </div>
       </div>
-      <div class="fengcai">风采展示</div>
-      <div class="shici">誓词教育</div>
-      <div class="zhuti">主题党日</div>
-      <div class="daolan">场馆导览</div>
-      <div class="daibiao">党代表工作室</div>
-      <div class="yuyue">活动预约</div>
-      <div class="dangxiao">五点半党校</div>
+      <div class="fengcai" @click="$router.push('fengcai')">风采展示</div>
+      <div class="shici" @click="$router.push('shici')">誓词教育</div>
+      <div class="zhuti" @click="$router.push('dangri')">主题党日</div>
+      <div class="daolan" @click="$router.push('yuyue')">场馆导览</div>
+      <div class="daibiao" @click="$router.push('daibiao')">党代表工作室</div>
+      <div class="yuyue" @click="$router.push('baoming')">活动预约</div>
+      <div class="dangxiao" @click="$router.push('dangxiao')">五点半党校</div>
     </div>
     <div class="contact">
       <h3>联系我们</h3>
