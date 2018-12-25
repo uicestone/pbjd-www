@@ -5,119 +5,74 @@ Vue.use(Router);
 
 export default new Router({
   routes: [{
-      path: "/root",
-      name: "root",
-      component: require("@/views/root").default
-    }, {
-      path: "/quntuan",
-      name: "quntuan",
-      component: require("@/views/quntuan").default,
-      meta: {
-        homeName: "root"
-      }
-    }, {
       path: "/home",
       name: "home",
-      component: require("@/views/home").default,
-      meta: {
-        homeName: "root"
-      }
+      component: require("@/views/home").default
+    },
+    {
+      path: "/dongtai",
+      name: "dongtai",
+      component: require("@/views/dongtai").default
     },
     {
       path: "/shequ",
       name: "shequ",
-      component: require("@/views/shequ").default,
-      meta: {
-        homeName: "root"
-      }
+      component: require("@/views/shequ").default
     },
     {
       path: "/shici",
       name: "shici",
-      component: require("@/views/shici").default,
-      meta: {
-        homeName: "root"
-      }
+      component: require("@/views/shici").default
     },
     {
       path: "/shuji",
       name: "shuji",
-      component: require("@/views/shuji").default,
-      meta: {
-        homeName: "root"
-      }
+      component: require("@/views/shuji").default
     },
     {
       path: "/baodao",
       name: "baodao",
-      component: require("@/views/baodao").default,
-      meta: {
-        homeName: "root"
-      }
+      component: require("@/views/baodao").default
     },
     {
       path: "/caidan",
       name: "caidan",
-      component: require("@/views/caidan").default,
-      meta: {
-        homeName: "root"
-      }
+      component: require("@/views/caidan").default
     },
     {
       path: "/dangdaibiao",
       name: "dangdaibiao",
-      component: require("@/views/dangdaibiao").default,
-      meta: {
-        homeName: "root"
-      }
+      component: require("@/views/dangdaibiao").default
     },
     {
       path: "/dangri",
       name: "dangri",
-      component: require("@/views/dangri").default,
-      meta: {
-        homeName: "root"
-      }
+      component: require("@/views/dangri").default
     },
     {
       path: "/gongyi",
       name: "gongyi",
-      component: require("@/views/gongyi").default,
-      meta: {
-        homeName: "root"
-      }
+      component: require("@/views/gongyi").default
     },
     {
       path: "/fengcai",
       name: "fengcai",
-      component: require("@/views/fengcai").default,
-      meta: {
-        homeName: "root"
-      }
+      component: require("@/views/fengcai").default
     },
     {
       path: "/baoming",
       name: "baoming",
-      component: require("@/views/baoming").default,
-      meta: {
-        homeName: "root"
-      }
+      component: require("@/views/baoming").default
     },
     {
       path: "/yuyue",
       name: "yuyue",
-      component: require("@/views/yuyue").default,
-      meta: {
-        homeName: "root"
-      }
+      component: require("@/views/yuyue").default
     },
     {
       path: "/geren",
       name: "geren",
-      component: require("@/views/geren").default,
-      meta: {
-        homeName: "root"
-      }
+      component: require("@/views/geren").default
     },
     {
       path: "/",
