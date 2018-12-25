@@ -131,6 +131,7 @@
   .banner {
     height: 44.4vw;
     background: url('~@/assets/images/index/banner.png') top center;
+    background-size: 100%;
   }
 
   .top-text {
@@ -168,6 +169,7 @@
     display: flex;
     flex-wrap: wrap;
     > div {
+      background-size: 100%;
       width: 33.333vw;
       height: 33.333vw;
       display: flex;
@@ -182,7 +184,7 @@
       }
     }
     .baodao {
-      background: url('~@/assets/images/index/baodao.png');
+      background-image: url('~@/assets/images/index/baodao.png');
       .content {
         line-height: 1.2;
         text-align: right;
@@ -196,7 +198,7 @@
       }
     }
     .caidan {
-      background: url('~@/assets/images/index/caidan.png');
+      background-image: url('~@/assets/images/index/caidan.png');
       .content {
         text-align: center;
         line-height: 7vw;
@@ -214,28 +216,28 @@
       }
     }
     .daibiao {
-      background: url('~@/assets/images/index/daibiao.png');
+      background-image: url('~@/assets/images/index/daibiao.png');
     }
     .dangxiao {
-      background: url('~@/assets/images/index/dangxiao.png');
+      background-image: url('~@/assets/images/index/dangxiao.png');
     }
     .daolan {
-      background: url('~@/assets/images/index/daolan.png');
+      background-image: url('~@/assets/images/index/daolan.png');
     }
     .dongtai {
-      background: url('~@/assets/images/index/dongtai.png');
+      background-image: url('~@/assets/images/index/dongtai.png');
     }
     .fengcai {
-      background: url('~@/assets/images/index/fengcai.png');
+      background-image: url('~@/assets/images/index/fengcai.png');
     }
     .shici {
-      background: url('~@/assets/images/index/shici.png');
+      background-image: url('~@/assets/images/index/shici.png');
     }
     .yuyue {
-      background: url('~@/assets/images/index/yuyue.png');
+      background-image: url('~@/assets/images/index/yuyue.png');
     }
     .zhuti {
-      background: url('~@/assets/images/index/zhuti.png');
+      background-image: url('~@/assets/images/index/zhuti.png');
     }
   }
 
