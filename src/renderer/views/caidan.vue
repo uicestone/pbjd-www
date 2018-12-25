@@ -12,12 +12,12 @@ export default {
     Calendar
   },
   data() {
-  return {
-    currentSelect: -1,
-    dataList: [],
-    eventDates: [],
-    currentDate: ""
-  };
+    return {
+      currentSelect: -1,
+      dataList: [],
+      eventDates: [],
+      currentDate: ""
+    };
   },
   computed: {
     currentSelectData() {

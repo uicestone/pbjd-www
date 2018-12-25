@@ -42,10 +42,7 @@ export default {
 <template>
   <div class="main view-baodao">
     <div class="header">
-      <a class="fl back" @click="goBack">
-        <i class="fa fa-angle-left"></i>
-        返回
-      </a>
+      <a class="fl back" @click="goBack"><i class="fa fa-angle-left"></i>返回</a>
     </div>
     <form @submit="submit">
     <div class="formDiv">
