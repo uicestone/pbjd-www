@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="dongtai col-2" @click="$router.push('dongtai')">党建动态</div>
-      <div class="caidan col-2" @click="$router.push('')">
+      <div class="caidan col-2" @click="$router.push('caidan')">
         <div class="content">
           <div class="month-cn">{{ date.M }}<span class="unit">月</span></div>
           <div class="month-en">{{ date.MMMM }}</div>
