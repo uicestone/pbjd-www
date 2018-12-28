@@ -5,6 +5,7 @@
     data() {
       return {
         items: [],
+        item: null,
         page: null,
         totalPages: 0
       };
@@ -24,6 +25,16 @@
       },
       next() {
         this.page ++;
+      },
+      back() {
+        if (this.item) {
+          this.item = null;
+        } else {
+          this.$router.back();
+        }
+      },
+      showDetail(item) {
+        this.item = item;
       }
     },
     mounted() {
@@ -35,12 +46,12 @@
 <template>
   <div class="main view-dongtai">
     <div class="header">
-      <a class="fl back" @click="$router.back()"><i class="fa fa-angle-left"></i>返回</a>
+      <a class="fl back" @click="back()"><i class="fa fa-angle-left"></i>返回</a>
       <span><img src="~@/assets/images/icons/dongtai.png"/>党建动态</span>
     </div>
     <div class="content">
       <ul>
-        <li v-for="item in items">
+        <li v-for="item in items" @click="showDetail(item)">
           <div class="title">{{ item.title }}</div>
           <i class="arrow fa fa-angle-right"></i>
           <div class="date">{{ item.createdAt }}</div>
@@ -53,6 +64,10 @@
         <li class="page-dot" :class="{active:i==page}" v-for="(i, index ) in totalPages"></li>
         <li class="next" @click="next" :class="{disabled:page>=totalPages}"><i class="fa fa-chevron-circle-right"></i></li>
       </ul>
+    </div>
+    <div v-if="this.item" class="detail">
+      <h1>{{ this.item.title }}</h1>
+      <div v-html="this.item.content"></div>
     </div>
   </div>
 </template>
@@ -121,6 +136,27 @@
             }
           }
         }
+      }
+    }
+    .detail {
+      position: absolute;
+      top: 15vw; left: 0; right: 0; bottom: 0;
+      background: white;
+      padding: 4vw 4vw 0;
+      h1 {
+        font-size: 5vw;
+        margin-bottom: 2vw;
+        padding-bottom: 2vw;
+        border-bottom: 1px solid #694d85;
+      }
+      p {
+        font-size: 3.5vw;
+        margin-bottom: 0.5em;
+      }
+      img {
+        width: 100%;
+        height: auto;
+        border: 0.5vw #694d85 solid;
       }
     }
   }

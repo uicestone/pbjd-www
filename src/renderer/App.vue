@@ -140,6 +140,7 @@ body::-webkit-scrollbar {
     img {
       vertical-align: text-bottom;
       margin-right: 1vw;
+      height: 7vw;
     }
   }
   & + * {
