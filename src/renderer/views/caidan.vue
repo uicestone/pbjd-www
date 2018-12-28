@@ -50,10 +50,12 @@ export default {
         });
         this.eventDates = [];
         this.dataList = cachedMonthMenu.sort((a, b) => {
-          if (!this.eventDates.includes(b.date)) {
-            this.eventDates.push(b.date);
-          }
           return moment(a.date) < moment(b.date) ? -1 : 1;
+        });
+        this.dataList.forEach(d => {
+          if (!this.eventDates.includes(d.date)) {
+            this.eventDates.push(d.date);
+          }
         });
       }
   }
