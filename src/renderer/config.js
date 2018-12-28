@@ -1,3 +1,3 @@
 export default {
-  apiRoot: "https://jddj.hbird.com.cn/wp-json/jddj/v1/"
+  apiRoot: "http://pbks.hbird.com.cn/wp-json/pba/v1/"
 };
