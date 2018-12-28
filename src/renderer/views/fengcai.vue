@@ -1,85 +1,161 @@
 <script>
-import { handleLoading } from "../utils/utils";
-import * as request from "../utils/request";
+  import * as request from "../utils/request";
 
-export default {
-  data() {
-    return {
-      currentSelect: -1,
-      dadaList: []
-    };
-  },
-  computed: {
-    currentSelectData() {
-      return this.dadaList[this.currentSelect] || {};
-    }
-  },
-  async mounted() {
-    handleLoading();
-    this.dadaList = await request.getPosts({
-      query: {
-        category: "风采展示",
-        limit: 12
+  export default {
+    data() {
+      return {
+        items: [],
+        item: null,
+        page: null,
+        totalPages: 0
+      };
+    },
+    watch: {
+      page(page) {
+        this.getItems();
       }
-    });
+    },
+    methods: {
+      async getItems() {
+        this.items = await request.getPosts({query: {category: '风采展示', page: this.page, limit: 16}, options: {cacheable: false}});
+        this.totalPages = this.items._totalPages;
+      },
+      prev() {
+        this.page --;
+      },
+      next() {
+        this.page ++;
+      },
+      back() {
+        if (this.item) {
+          this.item = null;
+        } else {
+          this.$router.back();
+        }
+      },
+      showDetail(item) {
+        this.item = item;
+      }
+    },
+    mounted() {
+      this.page = 1;
+    }
   }
-};
 </script>
 
 <template>
-  <body>
-		<div class="main page5">
-			<div class="header">
-				<a @click="$router.go(-1)" href="###" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
-				<span><img src="~@/assets/images/index/icon6.png"/>风采展示</span>
-			</div>
-			<div class="list">
-				<div class="tagDiv">
-					<span><img src="~@/assets/images/fengcai.png"/>疁城之星</span>
-					<img src="~@/assets/images/line.jpg" alt="" />
-				</div>
-				<div class="list-text">
-					<ul>
-						 <li @click="currentSelect = index" v-for="(item,index) in dadaList" :key="index">
-							 <span class="title">
-								 {{item.title}}</span><span class="fr">{{item.createdAt}}
-								</span>
-						</li>
-					</ul>
-					<!-- <div class="list-page">
-						<ul>
-							<li><img src="~@/assets/images/index/left-arrow.png"/></li>
-							<li class="active"><span></span></li>
-							<li><span></span></li>
-							<li><span></span></li>
-							<li><span></span></li>
-							<li><img src="~@/assets/images/index/right-arrow.png"/></li>
-						</ul>
-					</div> -->
-				</div>
-			</div>
-
-			<div class="pop" v-if="currentSelect > -1">
-				<span class="back" @click="currentSelect = -1"><i class="fa fa-chevron-left" aria-hidden="true"></i><font>返回</font></span>
-				<div class="content">
-					<div class="textDiv" v-html="currentSelectData.content">
-						</div>
-					</div>
-			</div>
-		</div>
-		<!--等待-->
-		<div class="pre_load" >
-		  <div class="wrapper">
-		    <div class="inner">
-		    	<span>L</span>
-		    	<span>o</span>
-		    	<span>a</span>
-		    	<span>d</span>
-		    	<span>i</span>
-		    	<span>n</span>
-		    	<span>g</span>
-		    </div>
-		  </div>
-		</div>				
-	</body>
+  <div class="main view-fengcai">
+    <div class="header">
+      <a class="fl back" @click="back()"><i class="fa fa-angle-left"></i>返回</a>
+      <span><img src="~@/assets/images/icons/fengcai.png"/>风采展示</span>
+    </div>
+    <div class="content">
+      <ul>
+        <li v-for="item in items" @click="showDetail(item)">
+          <div class="thumbnail"><img :src="item.posterUrl"/></div>
+          <div class="title">{{ item.title }}</div>
+        </li>
+      </ul>
+    </div>
+    <div class="pagination">
+      <ul>
+        <li class="prev" @click="prev" :class="{disabled:page==1}"><i class="fa fa-chevron-circle-left"></i></li>
+        <li class="page-dot" :class="{active:i==page}" v-for="(i, index ) in totalPages"></li>
+        <li class="next" @click="next" :class="{disabled:page>=totalPages}"><i class="fa fa-chevron-circle-right"></i></li>
+      </ul>
+    </div>
+    <div v-if="this.item" class="detail">
+      <h1>{{ this.item.title }}</h1>
+      <div v-html="this.item.content"></div>
+    </div>
+  </div>
 </template>
+
+<style lang="less">
+  .view-fengcai {
+    .header {
+      background-color: #37a299;
+    }
+    .content {
+      height: 93vh;
+      padding-top: 20vw;
+      background-color: #ececec;
+      padding-left: 5vw;
+      padding-right: 5vw;
+      overflow-y: auto;
+      ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        li {
+          flex-basis: 25%;
+          display: flex;
+          flex-direction: column;
+          padding: 0 1.5vw 6vw;
+          .thumbnail {
+            background: #3f6a79;
+            height: 26vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .title {
+            display: flex;
+            justify-content: center;
+            font-size: 3.3vw;
+            font-weight: bold;
+            margin-top: 1vw;
+          }
+        }
+      }
+    }
+    .pagination {
+      background-color: #ececec;
+      height: 7vh;
+      text-align: center;
+      font-size: 5vw;
+      padding-top: 2vh;
+      ul {
+        li {
+          display: inline-block;
+          color: #37a299;
+          &.disabled {
+            color: #d4d3d2;
+          }
+          &.page-dot {
+            background-color: #d4d3d2;
+            width: 1.5vw;
+            height: 1.5vw;
+            margin: auto 0.5vw;
+            border-radius: 0.75vw;
+            margin-bottom: 0.75vw;
+            &.active {
+              background-color: #37a299;
+            }
+          }
+        }
+      }
+    }
+    .detail {
+      position: absolute;
+      top: 15vw; left: 0; right: 0; bottom: 0;
+      background: white;
+      padding: 4vw 4vw 0;
+      h1 {
+        font-size: 5vw;
+        margin-bottom: 2vw;
+        padding-bottom: 2vw;
+        border-bottom: 1px solid #37a299;
+      }
+      p {
+        font-size: 3.5vw;
+        margin-bottom: 0.5em;
+      }
+      img {
+        width: 100%;
+        height: auto;
+        border: 0.5vw #37a299 solid;
+      }
+    }
+  }
+</style>
