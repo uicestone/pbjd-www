@@ -21,6 +21,7 @@
           <img :src="weather.icon" class="weather-icon" />                          
         </div>
       </div>
+      <div class="banner-title"></div>
     </div>
     <div class="menu">
       <div class="baodao" @click="$router.push('baodao')">
@@ -130,8 +131,12 @@
 <style lang="less">
   .banner {
     height: 44.4vw;
-    background: url('~@/assets/images/index/banner.png') top center;
+    background: url('~@/assets/images/index/banner.jpg') top center;
     background-size: 100%;
+    .banner-title {
+      height: 15vw;
+      background: url('~@/assets/images/index/banner-title.png') 85% center no-repeat;
+    }
   }
 
   .top-text {
