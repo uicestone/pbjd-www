@@ -199,7 +199,7 @@
           </ul>
           <div class="text">
             <h3>联系我们</h3>
-            <p><span><i class="fa fa-map-marker"></i>嘉定区党建服务中心：</span>嘉定区洪德路50号（近沪宜公路）</p>
+            <p><span><i class="fa fa-map-marker"></i>嘉定区·洪德楼：</span>嘉定区洪德路50号（近沪宜公路）</p>
             <p><span><i class="fa fa-bus"></i>周边公交：</span>嘉定9路、嘉定14路、沪唐专线、嘉定64路（洪德路沪宜公路站）</p>
             <p><span><i class="fa fa-phone"></i>联系电话：</span>021-59107253</p>
           </div>
