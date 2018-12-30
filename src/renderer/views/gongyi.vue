@@ -52,7 +52,7 @@ export default {
   },
   async mounted() {
     handleLoading();
-    this.listDataRaw = await request.getAttachments({
+    this.listDataRaw = await request.getPosts({
       query: {
         category: "公益行",
         limit: -1
@@ -77,6 +77,13 @@ export default {
     },
     onSlideChange(swiper) {
       this.selectedDetail = this.$refs[swiper].swiper.activeIndex;
+    },
+    back() {
+      if (this.selectedList) {
+        this.selectedList = '';
+      } else {
+        this.$router.go(-1);
+      }
     }
   }
 };
@@ -86,7 +93,7 @@ export default {
   <body>
 		<div class="main page1">
 			<div class="header">
-				<a @click="$router.go(-1)" class="back"><i class="fa fa-chevron-left"></i> 返回</a>
+				<a @click="back" class="back"><i class="fa fa-chevron-left"></i> 返回</a>
         <img src="~@/assets/images/gongyi-banner.png" width="100%">
 			</div>
 			<div class="imgBox">
@@ -107,6 +114,20 @@ export default {
               <li v-for="itemId in dataList[selectedList]" @click="selectedDetail=itemId">{{ dataEntity[itemId].title }}</li>
             </ul>
           </div>
+        </div>
+      </div>
+      <div class="detail" v-if="selectedDetail">
+        <div class="header">
+          <a class="back" @click.stop="selectedDetail=0"><i class="fa fa-chevron-left"></i> 返回</a>
+          <span>
+            <img src="~@/assets/images/index/icon3.png"/>
+            公益行
+          </span>
+        </div>
+        <div class="content">
+          <div class="thumbnail"><img class="" :src="dataEntity[selectedDetail].posterUrl"/></div>
+          <h2>{{ dataEntity[selectedDetail].title }}</h2>
+          <div v-html="dataEntity[selectedDetail].content"></div>
         </div>
       </div>	
     </div>

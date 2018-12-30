@@ -2010,21 +2010,25 @@ input {
 
 /************************************ 四季公益行 *********************************************/
 
-.page1 .header {
+.page1.main {
+  position: static;
+}
+
+.page1>.header {
   position: fixed;
   top: 0;
   z-index: 10;
 }
 
-.page1 .header a {
+.page1 .header a.back {
   font-size: 0.4rem;
   color: #4d4d4e;
   position: absolute;
   left: 0.5rem; top: 0;
-  top: 0.3rem;
+  top: 0.42rem;
 }
 
-.page1 .header a i {
+.page1 .header a.back i {
   font-size: 0.5rem;
   top: 0.05rem;
   position: relative;
@@ -2057,7 +2061,7 @@ input {
 .page1 .popBox {
   width: 100%;
   position: absolute;
-  top: 6rem;
+  top: 6.5rem;
   left: 0;
   bottom: 0;
   background: #f2f2f3;
@@ -2132,6 +2136,73 @@ input {
   border-radius: 50%;
   text-align: center;
   font-size: 0.6rem;
+}
+
+.page1 .detail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: white;
+}
+
+.page1 .detail .header {
+  background: #abd7e8;
+  color: white;
+  text-align: center;
+  font-size: 0.6rem;
+  font-weight: bold;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.page1 .detail .header .back {
+  color: white;
+}
+
+.page1 .detail .header span {
+  display: inline;
+  line-height: 1.5rem;
+}
+
+.page1 .detail .header span img {
+  display: inline;
+  vertical-align: text-bottom;
+  height: 0.8rem;
+}
+
+.page1 .detail .content {
+  padding: 0.3rem 0.5rem 0;
+  position: absolute;
+  top: 1.30rem;
+  overflow: auto;
+  z-index: 5;
+  bottom: 0;
+}
+
+.page1 .detail .content img {
+  max-width: 100%;
+}
+
+.page1 .detail .content .thumbnail {
+  margin-bottom: 0.5rem;
+}
+
+.page1 .detail .content h2 {
+  font-size: 0.45rem;
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+
+.page1 .detail .content p {
+  text-align: left;
+  padding: 0;
+  margin-bottom: 0.5em;
+  text-indent: 2em;
 }
 
 /*******************************************誓词教育*****************************/
