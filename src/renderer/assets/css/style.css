@@ -2028,7 +2028,7 @@ input {
   width: 100%;
   height: auto;
   position: relative;
-  margin-top: 0.4rem;
+  margin-top: 0.7rem;
 }
 
 .page1 .imag {
@@ -2037,11 +2037,11 @@ input {
   display: flex;
   display: -webkit-flex;
   justify-content: space-between;
-  padding: 0rem 0.4rem 0 0.4rem;
+  padding: 0rem 0.6rem;
 }
 
 .page1 .imag img {
-  width: 2.4rem;
+  width: 2.25rem;
   height: auto;
   align-self: end;
   -webkit-align-self: end;

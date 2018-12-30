@@ -85,16 +85,16 @@ export default {
 <template>
   <body>
 		<div class="main page1">
-			<img src="~@/assets/images/title.png" width="100%">
+			<img src="~@/assets/images/gongyi-banner.png" width="100%">
 			<div class="header">
 				<a @click="$router.go(-1)" class="back"><i class="fa fa-chevron-left"></i> 返回</a>
 			</div>
 			<div class="imgBox">
 				<div class="imag">
-          <img src="~@/assets/images/1.png" @click="selectedList ='春风'">
-          <img src="~@/assets/images/2.png" @click="selectedList ='夏花'">
-          <img src="~@/assets/images/3.png" @click="selectedList ='秋收'">
-          <img src="~@/assets/images/4.png" @click="selectedList ='冬暖'">
+          <img src="~@/assets/images/chun.png" @click="selectedList ='春风'">
+          <img src="~@/assets/images/xia.png" @click="selectedList ='夏花'">
+          <img src="~@/assets/images/qiu.png" @click="selectedList ='秋收'">
+          <img src="~@/assets/images/dong.png" @click="selectedList ='冬暖'">
       </div>
 			</div>
 	    <div class="popBox" v-if="selectedList">
