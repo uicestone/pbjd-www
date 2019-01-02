@@ -96,7 +96,7 @@ export default {
 				<a @click="back" class="back"><i class="fa fa-chevron-left"></i> 返回</a>
         <img src="~@/assets/images/gongyi-banner.png" width="100%">
 			</div>
-			<div class="imgBox">
+			<div class="imgBox" :class="{fixed:selectedList}">
 				<div class="imag">
           <img src="~@/assets/images/chun.png" @click="selectedList ='春风'">
           <img src="~@/assets/images/xia.png" @click="selectedList ='夏花'">
