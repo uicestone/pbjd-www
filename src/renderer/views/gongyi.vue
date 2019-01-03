@@ -35,7 +35,8 @@ export default {
       dataEntity: {},
       dataList: {},
       selectedList: "",
-      selectedDetail: 0
+      selectedDetail: 0,
+      events: []
     };
   },
   computed: {
@@ -85,6 +86,15 @@ export default {
         this.$router.go(-1);
       }
     }
+  },
+  watch: {
+    async selectedDetail(val) {
+      this.events = await request.getPosts({
+        query: {
+          gongyi: val,
+        }
+      });
+    }
   }
 };
 </script>
@@ -128,6 +138,16 @@ export default {
           <div class="thumbnail"><img class="" :src="dataEntity[selectedDetail].posterUrl"/></div>
           <h2>{{ dataEntity[selectedDetail].title }}</h2>
           <div v-html="dataEntity[selectedDetail].content"></div>
+          <div v-for="event in events" :key="event.id" class="event-block">
+            <div class="event-top">
+              <div class="date"><span>{{event.date | MM("M.D")}}</span></div>
+              <div class="title">
+                <img src="~@/assets/images/index/icon2.png"/>
+                {{event.title}}
+              </div>
+            </div>
+            <div class="event-content" v-html="event.content"></div>
+          </div>
         </div>
       </div>	
     </div>

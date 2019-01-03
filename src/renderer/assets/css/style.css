@@ -2197,7 +2197,7 @@ input {
   margin-bottom: 0.5rem;
 }
 
-.page1 .detail .content h2 {
+.page1 .detail .content>h2 {
   font-size: 0.45rem;
   margin-bottom: 0.3rem;
   text-align: center;
@@ -2206,8 +2206,117 @@ input {
 .page1 .detail .content p {
   text-align: left;
   padding: 0;
-  margin-bottom: 0.5em;
+  padding-bottom: 0.5em;
   text-indent: 2em;
+}
+
+.page1 .detail .event-block {
+  border: 1px solid #a1a1a1;
+  background: #fff;
+  position: relative;
+  margin: 0.2rem 0;
+}
+
+.page1 .event-top .date {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 1.35rem solid #ae2227;
+  border-right: 1.35rem solid transparent;
+}
+
+.page1 .event-top .date span {
+  font-size: 0.3rem;
+  color: #fff;
+  position: absolute;
+  top: -1rem;
+  left: 0.15rem;
+  transform: rotate(-45deg);
+  width: 0.7rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.page1 .event-top .title {
+  background: #ae2227;
+  height: 0.45rem;
+  line-height: 0.45rem;
+  font-size: 0.23rem;
+  color: #fff;
+  width: 3.45rem;
+  text-align: center;
+  margin: 0rem auto;
+  margin-top: 0.25rem;
+  margin-bottom: 0.15rem;
+}
+
+.page1 .event-top .title img {
+  display: inline-block;
+  width: 0.3rem;
+  position: relative;
+  top: 0.05rem;
+}
+
+.page1 .event-top h3 {
+  font-size: 0.4rem;
+  color: #4d4d4e;
+  text-align: center;
+}
+
+.page1 .event-content {
+  padding: 0.3rem 0.9rem;
+}
+
+.page1 .event-content h1 {
+  font-size: 0.4rem;
+  color: #4d4d4e;
+  text-align: center;
+  line-height: 1.5
+}
+
+.page1 .event-content h2 {
+  margin-top: 0.2rem;
+  font-size: 0.3rem;
+  color: #ae2227;
+}
+
+.page1 .event-content .title {
+  font-size: 0.23rem;
+  color: #ae2227;
+}
+
+.page1 .event-content .title span {
+  display: inline-block;
+  text-align: center;
+  line-height: 0.35rem;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 0.05rem;
+  background: #ae2227;
+  color: #fff;
+  margin-right: 0.1rem;
+}
+
+.page1 .event-content p {
+  font-size: 0.3rem;
+  color: #515152;
+  text-indent: 2em;
+  text-align: justify;
+  border-bottom: 1px solid #ae2227;
+  margin: .1rem 0;
+  padding: .1rem 0
+}
+
+.page1 .event-content>div {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  border-bottom: 1px solid #ae2227;
+}
+
+.page1 .event-content>div.activity4 {
+  border: 0;
 }
 
 /*******************************************誓词教育*****************************/
