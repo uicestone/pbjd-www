@@ -136,6 +136,7 @@
     .banner-title {
       height: 15vw;
       background: url('~@/assets/images/index/banner-title.png') 85% center no-repeat;
+      background-size: 65%;
     }
   }
 
