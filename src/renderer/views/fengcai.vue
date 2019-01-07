@@ -35,6 +35,10 @@
       },
       showDetail(item) {
         this.item = item;
+      },
+      randomThumbBackColor() {
+        const colors = ['#3f6a79', '#4e8687', '#6ba0a4', '#70bcc0'];
+        return colors[Math.round(Math.random() * 1E10 % 3)];
       }
     },
     mounted() {
@@ -52,7 +56,7 @@
     <div class="content">
       <ul>
         <li v-for="item in items" @click="showDetail(item)">
-          <div class="thumbnail"><img :src="item.posterUrl"/></div>
+          <div class="thumbnail" :style="{background:randomThumbBackColor()}"><img :src="item.posterUrl"/></div>
           <div class="title">{{ item.title }}</div>
         </li>
       </ul>
@@ -91,13 +95,18 @@
           flex-basis: 25%;
           display: flex;
           flex-direction: column;
-          padding: 0 1.5vw 6vw;
+          padding: 0 1.5vw 3vw;
           .thumbnail {
-            background: #3f6a79;
-            height: 26vw;
+            // background: #3f6a79;
+            height: 23.5vw;
             display: flex;
             justify-content: center;
             align-items: center;
+            img {
+              width: 100%;
+              max-height: 100%;
+              object-fit: cover;
+            }
           }
           .title {
             display: flex;

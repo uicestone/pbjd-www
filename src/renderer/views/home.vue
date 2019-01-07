@@ -167,6 +167,7 @@
         display: inline-block;
         margin-top: 2vw;
         margin-left: 3vw;
+        width: 5.5vw;
       }
     }
   }
