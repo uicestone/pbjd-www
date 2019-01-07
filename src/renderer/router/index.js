@@ -75,6 +75,11 @@ export default new Router({
       component: require("@/views/geren").default
     },
     {
+      path: "/dangxiao",
+      name: "dangxiao",
+      component: require("@/views/dangxiao").default
+    },
+    {
       path: "/",
       name: "/",
       component: require("@/views/home").default

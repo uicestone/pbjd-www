@@ -17,7 +17,7 @@
     },
     methods: {
       async getItems() {
-        this.items = await request.getPosts({query: {category: '党建动态', page: this.page, limit: 8}, options: {cacheable: false}});
+        this.items = await request.getPosts({query: {category: '五点半党校', page: this.page, limit: 8}, options: {cacheable: false}});
         this.totalPages = this.items._totalPages;
       },
       prev() {
@@ -47,7 +47,7 @@
   <div class="main view-dongtai">
     <div class="header">
       <a class="fl back" @click="back()"><i class="fa fa-angle-left"></i>返回</a>
-      <span><img src="~@/assets/images/icons/dongtai.png"/>党建动态</span>
+      <span><img src="~@/assets/images/icons/dangxiao.png"/>五点半党校</span>
     </div>
     <div class="content">
       <ul>
@@ -75,7 +75,7 @@
 <style lang="less">
   .view-dongtai {
     .header {
-      background-color: #694d85;
+      background-color: #9e8d76;
     }
     .content {
       height: 93vh;
@@ -120,7 +120,7 @@
       ul {
         li {
           display: inline-block;
-          color: #694d85;
+          color: #9e8d76;
           &.disabled {
             color: #d4d3d2;
           }
@@ -132,7 +132,7 @@
             border-radius: 0.75vw;
             margin-bottom: 0.75vw;
             &.active {
-              background-color: #694d85;
+              background-color: #9e8d76;
             }
           }
         }
@@ -147,7 +147,7 @@
         font-size: 5vw;
         margin-bottom: 2vw;
         padding-bottom: 2vw;
-        border-bottom: 1px solid #694d85;
+        border-bottom: 1px solid #9e8d76;
       }
       p {
         font-size: 3.5vw;
@@ -160,7 +160,7 @@
       img {
         width: 100%;
         height: auto;
-        border: 0.5vw #694d85 solid;
+        border: 0.5vw #9e8d76 solid;
       }
     }
   }
