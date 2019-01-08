@@ -54,7 +54,6 @@
         <li v-for="item in items" @click="showDetail(item)">
           <div class="title">{{ item.title }}</div>
           <i class="arrow fa fa-angle-right"></i>
-          <div class="date">{{ item.createdAt }}</div>
         </li>
       </ul>
     </div>
@@ -101,7 +100,6 @@
           }
           .arrow {
             float: right;
-            margin-top: 2vw;
             font-size: 5vw;
           }
           .date {
