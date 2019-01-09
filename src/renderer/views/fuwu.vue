@@ -115,8 +115,8 @@
       }
     }
     .items {
+      height: 93vh;
       > ul {
-        height: calc(93vh - 15vw);
         display: flex;
         flex-wrap: wrap;
         padding: 4vw;
@@ -150,10 +150,14 @@
     }
     .pagination {
       background-color: #ececec;
-      height: 7vh;
+      height: 6vh;
       text-align: center;
       font-size: 5vw;
-      padding-top: 2.8vh;
+      padding-top: 1vh;
+      position: fixed;
+      width: 100%;
+      z-index: 99999;
+      bottom: 0;
       ul {
         li {
           display: inline-block;
