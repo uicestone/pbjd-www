@@ -54,7 +54,7 @@
         <li v-for="item in items" @click="showDetail(item)">
           <div class="title">{{ item.title }}</div>
           <i class="arrow fa fa-angle-right"></i>
-          <div class="date">{{ item.createdAt }}</div>
+          <div class="date">{{ item.createdAt.substr(0, 10) }}</div>
         </li>
       </ul>
     </div>
