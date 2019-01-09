@@ -40,9 +40,9 @@ export default new Router({
       component: require("@/views/caidan").default
     },
     {
-      path: "/dangdaibiao",
-      name: "dangdaibiao",
-      component: require("@/views/dangdaibiao").default
+      path: "/fuwu",
+      name: "fuwu",
+      component: require("@/views/fuwu").default
     },
     {
       path: "/dangri",

@@ -115,6 +115,7 @@
       font-weight: normal;
       background-color: #bcbbb8;
       background-image: url('~@/assets/images/mask-list-item.png');
+      background-size: cover;
       position: relative;
       &.active {
         background-color: #694d85;

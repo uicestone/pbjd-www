@@ -45,7 +45,7 @@
       <div class="shici" @click="$router.push('shici')">誓词教育</div>
       <div class="zhuti" @click="$router.push('dangri')">主题党日</div>
       <div class="daolan" @click="$router.push('yuyue')">场馆导览</div>
-      <div class="daibiao" @click="$router.push('daibiao')">党代表工作室</div>
+      <div class="fuwu" @click="$router.push('fuwu')">三级党群<br>服务体系</div>
       <div class="yuyue" @click="$router.push('baoming')">活动预约</div>
       <div class="dangxiao" @click="$router.push('dangxiao')">五点半党校</div>
     </div>
@@ -222,8 +222,8 @@
         }
       }
     }
-    .daibiao {
-      background-image: url('~@/assets/images/index/daibiao.png');
+    .fuwu {
+      background-image: url('~@/assets/images/index/fuwu.png');
     }
     .dangxiao {
       background-image: url('~@/assets/images/index/dangxiao.png');
