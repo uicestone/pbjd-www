@@ -81,6 +81,28 @@ export const getSignedInMemberCount = datas => {
   });
 };
 
+export const getRooms = floor => {
+  return request(`rooms?floor=${floor}`);
+};
+
+export const getRoom = number => {
+  return request(`rooms/${number}`, {cacheable: false});
+};
+
+export const getEvents = () => {
+  return request(`events`);
+};
+
+export const submitAppointment = form => {
+  const formData = new FormData();
+  $(form, (key, val) => {
+    formData.append(key, val);
+  });
+  return request(`appointments`, {
+    method: "POST",
+    body: formData
+  });
+};
 
 export const getAllResources = datas => {
   const query = {

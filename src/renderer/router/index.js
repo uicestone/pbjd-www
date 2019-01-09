@@ -65,9 +65,9 @@ export default new Router({
       component: require("@/views/baoming").default
     },
     {
-      path: "/yuyue",
-      name: "yuyue",
-      component: require("@/views/yuyue").default
+      path: "/daolan",
+      name: "daolan",
+      component: require("@/views/daolan").default
     },
     {
       path: "/geren",
