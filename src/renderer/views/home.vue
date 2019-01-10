@@ -46,7 +46,7 @@
       <div class="zhuti" @click="$router.push('dangri')">主题党日</div>
       <div class="daolan" @click="$router.push('daolan')">场馆导览</div>
       <div class="fuwu" @click="$router.push('fuwu')">三级党群<br>服务体系</div>
-      <div class="yuyue" @click="$router.push('baoming')">活动预约</div>
+      <div class="yuyue" @click="">活动预约</div>
       <div class="dangxiao" @click="$router.push('dangxiao')">五点半党校</div>
     </div>
     <div class="contact">
