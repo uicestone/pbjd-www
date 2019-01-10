@@ -65,8 +65,8 @@ export const getPosts = (datas) => {
 };
 
 export const getAttachments = datas => {
-  const { query } = datas;
-  return request(`attachments/?${obj2query(query)}`);
+  const { query, options = {} } = datas;
+  return request(`attachments/?${obj2query(query)}`, options);
 };
 
 export const getWeather = datas => {

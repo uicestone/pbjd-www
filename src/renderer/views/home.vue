@@ -242,6 +242,8 @@
     }
     .yuyue {
       background-image: url('~@/assets/images/index/yuyue.png');
+      opacity: 0.6;
+      color: #c3c3c3;
     }
     .zhuti {
       background-image: url('~@/assets/images/index/zhuti.png');
