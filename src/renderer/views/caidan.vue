@@ -90,7 +90,7 @@ export default {
     <div class="content-container">
       <div v-bind:id="'date-' + item.date" v-for="(item,index) in dataList"  class="content" :key="index">
         <div class="con-top">
-          <div class="date"><span>{{item.date | MM("M.D")}}</span></div>
+          <!-- <div class="date"><span>{{item.date | MM("M.D")}}</span></div> -->
           <div class="title">
             <img src="~@/assets/images/index/icon2.png"/>
             {{item.title}}
