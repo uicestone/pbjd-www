@@ -44,7 +44,7 @@
 </script>
 
 <template>
-  <div class="main view-dongtai">
+  <div class="main view-dangxiao">
     <div class="header">
       <a class="fl back" @click="back()"><i class="fa fa-angle-left"></i>返回</a>
       <span><img src="~@/assets/images/icons/dangxiao.png"/>五点半党校</span>
@@ -72,7 +72,7 @@
 </template>
 
 <style lang="less">
-  .view-dongtai {
+  .view-dangxiao {
     .header {
       background-color: #9e8d76;
     }
