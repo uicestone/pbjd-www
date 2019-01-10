@@ -65,7 +65,7 @@
 </script>
 
 <template>
-  <div class="main view-dongtai">
+  <div class="main view-dangri">
     <div class="header">
       <a class="fl back" @click="back()"><i class="fa fa-angle-left"></i>返回</a>
       <span><img src="~@/assets/images/icons/dangri.png"/>主题党日</span>
@@ -89,7 +89,6 @@
         <li v-for="item in items" @click="showDetail(item)">
           <div class="title">{{ item.title }}</div>
           <i class="arrow fa fa-angle-right"></i>
-          <div class="date">{{ item.createdAt }}</div>
         </li>
       </ul>
     </div>
@@ -108,7 +107,7 @@
 </template>
 
 <style lang="less">
-  .view-dongtai {
+  .view-dangri {
     .header {
       background-color: #694d85;
     }
@@ -172,15 +171,6 @@
               }
             }
           }
-          .arrow {
-            float: right;
-            margin-top: 2vw;
-            font-size: 5vw;
-          }
-          .date {
-            display: inline-block;
-            width: 50vw;
-          }
         }
       }
     }
@@ -218,7 +208,6 @@
           }
           .arrow {
             float: right;
-            margin-top: 2vw;
             font-size: 5vw;
           }
           .date {
