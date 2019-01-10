@@ -1,4 +1,4 @@
-<script>
+><script>
   import * as request from "../utils/request";
 
   export default {
@@ -64,7 +64,7 @@
         <li v-for="level in ['党群服务中心', '党群服务站', '党群服务点']" @click="selectLevel(level)" class="list-item">{{ level }}</li>
       </ul>
     </div>
-    <div v-if="level" class="items">
+    <div v-if="level && !item" class="items">
       <ul>
         <li v-for="item in items" @click="showDetail(item)" :style="{backgroundImage: `url(${item.posterUrl})`}">
           <div class="title">{{ item.title }}</div>
@@ -122,6 +122,7 @@
         padding: 4vw;
         align-content: flex-start;
         background-color: #ececec;
+        margin-bottom: 6vh;
         > li {
           flex-basis: 50%;
           height: 46vw;

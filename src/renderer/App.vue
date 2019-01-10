@@ -147,5 +147,10 @@ body::-webkit-scrollbar {
     padding-top: 15vw;
   }
 }
+.detail {
+  figure {
+    width: 100% !important;
+  }
+}
 
 </style>

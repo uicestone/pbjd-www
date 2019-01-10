@@ -129,6 +129,7 @@
             margin: auto 0.5vw;
             border-radius: 0.75vw;
             margin-bottom: 0.75vw;
+            vertical-align: middle;
             &.active {
               background-color: #9e8d76;
             }

@@ -100,8 +100,7 @@ export default {
   }
   .formDiv {
     padding: 3vw;
-    padding-bottom: 1.7vw;
-    height: calc(100vh - 15vw);
+    padding-bottom: 15vw;
     background-color: #ececec;
     .inputDiv {
       width: 100%;
