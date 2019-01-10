@@ -1,9 +1,17 @@
 <script>
   import * as request from "../utils/request";
+  import moment from 'moment';
 
   export default {
     data() {
+      const years = [];
+      for (let year = 2018; year <= (new Date()).getFullYear(); year++) {
+        years.push(year);
+      }
       return {
+        years,
+        year: null,
+        month: null,
         items: [],
         item: null,
         page: null,
@@ -12,13 +20,17 @@
       };
     },
     watch: {
+      month() {
+        this.getItems();
+      },
       page(page) {
         this.getItems();
       }
     },
     methods: {
       async getItems() {
-        this.items = await request.getPosts({query: {category: '主题党日', page: this.page, month: this.month, limit: 8}, options: {cacheable: false}});
+        if (!this.year || !this.month) return;
+        this.items = await request.getPosts({query: {category: '主题党日', page: this.page, month: `${this.year}${this.month}`, limit: 7}, options: {cacheable: false}});
         this.totalPages = this.items._totalPages;
       },
       prev() {
@@ -30,12 +42,20 @@
       back() {
         if (this.item) {
           this.item = null;
+        } else if (this.month) {
+          this.month = null;
+        } else if (this.year) {
+          this.year = null;
         } else {
           this.$router.back();
         }
       },
       showDetail(item) {
         this.item = item;
+      },
+      monthName(month) {
+        moment.locale('en');
+        return moment().set('month', month-1).format('MMMM')
       }
     },
     mounted() {
@@ -50,32 +70,20 @@
       <a class="fl back" @click="back()"><i class="fa fa-angle-left"></i>返回</a>
       <span><img src="~@/assets/images/icons/dangri.png"/>主题党日</span>
     </div>
-    <div class="year-list">
+    <div class="year-list" v-if="!month">
       <ul>
-        <li class="year-list-item">2018</li>
-        <li class="year-list-item active">2019</li>
-        <li class="month-list">
+        <li v-for="(y, index) in years" @click="year=y" v-if="y===year || !year" class="year-list-item" :class="{active:index===years.length-1||y===year}">{{ y }}</li>
+        <li class="month-list" v-if="year">
           <ul>
-            <li><span class="number">1</span><span class="name">January</span></li>
-            <li><span class="number">2</span><span class="name">February</span></li>
-            <li><span class="number">3</span><span class="name">March</span></li>
-            <li><span class="number">4</span><span class="name">April</span></li>
-            <li><span class="number">5</span><span class="name">May</span></li>
-            <li><span class="number">6</span><span class="name">June</span></li>
-            <li><span class="number">7</span><span class="name">July</span></li>
-            <li><span class="number">8</span><span class="name">August</span></li>
-            <li><span class="number">9</span><span class="name">September</span></li>
-            <li><span class="number">10</span><span class="name">October</span></li>
-            <li><span class="number">11</span><span class="name">November</span></li>
-            <li class="active"><span class="number">12</span><span class="name">December</span></li>
+            <li v-for="m in 12" @click="month=m.toString().padStart(2, '0')"><span class="number">{{ m }}</span><span class="name">{{ monthName(m) }}</span></li>
           </ul>
         </li>
       </ul>
     </div>
-    <div class="content">
+    <div v-if="month" class="content">
       <div class="year-list-item active">
-        <div class="year-month-number">2019.12</div>
-        <div class="month-name">December</div>
+        <div class="year-month-number">{{ year }}.{{ month }}</div>
+        <div class="month-name">{{ monthName(month) }}</div>
       </div>
       <ul>
         <li v-for="item in items" @click="showDetail(item)">
