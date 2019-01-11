@@ -89,6 +89,7 @@ export default {
   },
   watch: {
     async selectedDetail(val) {
+      if (!val) return;
       this.events = await request.getPosts({
         query: {
           gongyi: val,
@@ -140,7 +141,7 @@ export default {
           <div v-html="dataEntity[selectedDetail].content"></div>
           <div v-for="event in events" :key="event.id" class="event-block">
             <div class="event-top">
-              <div class="date"><span>{{event.date | MM("M.D")}}</span></div>
+              <!-- <div class="date"><span>{{event.date | MM("M.D")}}</span></div> -->
               <div class="title">
                 <img src="~@/assets/images/index/icon2.png"/>
                 {{event.title}}

@@ -6,7 +6,7 @@ const parseJson = async res => {
     if (res.headers.get('x-wp-totalpages')) {
       data._totalPages = Number(res.headers.get('x-wp-totalpages'));
     }
-    data._ok = res.ok;
+    data && (data._ok = res.ok);
     return data;
   } catch (e) {
     throw new Error("服务器错误");
