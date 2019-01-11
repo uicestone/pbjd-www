@@ -38,6 +38,9 @@ export default {
     this.pageMovie = 1;
   },
   methods: {
+    back() {
+      this.$router.back();
+    },
     switchTab(tab) {
       this.showTab = tab;
     },
