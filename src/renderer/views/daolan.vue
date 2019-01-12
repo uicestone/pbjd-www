@@ -85,7 +85,7 @@
       font-size: 5vw;
       padding: 4.935vw 3.5vw;
       line-height: 1;
-      font-family: fantasy;
+      font-family: 'Accidental Presidency';
       text-align: center;
       font-weight: normal;
       background-color: #bcbbb8;
@@ -129,6 +129,10 @@
         height: auto;
         border: 0.5vw #d5ac50 solid;
       }
+    }
+    .accidental-presidency {
+      display: inline-block;
+      transform: scale(1.2);
     }
   }
 </style>

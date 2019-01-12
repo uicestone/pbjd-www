@@ -5,7 +5,7 @@
   export default {
     data() {
       const years = [];
-      for (let year = 2018; year <= (new Date()).getFullYear(); year++) {
+      for (let year = (new Date()).getFullYear(); year >= 2018; year--) {
         years.push(year);
       }
       return {
@@ -72,7 +72,7 @@
     </div>
     <div class="year-list" v-if="!month">
       <ul>
-        <li v-for="(y, index) in years" @click="year=y" v-if="y===year || !year" class="year-list-item" :class="{active:index===years.length-1||y===year}">
+        <li v-for="(y, index) in years" @click="year=y" v-if="y===year || !year" class="year-list-item" :class="{active:index===0||y===year}">
           <span class="accidental-presidency">{{ y }}</span>
         </li>
         <li class="month-list" v-if="year">
