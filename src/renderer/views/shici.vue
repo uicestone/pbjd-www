@@ -16,7 +16,6 @@ export default {
       songs: [],
       pageSong: null,
       totalPagesSong: 1,
-      currentPlayIndex: null,
       movies: [],
       pageMovie: null,
       totalPagesMovie: 1
@@ -59,6 +58,7 @@ export default {
       this.$set(movie, 'playing', false);
       player.pause();
       player.currentTime = 0;
+      player.load();
     },
     playAudio(song) {
       const player = this.$refs.audio;
@@ -112,7 +112,7 @@ export default {
       <div v-if="showTab===2">
         <ul class="movies">
           <li v-for="movie in movies" :class="{playing: movie.playing}" @click="playVideo(movie)">
-            <video :src="movie.url" :ref="`movie-${movie.id}`"></video>
+            <video :src="movie.url" :ref="`movie-${movie.id}`" :poster="movie.posterUrl"></video>
             <i v-if="!movie.playing" class="play fa fa-play-circle-o"></i>
             <p class="title">{{ movie.title }}</p>
           </li>
@@ -260,7 +260,7 @@ export default {
           &.playing {
             position: absolute;
             left: 0; top: 0; right: 0; bottom: 0;
-            z-index: 1;
+            z-index: 15;
             background: rgba(0,0,0,0.9);
             video {
               position: absolute;
@@ -268,7 +268,10 @@ export default {
               width: calc(100% - 6vw);
               height: auto;
               border-radius: 2vw;
-              top: 34vh;
+              top: 28vh;
+            }
+            .title {
+              display: none;
             }
           }
           video {
