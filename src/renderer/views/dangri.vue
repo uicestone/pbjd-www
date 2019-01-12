@@ -44,6 +44,7 @@
           this.item = null;
         } else if (this.month) {
           this.month = null;
+          this.items = [];
         } else if (this.year) {
           this.year = null;
         } else {
