@@ -50,19 +50,23 @@ export default {
       this.totalPagesMovie = this.movies._totalPages;
     },
     playVideo(movie) {
+      const player = this.$refs[`movie-${movie.id}`][0];
       if (!movie.playing) {
         this.$set(movie, 'playing', true);
-        this.$refs[`movie-${movie.id}`][0].play();
+        player.play();
         return;
       }
       this.$set(movie, 'playing', false);
-      this.$refs[`movie-${movie.id}`][0].pause();
+      player.pause();
+      player.currentTime = 0;
     },
     playAudio(song) {
       const player = this.$refs.audio;
       if (song.url === decodeURIComponent(player.src)) {
         player.pause();
+        player.currentTime = 0;
         this.$set(song, 'playing', false);
+        player.src = '';
         return;
       }
       this.songs.forEach(song => this.$set(song, 'playing', false));
