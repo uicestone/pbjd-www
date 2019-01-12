@@ -99,6 +99,11 @@ export default {
     opacity: 1;
   }
 }
+@font-face {
+  font-family: "Accidental Presidency";
+  src: url('~@/assets/fonts/Accidental Presidency.ttf');
+  font-weight: normal;
+}
 body::-webkit-scrollbar {
   display: none;
 }

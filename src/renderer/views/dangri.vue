@@ -72,18 +72,20 @@
     </div>
     <div class="year-list" v-if="!month">
       <ul>
-        <li v-for="(y, index) in years" @click="year=y" v-if="y===year || !year" class="year-list-item" :class="{active:index===years.length-1||y===year}">{{ y }}</li>
+        <li v-for="(y, index) in years" @click="year=y" v-if="y===year || !year" class="year-list-item" :class="{active:index===years.length-1||y===year}">
+          <span class="accidental-presidency">{{ y }}</span>
+        </li>
         <li class="month-list" v-if="year">
           <ul>
-            <li v-for="m in 12" @click="month=m.toString().padStart(2, '0')"><span class="number">{{ m }}</span><span class="name">{{ monthName(m) }}</span></li>
+            <li v-for="m in 12" @click="month=m.toString().padStart(2, '0')"><span class="number"><span class="accidental-presidency">{{ m }}</span></span><span class="name"><span class="accidental-presidency">{{ monthName(m) }}</span></span></li>
           </ul>
         </li>
       </ul>
     </div>
     <div v-if="month" class="content">
       <div class="year-list-item active">
-        <div class="year-month-number">{{ year }}.{{ month }}</div>
-        <div class="month-name">{{ monthName(month) }}</div>
+        <div class="year-month-number"><span class="accidental-presidency">{{ year }}.{{ month }}</span></div>
+        <div class="month-name"><span class="accidental-presidency">{{ monthName(month) }}</span></div>
       </div>
       <ul>
         <li v-for="item in items" @click="showDetail(item)">
@@ -117,7 +119,7 @@
       font-size: 10.7vw;
       padding: 2vw 3.5vw;
       line-height: 1;
-      font-family: fantasy;
+      font-family: "Accidental Presidency";
       text-align: center;
       font-weight: normal;
       background-color: #bcbbb8;
@@ -140,7 +142,7 @@
           &.month-list {
             background-image: none;
             padding: 0;
-            font-family: fantasy;
+            font-family: "Accidental Presidency";
             background-color: #bcbbb8;
             margin-top: 3vw;
             ul {
@@ -264,6 +266,10 @@
         height: auto;
         border: 0.5vw #694d85 solid;
       }
+    }
+    .accidental-presidency {
+      display: inline-block;
+      transform: scale(1.2);
     }
   }
 </style>
