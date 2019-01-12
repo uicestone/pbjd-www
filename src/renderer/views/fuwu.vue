@@ -125,10 +125,10 @@
         margin-bottom: 6vh;
         > li {
           flex-basis: 50%;
-          height: 46vw;
+          height: 44vw;
           background-size: cover;
           position: relative;
-          margin-bottom: 5vw;
+          margin-bottom: 6vw;
           &:before {
             content: '';
             position: absolute;
@@ -138,13 +138,13 @@
           }
           .title {
             position: absolute;
-            bottom: -3vw;
+            bottom: -4vw;
             color: white;
             font-weight: bold;
             width: 100%;
             text-align: center;
             background: #37a299;
-            font-size: 2.4vw;
+            font-size: 3vw;
           }
         }
       }
