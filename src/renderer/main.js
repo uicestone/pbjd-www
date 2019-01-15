@@ -7,6 +7,8 @@ import router from "./router";
 import store from "./store";
 import moment from "moment";
 import VueAwesomeSwiper from "vue-awesome-swiper";
+import * as request from "./utils/request";
+import wx from 'jweixin-module';
 
 Vue.use(VueAwesomeSwiper);
 
@@ -35,3 +37,33 @@ new Vue({
   store,
   template: "<App/>"
 }).$mount("#app");
+
+/* config js-api in wx web */
+async function configWeixin() {
+  const args = await request.getWxJsapiArgs();
+
+  wx.config({jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'], ...args});
+  wx.ready(function() {
+    wx.onMenuShareTimeline({
+      title: '嘉定区·洪德楼',
+      link: 'http://pbjd-www.hbird.com.cn',
+      imgUrl: 'http://pbjd-www.hbird.com.cn/static/images/logo.png',
+      success(data) {
+        console.log('分享成功', data);
+      }
+    });
+    wx.onMenuShareAppMessage({ 
+      title: '嘉定区·洪德楼',
+      desc: '',
+      link: 'http://pbjd-www.hbird.com.cn',
+      imgUrl: 'http://pbjd-www.hbird.com.cn/static/images/logo.png',
+      success(data) {
+        console.log('分享成功', data);
+      }
+    });
+  });
+}
+
+if (process.env.IS_WEB) {
+  configWeixin();
+}

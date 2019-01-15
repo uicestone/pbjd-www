@@ -4288,6 +4288,10 @@ jstransformer@1.0.0:
     is-promise "^2.0.0"
     promise "^7.0.1"
 
+jweixin-module@^1.4.0:
+  version "1.4.0"
+  resolved "http://registry.npm.taobao.org/jweixin-module/download/jweixin-module-1.4.0.tgz#a64ca9b846065bf59bf5737ba36dcbe7f6ba9c09"
+
 killable@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/killable/-/killable-1.0.0.tgz#da8b84bd47de5395878f95d64d02f2449fe05e6b"

@@ -44,6 +44,7 @@ export default {
     width 100vw
     height 25vh
     background url('~@/assets/images/root-bg-bottom.png') bottom repeat-x
+    background-size contain
     animation move 30s linear infinite
   .entries
     width 100vw
