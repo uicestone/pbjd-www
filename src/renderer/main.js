@@ -48,18 +48,14 @@ async function configWeixin() {
       title: '嘉定区·洪德楼',
       link: 'http://pbjd-www.hbird.com.cn',
       imgUrl: 'http://pbjd-www.hbird.com.cn/static/images/logo.png',
-      success(data) {
-        console.log('分享成功', data);
-      }
+      success(data) {}
     });
     wx.onMenuShareAppMessage({ 
       title: '嘉定区·洪德楼',
       desc: '',
       link: 'http://pbjd-www.hbird.com.cn',
       imgUrl: 'http://pbjd-www.hbird.com.cn/static/images/logo.png',
-      success(data) {
-        console.log('分享成功', data);
-      }
+      success(data) {}
     });
   });
 }
