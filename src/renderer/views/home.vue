@@ -188,8 +188,8 @@
                 </div>
               </li>
             </router-link>
-            <router-link to="/geren" disabled>
-              <li class="li9" style="opacity: 0.5">
+            <router-link to="/geren" :disabled="!isWeb">
+              <li class="li9">
                 <div>
                   <img src="~@/assets/images/index/icon9.png"/>
                   <span>个人中心</span>
@@ -250,6 +250,7 @@ moment.updateLocale("zh-cn", {
 export default {
   data() {
     return {
+      isWeb: true || !window.process,
       swiperOption: {
         spaceBetween: 30,
         centeredSlides: true,

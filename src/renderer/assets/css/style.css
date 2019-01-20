@@ -537,6 +537,10 @@ input {
   object-fit: contain;
 }
 
+.page3 .main-con3 ul a[disabled] li {
+  opacity: 0.7;
+}
+
 .page3 .main-con3 ul li span {
   font-weight: bold;
 }

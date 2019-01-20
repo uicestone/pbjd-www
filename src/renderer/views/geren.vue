@@ -9,14 +9,16 @@
       Datepicker
     },
     data() {
+      const userLoggedIn = !!localStorage.token;
       return {
-        showing: 'menu',
+        showing: userLoggedIn ? 'menu' : 'login',
         showed: [],
         form: {},
         zh,
         submitModal: false,
         musicList: [],
         currentPlayIndex: -1,
+        login: {}
       };
     },
     computed: {
@@ -71,7 +73,12 @@
     <div class="main page-yuyue">
       <div class="header">
         <a @click.prevent="back()" class="fl back"><i class="fa fa-chevron-left"></i> 返回</a>
-        <b><img src="~@/assets/images/index/icon9.png"/>活动预约</b>
+        <b><img src="~@/assets/images/index/icon9.png"/>个人中心</b>
+      </div>
+      <div class="content geren-login" v-if="showing=='login'">
+        <div><input v-model="login.mobile" class="mobile-input" placeholder="请输入手机号" /></div>
+        <div><input v-model="login.code" class="code-input" placeholder="请输入验证码" /><button class="send-mobile-code">发送验证码</button></div>
+        <button class="btn-block">登录</button>
       </div>
       <div class="content geren-menu" v-if="showing=='menu'">
         <ul class="dangyuan-info">
@@ -155,6 +162,37 @@
       margin-bottom: 0.15rem;
     }
   }
+  .geren-login {
+    input {
+      width: 100%;
+      height: 1.6rem;
+      background: #ececec;
+      border-radius: .8rem;
+      border: none;
+      font-size: .5rem;
+      padding: 0 .7rem;
+      color: #777;
+      margin-bottom: .5rem;
+      &.code-input {
+        width: 50%;
+        border-radius: .8rem 0 0 .8rem;
+      }
+    }
+    .send-mobile-code {
+      width: 50%;
+      height: 1.6rem;
+      background: #49a96e;
+      border-radius: 0 .8rem .8rem 0;
+      border: none;
+      font-size: .5rem;
+      padding: 0 .7rem;
+      color: #fff;
+      margin-bottom: .5rem;
+      display: inline-block;
+      vertical-align: bottom;
+      text-align: left;
+    }
+  }
   .geren-menu {
     .dangyuan-info {
       margin-top: -0.2rem;
@@ -202,16 +240,17 @@
     left: 0.7rem;
     right: 0.7rem;
     width: calc(100% - 1.4rem);
-    bottom: 0.2rem;
+    bottom: 0.5rem;
     border: none;
     height: 1.3rem;
     color: white;
     font-size: 0.55rem;
     font-weight: bold;
     line-height: 1;
-    border-radius: 0.2rem;
+    border-radius: 0.3rem;
     outline: none;
     position: fixed;
+    background: #49a96e;
   }
   .form {
     background: #f7f8f8;
@@ -264,8 +303,8 @@
       top: 50%;
       height: 2.7rem;
       margin-top: -2rem;
-      left: 5vw;
-      width: 90vw;
+      left: 0.5rem;
+      width: 9rem;
       padding: 0.5rem;
       font-size: 0.65rem;
       color: white;
