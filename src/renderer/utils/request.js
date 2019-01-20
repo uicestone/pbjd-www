@@ -124,3 +124,48 @@ export const getWxJsapiArgs = () => {
     method: "GET"
   })
 }
+
+export const verifyMobile = (mobile, code) => {
+  const query = {
+    mobile
+  }
+
+  if (code) {
+    query.code = code;
+  }
+
+  return request(`verify-mobile?${obj2query(query)}`, {
+    method: "GET",
+    cacheable: false
+  })
+}
+
+export const getMySignIn = () => {
+  return request(`my-sign-in`, {
+    method: "GET",
+    cacheable: false,
+    headers: new Headers({
+      authorization: localStorage.getItem('token')
+    })
+  })
+}
+
+export const getMySpeech = () => {
+  return request(`my-speech`, {
+    method: "GET",
+    cacheable: false,
+    headers: new Headers({
+      authorization: localStorage.getItem('token')
+    })
+  })
+}
+
+export const getMyYuyue = () => {
+  return request(`my-yuyue`, {
+    method: "GET",
+    cacheable: false,
+    headers: new Headers({
+      authorization: localStorage.getItem('token')
+    })
+  })
+}

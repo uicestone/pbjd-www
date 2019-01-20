@@ -9,9 +9,12 @@
       Datepicker
     },
     data() {
-      const userLoggedIn = !!localStorage.token;
       return {
-        showing: userLoggedIn ? 'menu' : 'login',
+        token: null,
+        showing: '',
+        mySignIn: {},
+        mySpeeches: [],
+        myYuyues: [],
         showed: [],
         form: {},
         zh,
@@ -26,7 +29,26 @@
         return this.$refs.audio;
       }
     },
+    watch: {
+      async token(v) {
+        if (v) {
+          this.mySignIn = await request.getMySignIn();
+          this.mySpeech = await request.getMySpeech();
+          this.myYuyue = await request.getMyYuyue();
+        }
+      }
+    },
     methods: {
+      async verifyMobile(mobile, code) {
+        if (!mobile) {
+          alert('请输入手机号');
+        }
+        const result = await request.verifyMobile(mobile, code);
+        if (result.token) {
+          this.token = result.token;
+          localStorage.setItem('token', result.token);
+        }
+      },
       submit() {
         this.submitModal = true;
       },
@@ -59,6 +81,8 @@
     },
     async mounted() {
       handleLoading();
+      this.token = localStorage.getItem('token');
+      this.showing = this.token ? 'menu' : 'login';
       this.musicList = await request.getAttachments({
         query: {
           category: "红色歌曲",
@@ -77,18 +101,18 @@
       </div>
       <div class="content geren-login" v-if="showing=='login'">
         <div><input v-model="login.mobile" class="mobile-input" placeholder="请输入手机号" /></div>
-        <div><input v-model="login.code" class="code-input" placeholder="请输入验证码" /><button class="send-mobile-code">发送验证码</button></div>
-        <button class="btn-block">登录</button>
+        <div><input v-model="login.code" class="code-input" placeholder="请输入验证码" /><button class="send-mobile-code" @click="verifyMobile(login.mobile)">发送验证码</button></div>
+        <button class="btn-block" @click="verifyMobile(login.mobile, login.code);show('menu')">登录</button>
       </div>
       <div class="content geren-menu" v-if="showing=='menu'">
-        <ul class="dangyuan-info">
-          <li>王光军</li>
-          <li>单位</li>
-          <li>嘉定区党建服务中心</li>
+        <ul class="dangyuan-info" v-if="mySignIn.name">
+          <li>{{ mySignIn.name }}</li>
+          <li>{{ mySignIn.unit }}</li>
+          <li>{{ mySignIn.organization }}</li>
         </ul>
         <div class="item" @click="show('my-yuyue')"><i class="fa fa-map-marker"></i> 我的活动预定</div>
         <div class="item" @click="show('my-speech')"><i class="fa fa-volume-up"></i> 我的党建声音</div>
-        <div class="item" @click="show('signin')"><i class="fa fa-check-circle-o"></i> 党员签到</div>
+        <div class="item" @click="$router.push('baodao')"><i class="fa fa-check-circle-o"></i> 党员签到</div>
       </div>
       <div class="content geren-menu my-yuyue-list" v-if="showing=='my-yuyue'">
         <h2>活动预定</h2>
@@ -191,6 +215,7 @@
       display: inline-block;
       vertical-align: bottom;
       text-align: left;
+      outline: none;
     }
   }
   .geren-menu {
