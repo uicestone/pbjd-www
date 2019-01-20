@@ -51,19 +51,23 @@ export default {
       this.goHomeTimeout = setTimeout(() => this.goHome(), 300000);
     };
 
-    resetGoHomeTimeout();
+    if (!window.process) {
+      
+      resetGoHomeTimeout();
 
-    ['click','touchstart', 'keydown', 'scroll'].forEach(i => {
-      document.addEventListener(i, e => {
-        resetGoHomeTimeout();
-      })
-    });
+      ['click','touchstart', 'keydown', 'scroll'].forEach(i => {
+        document.addEventListener(i, e => {
+          resetGoHomeTimeout();
+        })
+      });
 
-    ['scroll'].forEach(i => {
-      document.addEventListener(i, e => {
-        resetGoHomeTimeout();
-      })
-    });
+      ['scroll'].forEach(i => {
+        document.addEventListener(i, e => {
+          resetGoHomeTimeout();
+        })
+      });
+
+    }
   }
 };
 </script>
