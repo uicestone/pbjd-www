@@ -2703,9 +2703,10 @@ input {
 
 .page10 .pop .hint {
   width: 100%;
-  height: 90%;
+  height: 100%;
   overflow-y: auto;
   padding: 0.6rem;
+  padding-bottom: 10vh;
 }
 
 .page10 .pop .hint .name {
@@ -2743,6 +2744,10 @@ input {
   /* margin-top: 0.2rem; */
   border-radius: 0.2rem;
   outline: none;
+  position: fixed;
+  bottom: 0.4rem;
+  left: 50%;
+  margin-left: -45%;
 }
 
 .page10 .attend:active {
