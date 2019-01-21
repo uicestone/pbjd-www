@@ -169,3 +169,13 @@ export const getMyYuyue = () => {
     })
   })
 }
+
+export const getMyMotto = () => {
+  return request(`my-motto`, {
+    method: "GET",
+    cacheable: false,
+    headers: new Headers({
+      authorization: localStorage.getItem('token')
+    })
+  })
+}

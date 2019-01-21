@@ -14,6 +14,7 @@
         showing: '',
         mySignIn: {},
         mySpeeches: [],
+        myMottos: [],
         myYuyues: [],
         showed: [],
         form: {},
@@ -33,6 +34,7 @@
         if (v) {
           this.mySignIn = await request.getMySignIn();
           this.mySpeeches = await request.getMySpeech();
+          // this.myMottos = await request.getMyMotto();
           this.myYuyues = await request.getMyYuyue();
         }
       }
@@ -75,7 +77,11 @@
         this.currentPlayIndex = index;
         let data = this.mySpeeches[index];
         this.currentPlayer.src = data.audioUrl;
-        this.currentPlayer.play();
+        if (data.type === 'movie' && !window.process) {
+          window.location.href=`https://pbjd-apps.hbird.com.cn/#/movie/detail?id=${data.id}`;
+        } else {
+          this.currentPlayer.play();
+        }
       }
     },
     async mounted() {
@@ -105,6 +111,7 @@
         </ul>
         <div class="item" @click="show('my-yuyue')"><i class="fa fa-map-marker"></i> 我的活动预定</div>
         <div class="item" @click="show('my-speech')"><i class="fa fa-volume-up"></i> 我的党建声音</div>
+        <!-- <div class="item" @click="show('my-motto')"><i class="fa fa-volume-up"></i> 我的座右铭</div> -->
         <div class="item" @click="$router.push('baodao')"><i class="fa fa-check-circle-o"></i> 党员签到</div>
       </div>
       <div class="content geren-menu my-yuyue-list" v-if="showing=='my-yuyue'">

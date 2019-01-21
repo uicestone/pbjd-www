@@ -250,7 +250,7 @@ moment.updateLocale("zh-cn", {
 export default {
   data() {
     return {
-      isWeb: true || !window.process,
+      isWeb: window.process,
       swiperOption: {
         spaceBetween: 30,
         centeredSlides: true,
