@@ -36,6 +36,7 @@
           this.showed.push(this.showing);
         }
         this.showing = layer;
+
         this.form['room_number'] = this.room.number;
         if (layer.match(/^form/)) {
           this.clearForm();
@@ -122,7 +123,7 @@
         <img class="floor-map" v-if="floor==3" src="@/assets/images/index/3F.png"/>
         <img class="floor-map" v-if="floor==4" src="@/assets/images/index/4F.png"/>
         <div class="rooms">
-          <div v-for="(room, index) in rooms" class="room" @click="show('room-detail');setRoom(index)">
+          <div v-for="(room, index) in rooms" class="room" @click="setRoom(index);show('room-detail')">
             <span class="icon" :style="{background:room.color}"></span>
             <span class="room-name">{{ room.title }}</span>
             <i class="fa fa-chevron-right"></i>
