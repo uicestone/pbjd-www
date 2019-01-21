@@ -19,7 +19,6 @@
         form: {},
         zh,
         submitModal: false,
-        musicList: [],
         currentPlayIndex: -1,
         login: {}
       };
@@ -74,8 +73,8 @@
           return;
         }
         this.currentPlayIndex = index;
-        let data = this.musicList[index];
-        this.currentPlayer.src = data.url;
+        let data = this.mySpeeches[index];
+        this.currentPlayer.src = data.audioUrl;
         this.currentPlayer.play();
       }
     },
@@ -83,12 +82,6 @@
       handleLoading();
       this.token = localStorage.getItem('token');
       this.showing = this.token ? 'menu' : 'login';
-      this.musicList = await request.getAttachments({
-        query: {
-          category: "红色歌曲",
-          limit: 12
-        }
-      });
     }
   }
 </script>
@@ -126,8 +119,8 @@
       <div class="content geren-menu my-speech" v-if="showing=='my-speech'">
         <h2>我的党建声音</h2>
         <ul class="chunk list">
-          <li v-for="(item, index) in musicList" :class="{played: index == currentPlayIndex}" @click="playAudio(index)">
-            <span>{{item.title}}</span>
+          <li v-for="(item, index) in mySpeeches" :class="{played: index == currentPlayIndex}" @click="playAudio(index)">
+            <span>{{item.bgid}}</span>
             <!-- <audio class="myaudio" :src="item.url" :ref="`audio${index}`" preload="auto" loop="loop"></audio> -->
             <i :class="{fa: true, 'fa-play-circle-o': currentPlayIndex != index, 'fa-volume-up': currentPlayIndex == index}" aria-hidden="true"></i>                      
           </li>
