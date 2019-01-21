@@ -33,8 +33,8 @@
       async token(v) {
         if (v) {
           this.mySignIn = await request.getMySignIn();
-          this.mySpeech = await request.getMySpeech();
-          this.myYuyue = await request.getMyYuyue();
+          this.mySpeeches = await request.getMySpeech();
+          this.myYuyues = await request.getMyYuyue();
         }
       }
     },
@@ -116,23 +116,11 @@
       </div>
       <div class="content geren-menu my-yuyue-list" v-if="showing=='my-yuyue'">
         <h2>活动预定</h2>
-        <div class="item">
+        <div class="item" v-for="yuyue in myYuyues">
           <ul class="info">
-            <li>参观党建服务中心</li>
-            <li>XXXXXXXX单位</li>
-            <li>2018.10.1 13:00~14:00</li>
-            <li>20人</li>
+            <li v-for="field in yuyue.fields">{{ field }}</li>
           </ul>
-          <span class="status">待审核</span>
-        </div>
-        <div class="item">
-          <ul class="info">
-            <li>参观党建服务中心</li>
-            <li>XXXXXXXX单位</li>
-            <li>2018.10.1 13:00~14:00</li>
-            <li>20人</li>
-          </ul>
-          <span class="status">待审核</span>
+          <span class="status">{{ yuyue.status }}</span>
         </div>
       </div>
       <div class="content geren-menu my-speech" v-if="showing=='my-speech'">
