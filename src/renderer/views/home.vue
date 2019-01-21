@@ -208,7 +208,12 @@
           v-model="qrcode"
           class-name="vertical-center-modal">
           <img src="~@/assets/images/qrcode_baodao.png" width="100%" height="100%"/>
-      </Modal>
+        </Modal>
+        <Modal
+          v-model="qrcodeWechat"
+          class-name="vertical-center-modal">
+          <!-- <img src="~@/assets/images/qrcode_wechat.png" width="100%" height="100%"/> -->
+        </Modal>
       </div>
 
       <div class="pop" v-if="selectedStatus > -1">
@@ -260,6 +265,7 @@ export default {
         }
       },
       qrcode: false,
+      qrcodeWechat: false,
       weather: {},
       signedInMemberCount: 0,
       date: {},

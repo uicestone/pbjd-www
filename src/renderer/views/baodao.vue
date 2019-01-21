@@ -5,7 +5,10 @@ import { request } from "../utils/request";
 export default {
   data() {
     return {
-      profile: {}
+      profile: {
+        sex: null,
+        mobile: localStorage.token && localStorage.token.split(' ')[0]
+      }
     };
   },
   mounted() {

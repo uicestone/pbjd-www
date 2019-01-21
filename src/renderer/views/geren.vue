@@ -11,6 +11,7 @@
     data() {
       return {
         token: null,
+        mobileVerifyCodeSent: false,
         showing: '',
         mySignIn: {},
         mySpeeches: [],
@@ -44,11 +45,21 @@
         if (!mobile) {
           alert('请输入手机号');
         }
+        if (this.mobileVerifyCodeSent && !code) {
+          return;
+        }
         const result = await request.verifyMobile(mobile, code);
         if (result.token) {
           this.token = result.token;
           localStorage.setItem('token', result.token);
+          this.show('menu', true);
+        } else {
+          this.mobileVerifyCodeSent = true;
         }
+      },
+      logout() {
+        localStorage.removeItem('token');
+        this.$router.replace('home');
       },
       submit() {
         this.submitModal = true;
@@ -56,8 +67,8 @@
       clearForm() {
         this.form = {};
       },
-      show(layer) {
-        if (this.showing) {
+      show(layer, replace) {
+        if (this.showing && !replace) {
           this.showed.push(this.showing);
         }
         this.showing = layer;
@@ -100,8 +111,8 @@
       </div>
       <div class="content geren-login" v-if="showing=='login'">
         <div><input v-model="login.mobile" class="mobile-input" placeholder="请输入手机号" /></div>
-        <div><input v-model="login.code" class="code-input" placeholder="请输入验证码" /><button class="send-mobile-code" @click="verifyMobile(login.mobile)">发送验证码</button></div>
-        <button class="btn-block" @click="verifyMobile(login.mobile, login.code);show('menu')">登录</button>
+        <div><input v-model="login.code" class="code-input" placeholder="请输入验证码" :disabled="!mobileVerifyCodeSent" /><button class="send-mobile-code" :class="{disabled: mobileVerifyCodeSent}" @click="verifyMobile(login.mobile)">{{ mobileVerifyCodeSent ? '验证码已发送' : '发送验证码' }}</button></div>
+        <button class="btn-block" @click="verifyMobile(login.mobile, login.code)">登录</button>
       </div>
       <div class="content geren-menu" v-if="showing=='menu'">
         <ul class="dangyuan-info" v-if="mySignIn.name">
@@ -112,7 +123,8 @@
         <div class="item" @click="show('my-yuyue')"><i class="fa fa-map-marker"></i> 我的活动预定</div>
         <div class="item" @click="show('my-speech')"><i class="fa fa-volume-up"></i> 我的党建声音</div>
         <!-- <div class="item" @click="show('my-motto')"><i class="fa fa-volume-up"></i> 我的座右铭</div> -->
-        <div class="item" @click="$router.push('baodao')"><i class="fa fa-check-circle-o"></i> 党员签到</div>
+        <div class="item" @click="$router.push('baodao')" v-if="!mySignIn"><i class="fa fa-check-circle-o"></i> 党员签到</div>
+        <button class="btn-block" @click="logout()">退出登录</button>
       </div>
       <div class="content geren-menu my-yuyue-list" v-if="showing=='my-yuyue'">
         <h2>活动预定</h2>
@@ -122,6 +134,7 @@
           </ul>
           <span class="status">{{ yuyue.status }}</span>
         </div>
+        <button class="btn-block" @click="logout()">退出登录</button>
       </div>
       <div class="content geren-menu my-speech" v-if="showing=='my-speech'">
         <h2>我的党建声音</h2>
@@ -133,6 +146,7 @@
           </li>
           <audio ref="audio"  style="overflow: hidden"/>
         </ul>
+        <button class="btn-block" @click="logout()">退出登录</button>
       </div>
     </div>
     <!--等待-->
@@ -204,6 +218,9 @@
       vertical-align: bottom;
       text-align: left;
       outline: none;
+      &.disabled {
+        background: #a9a9a9;
+      }
     }
   }
   .geren-menu {
@@ -241,6 +258,7 @@
         font-size: 0.45rem;
         color: #686868;
         line-height: 1.25;
+        width: 6rem;
       }
       .status {
         font-size: 0.4rem;
