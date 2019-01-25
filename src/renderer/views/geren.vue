@@ -28,6 +28,9 @@
     computed: {
       currentPlayer(){
         return this.$refs.audio;
+      },
+      isLoggedIn() {
+        return window.localStorage.getItem('token');
       }
     },
     watch: {
@@ -123,8 +126,8 @@
         <div class="item" @click="show('my-yuyue')"><i class="fa fa-map-marker"></i> 我的活动预定</div>
         <div class="item" @click="show('my-speech')"><i class="fa fa-volume-up"></i> 我的党建声音</div>
         <!-- <div class="item" @click="show('my-motto')"><i class="fa fa-volume-up"></i> 我的座右铭</div> -->
-        <div class="item" @click="$router.push('baodao')" v-if="!mySignIn.name"><i class="fa fa-check-circle-o"></i> 党员签到</div>
-        <button class="btn-block" @click="logout()">退出登录</button>
+        <div class="item" @click="$router.push('baodao')"><i class="fa fa-check-circle-o"></i> 党员报到</div>
+        <button class="btn-block" @click="logout()" v-if="isLoggedIn">退出登录</button>
       </div>
       <div class="content geren-menu my-yuyue-list" v-if="showing=='my-yuyue'">
         <h2>活动预定</h2>
@@ -134,7 +137,7 @@
           </ul>
           <span class="status">{{ yuyue.status }}</span>
         </div>
-        <button class="btn-block" @click="logout()">退出登录</button>
+        <button class="btn-block" @click="logout()" v-if="isLoggedIn">退出登录</button>
       </div>
       <div class="content geren-menu my-speech" v-if="showing=='my-speech'">
         <h2>我的党建声音</h2>
@@ -146,7 +149,7 @@
           </li>
           <audio ref="audio"  style="overflow: hidden"/>
         </ul>
-        <button class="btn-block" @click="logout()">退出登录</button>
+        <button class="btn-block" @click="logout()" v-if="isLoggedIn">退出登录</button>
       </div>
     </div>
     <!--等待-->
