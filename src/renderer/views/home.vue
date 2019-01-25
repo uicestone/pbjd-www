@@ -188,14 +188,14 @@
                 </div>
               </li>
             </router-link>
-            <router-link to="/geren" :disabled="!isWeb">
+            <a @click="goToGeren()">
               <li class="li9">
                 <div>
                   <img src="~@/assets/images/index/icon9.png"/>
                   <span>个人中心</span>
                 </div>
               </li>
-            </router-link>
+            </a>
           </ul>
           <div class="text">
             <h3>联系我们</h3>
@@ -212,7 +212,7 @@
         <Modal
           v-model="qrcodeWechat"
           class-name="vertical-center-modal">
-          <!-- <img src="~@/assets/images/qrcode_wechat.png" width="100%" height="100%"/> -->
+          <img src="~@/assets/images/qrcode_wechat.jpg" width="100%" height="100%"/>
         </Modal>
       </div>
 
@@ -309,10 +309,17 @@ export default {
       this.currenGongyixingIndex = this.$refs[swiper].swiper.activeIndex;
     },
     goToSignIn() {
-      if (window && window.process && window.process.type) {
+      if (!this.isWeb) {
         this.qrcode = true;
       } else {
         this.$router.push('/baodao')
+      }
+    },
+    goToGeren() {
+      if (!this.isWeb) {
+        this.qrcodeWechat = true;
+      } else {
+        this.$router.push('/geren')
       }
     },
     wating() {
