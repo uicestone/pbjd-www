@@ -1,6 +1,6 @@
 <script>
 import { handleLoading } from "../utils/utils";
-import { request } from "../utils/request";
+import * as request from "../utils/request";
 
 export default {
   data() {
@@ -11,13 +11,14 @@ export default {
       }
     };
   },
-  mounted() {
+  async mounted() {
     handleLoading();
+    this.profile = await request.getMySignIn();
   },
   methods: {
     submit(e) {
       e.preventDefault();
-      request('sign-in', {
+      request.request('sign-in', {
         method:'POST', 
         body:JSON.stringify(this.profile)
       }).then(result => {
@@ -44,7 +45,7 @@ export default {
     <body>
     <div class="main page">
       <div class="header">
-        <a class="fl back" @click="goBack"><i class="fa fa-angle-left"></i> 党员报道</a>
+        <a class="fl back" @click="goBack"><i class="fa fa-angle-left"></i> 党员报到</a>
       </div>
       <form @submit="submit">
       <div class="formDiv">
