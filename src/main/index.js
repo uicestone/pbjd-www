@@ -1,4 +1,5 @@
 import { app, BrowserWindow } from "electron";
+import path from 'path';
 
 // require("electron-debug")({ showDevTools: true });
 /**
@@ -26,7 +27,8 @@ function createWindow() {
     height: 1920,
     useContentSize: true,
     resizable: true,
-    fullscreen: process.env.NODE_ENV === 'production'
+    fullscreen: process.env.NODE_ENV === 'production',
+    icon: path.join(__dirname, 'static/icons/png/64x64.png')
   });
 
   mainWindow.loadURL(winURL);
