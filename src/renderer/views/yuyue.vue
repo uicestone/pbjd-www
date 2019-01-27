@@ -253,7 +253,7 @@
         </div>
         <div class="item">
           <label>预约日期</label>
-          <datepicker v-model="form['预约日期']" placeholder="预约日期" :language="zh" format="yyyy-MM-dd" :disabledDates="disabledDatesProp" />
+          <datepicker v-model="form['预约日期']" placeholder="预约日期" :language="zh" format="yyyy-MM-dd" :disabledDates="disabledDatesProp" required/>
         </div>
         <div class="item">
           <label>预约时间</label>
@@ -488,7 +488,7 @@
     }
     label {
       font-weight: bold;
-      margin-right: 0.3rem;
+      margin-right: 0.2rem;
       width: 33%;
       display: inline-block;
       text-align: center;
