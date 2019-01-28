@@ -11,9 +11,9 @@ export default {
       }
     };
   },
-  async mounted() {
+  mounted() {
     handleLoading();
-    this.profile = await request.getMySignIn();
+    this.getProfile();
   },
   methods: {
     submit(e) {
@@ -36,6 +36,9 @@ export default {
         }
       }
       history.back();
+    },
+    async getProfile() {
+      Object.assign(this.profile, await request.getMySignIn());
     }
   }
 };
@@ -88,7 +91,7 @@ export default {
         </div>
       </div>
       <div class="btnDiv">
-        <input type="submit" value="报到" class="btn"/>
+        <input type="submit" :value="profile.name?'确认提交':'报到'" class="btn"/>
       </div>
       </form>
     </div>
