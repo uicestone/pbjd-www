@@ -38,7 +38,7 @@
         if (v) {
           this.mySignIn = await request.getMySignIn();
           this.mySpeeches = await request.getMySpeech();
-          // this.myMottos = await request.getMyMotto();
+          this.myMottos = await request.getMyMotto();
           this.myYuyues = await request.getMyYuyue();
         }
       }
@@ -96,6 +96,9 @@
         } else {
           this.currentPlayer.play();
         }
+      },
+      goToMotto(item) {
+        window.location.href=`https://pbjd-apps.hbird.com.cn/#/motto/detail?id=${item.id}`;
       }
     },
     async mounted() {
@@ -125,7 +128,7 @@
         </ul>
         <div class="item" @click="show('my-yuyue')"><i class="fa fa-map-marker"></i> 我的活动预定</div>
         <div class="item" @click="show('my-speech')"><i class="fa fa-volume-up"></i> 我的党建声音</div>
-        <!-- <div class="item" @click="show('my-motto')"><i class="fa fa-volume-up"></i> 我的座右铭</div> -->
+        <div class="item" @click="show('my-motto')"><i class="fa fa-pencil"></i> 我的座右铭</div>
         <div class="item" @click="$router.push('baodao')"><i class="fa fa-check-circle-o"></i> 党员报到</div>
         <button class="btn-block" @click="logout()" v-if="isLoggedIn">退出登录</button>
       </div>
@@ -149,6 +152,22 @@
           </li>
           <audio ref="audio"  style="overflow: hidden"/>
         </ul>
+        <button class="btn-block" @click="logout()" v-if="isLoggedIn">退出登录</button>
+      </div>
+      <div class="content geren-menu my-motto page10" v-if="showing=='my-motto'">
+        <h2>我的座右铭</h2>
+        <div class="list">
+          <ul>
+            <li v-for="(item, index) in myMottos" @click="goToMotto(item)">
+              <div class="imgDiv">
+                <img :src="item.imageUrl"/>
+              </div>
+              <div class="textDiv">
+                <span>{{item.text.trim()}}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
         <button class="btn-block" @click="logout()" v-if="isLoggedIn">退出登录</button>
       </div>
     </div>
@@ -375,6 +394,14 @@
   .my-speech .list .played {
     color: #fff;
     background: #49a96f;
+  }
+  .my-motto {
+    .list {
+      padding: 0;
+    }
+    .textDiv {
+      width: 5.18rem;
+    }
   }
   .orange {
     background-color: #e79b32;
