@@ -154,15 +154,15 @@
         </ul>
         <button class="btn-block" @click="logout()" v-if="isLoggedIn">退出登录</button>
       </div>
-      <div class="content geren-menu my-motto page10" v-if="showing=='my-motto'">
+      <div class="content geren-menu my-motto" v-if="showing=='my-motto'">
         <h2>我的座右铭</h2>
         <div class="list">
           <ul>
             <li v-for="(item, index) in myMottos" @click="goToMotto(item)">
-              <div class="imgDiv">
+              <div class="image">
                 <img :src="item.imageUrl"/>
               </div>
-              <div class="textDiv">
+              <div class="text">
                 <span>{{item.text.trim()}}</span>
               </div>
             </li>
@@ -397,10 +397,28 @@
   }
   .my-motto {
     .list {
-      padding: 0;
-    }
-    .textDiv {
-      width: 5.18rem;
+      li {
+        border: #49a96f 0.02rem solid;
+        display: flex;
+        margin-top: 0.4rem;
+        height: 2.4rem;
+        .image {
+          flex-basis: 40%;
+          width: 40%;
+          border-right: #49a96f 0.02rem solid;
+          display: flex;
+          img {
+            object-fit: cover;
+          }
+        }
+        .text {
+          flex-basis: 60%;
+          width: 60%;
+          padding: 0.1rem 0.4rem;
+          font-size: 0.5rem;
+          overflow: hidden;
+        }
+      }
     }
   }
   .orange {
