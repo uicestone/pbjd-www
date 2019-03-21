@@ -70,23 +70,9 @@
         </div>
         <div class="main-con2">
           <div class="fl leftDiv">
-            <div class="fczs">
-              <div class="fczs-title" @click="$router.push('/fengcai')"><img src="~@/assets/images/index/fengcai.png"/><span>风采展示</span></div>
-              <div class="lunbo">
-                <!-- <img src="~@/assets/images/index/gyx-img.jpg"/> -->
-                <swiper :options="swiperOption" ref="GongyixingSwiper" @slideChange="onSlideChange('GongyixingSwiper')">
-                  <swiper-slide v-for="(item,index) in gonyixingList" :key="index">
-                    <img class="img" :src="item.url" width="100%" height="100%" @click="$router.push('/fengcai')">
-                  </swiper-slide>
-                </swiper>
-                <div class="lb-page">
-                  <ul>
-                    <li><img src="~@/assets/images/index/left-arrow1.png" @click="prevSwiper('GongyixingSwiper')"/></li>
-                      <li v-for="(item,index) in gonyixingList" :class="{active: currenGongyixingIndex == index}" :key="index"><span></span></li>                   
-                    <li><img src="~@/assets/images/index/right-arrow1.png" @click="nextSwiper('GongyixingSwiper')"/></li>
-                  </ul>
-                </div>
-              </div>
+            <div class="fczs" @click="$router.push('/fengcai')">
+              <div class="fczs-icon"><img src="~@/assets/images/index/fengcai.png"/></div>
+              <div class="fczs-title">风采展示</div>
             </div>
           </div>
           <div class="fr caidan" @click="$router.push('/caidan')">

@@ -302,8 +302,9 @@ input {
   height: 3.44rem;
   margin: 0 auto;
   background: #b6302c;
-  padding: 0.2rem 0.17rem;
+  padding: 0.5rem 0.17rem;
   box-shadow: 0px 0px 0.2rem 0.05rem #a7a6a7;
+  text-align: center;
 }
 
 .page3 .leftDiv .fczs .fczs-title {
@@ -311,13 +312,11 @@ input {
   color: #fff;
   height: 0.5rem;
   font-weight: bold;
+  margin-top: 0.2rem;
 }
 
-.page3 .leftDiv .fczs .fczs-title img {
+.page3 .leftDiv .fczs img {
   display: inline-block;
-  width: 0.45rem;
-  margin-right: 0.15rem;
-  margin-left: 0.1rem;
 }
 
 .page3 .leftDiv .fczs .fczs-title span {
