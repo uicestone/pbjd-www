@@ -70,6 +70,10 @@ export const getPosts = (datas) => {
   return request(`posts/?${obj2query(query)}`, options);
 };
 
+export const getPost = id => {
+  return request(`posts/${id}`);
+};
+
 export const getAttachments = datas => {
   const { query } = datas;
   return request(`attachments/?${obj2query(query)}`);

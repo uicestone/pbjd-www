@@ -95,6 +95,7 @@
     async mounted() {
       handleLoading();
       this.building = await request.getRoom(0);
+      this.traffic = await request.getPost('traffic');
     }
   }
 </script>
@@ -282,12 +283,9 @@
       <div v-if="showing=='traffic'" class="content traffic">
         <h2>周边交通停车提示</h2>
         <div>
-          <img src="~@/assets/images/index/traffic.png"/>
+          <img :src="traffic.posterUrl"/>
         </div>
-        <div class="hints">
-          <p>洪德楼：嘉定区洪德路50号（近沪宜公路）</p>
-          <p>周边公交：嘉定9路、嘉定14路、沪唐专线、嘉定64路，嘉定65路</p>
-        </div>
+        <div class="hints" v-html="traffic.content"></div>
       </div>
       <div v-if="showing=='canguan'" class="content canguan">
         <img :src="room.thumbnail"/>

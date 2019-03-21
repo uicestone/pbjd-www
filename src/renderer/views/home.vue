@@ -186,7 +186,7 @@
           <div class="text">
             <h3>联系我们</h3>
             <p><span><i class="fa fa-map-marker"></i>嘉定区·洪德楼：</span>嘉定区洪德路50号（近沪宜公路）</p>
-            <p><span><i class="fa fa-bus"></i>周边公交：</span>嘉定9路、嘉定14路、沪唐专线、嘉定64路（洪德路沪宜公路站）</p>
+            <p><span><i class="fa fa-bus"></i>周边公交：</span>{{ traffic.excerpt }}</p>
             <p><span><i class="fa fa-phone"></i>联系电话：</span>021-59107253</p>
           </div>
         </div>
@@ -252,6 +252,7 @@ export default {
       },
       qrcode: false,
       qrcodeWechat: false,
+      traffic: {},
       weather: {},
       signedInMemberCount: 0,
       date: {},
@@ -261,8 +262,7 @@ export default {
       monthMenu: [],
       currentMonth: moment().month()+1,
       gonyixingList: [],
-      selectedStatus: -1,
-      currenGongyixingIndex: 0
+      selectedStatus: -1
     };
   },
   computed: {
@@ -285,15 +285,6 @@ export default {
     }
   },
   methods: {
-    prevSwiper(swiper) {
-      this.$refs[swiper].swiper.slidePrev();
-    },
-    nextSwiper(swiper) {
-      this.$refs[swiper].swiper.slideNext();
-    },
-    onSlideChange(swiper) {
-      this.currenGongyixingIndex = this.$refs[swiper].swiper.activeIndex;
-    },
     goToSignIn() {
       if (!this.isWeb) {
         this.qrcode = true;
@@ -317,6 +308,7 @@ export default {
   },
   async mounted() {
     handleLoading();
+    this.traffic = await request.getPost('traffic');
     this.partyStatusList = await request.getPosts({
       query: {
         category: "党建动态",
@@ -338,12 +330,6 @@ export default {
     });
     this.monthMenu = cachedMonthMenu.sort((a, b) => {
       return moment(a.date) < moment(b.date) ? -1 : 1;
-    });
-    this.gonyixingList = await request.getAttachments({
-      query: {
-        category: "公益行",
-        limit: 4
-      }
     });
     this.weather = await request.getWeather();
     setInterval(async () => {
