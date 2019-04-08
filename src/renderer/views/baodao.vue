@@ -23,7 +23,7 @@ export default {
         body:JSON.stringify(this.profile)
       }).then(result => {
         if (result._ok) {
-          alert('党员报到成功！');
+          alert('页面注册成功！');
           this.goBack();
         }
       });
@@ -91,7 +91,7 @@ export default {
         </div>
       </div>
       <div class="btnDiv">
-        <input type="submit" :value="profile.name?'确认提交':'报到'" class="btn"/>
+        <input type="submit" :value="profile.name?'确认提交':'注册'" class="btn"/>
       </div>
       </form>
     </div>
