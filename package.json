@@ -1,7 +1,7 @@
 {
   "name": "pbjd-www",
   "productName": "pbjd-www",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "nano <ncysatnaf@gmail.com>",
   "description": "An electron-vue project",
   "license": null,
