@@ -48,7 +48,7 @@ export default {
     <body>
     <div class="main page">
       <div class="header">
-        <a class="fl back" @click="goBack"><i class="fa fa-angle-left"></i> 党员报到</a>
+        <a class="fl back" @click="goBack"><i class="fa fa-angle-left"></i> {{ profile.name ? '个人信息' : '页面注册' }}</a>
       </div>
       <form @submit="submit">
       <div class="formDiv">

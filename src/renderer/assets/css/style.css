@@ -122,7 +122,7 @@ input {
 }
 
 .page3 .main-con1 .leftDiv .baodao {
-  background: url(../images/index/baodao.png) no-repeat -0.05rem top;
+  background: url(../images/index/zhuce.png) no-repeat -0.05rem top;
   background-size: 104%;
   color: #fff;
   height: 3.45rem;
@@ -148,7 +148,7 @@ input {
   font-size: 0.69rem;
   position: relative;
   top: 0.16rem;
-  margin: 0 0.1rem;
+  margin: 0;
 }
 
 .page3 .baodao .f35 {

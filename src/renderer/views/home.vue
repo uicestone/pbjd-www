@@ -31,7 +31,7 @@
           <div class="fl leftDiv">
             <div class="baodao" @click="goToSignIn">
               <div class="num">
-                <span class="baodaorenshu">微信报到人数</span>
+                <span class="baodaorenshu">微信注册人数</span>
                 <span class="f69">{{ signedInMemberCount }}</span>
                 <span class="f35">人</span>
               </div>
