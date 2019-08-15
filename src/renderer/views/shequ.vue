@@ -19,7 +19,7 @@ export default {
     this.dadaList = await request.getPosts({
       query: {
         category: "社区党校",
-        limit: 12,
+        limit: -1,
         order: 'asc'
       }
     });
