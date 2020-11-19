@@ -58,8 +58,13 @@ input {
   background-size: 100% 100%;
 }
 
-.page5 .header, .page6 .header, .page7 .header, .page8 .header {
-  position: fixed; left: 0; right: 0;
+.page5 .header,
+.page6 .header,
+.page7 .header,
+.page8 .header {
+  position: fixed;
+  left: 0;
+  right: 0;
 }
 
 /************************************ 首页 *********************************************/
@@ -114,11 +119,13 @@ input {
 
 .page3 .main-con1 {
   overflow: hidden;
-  margin-top: 0.30rem;
+  margin-top: 0.3rem;
+  padding-left: 0.2rem;
+  margin-bottom: 0.4rem;
 }
 
 .page3 .main-con1 .leftDiv {
-  width: 3.45rem;
+  width: 6.35rem;
 }
 
 .page3 .main-con1 .leftDiv .baodao {
@@ -128,6 +135,11 @@ input {
   height: 3.45rem;
   font-size: 0.2rem;
   position: relative;
+}
+
+.page3 .main-con1 .leftDiv .dt-title {
+  font-size: 0.3rem;
+  color: #d95f56;
 }
 
 .page3 .baodao .num {
@@ -184,8 +196,10 @@ input {
 }
 
 .page3 .main-con1 .rightDiv {
-  width: 6.35rem;
+  width: 3.3rem;
   margin-top: 0.2rem;
+  overflow: visible;
+  padding: 0.1rem 0.25rem 0.25rem;
 }
 
 .page3 .rightDiv .dt-title {
@@ -244,17 +258,17 @@ input {
 }
 
 .page3 .dt-list ul li {
-  background: #f9afa1;
+  background: #d95f56;
   overflow: hidden;
   height: 0.48rem;
   line-height: 0.48rem;
   width: 100%;
-  border: 0.01rem solid #faa797;
+  /* border: 0.01rem solid #faa797; */
   margin-top: 0.1rem;
 }
 
 .page3 .dt-list ul li .fl {
-  color: #ad2126;
+  color: white;
   font-size: 0.18rem;
   font-weight: bold;
   padding-left: 0.25rem;
@@ -297,30 +311,31 @@ input {
   width: 3.45rem;
 }
 
-.page3 .leftDiv .fczs {
+.page3 .fczs {
   width: 3.05rem;
-  height: 3.44rem;
+  height: 2.2rem;
   margin: 0 auto;
   background: #b6302c;
-  padding: 0.5rem 0.17rem;
-  box-shadow: 0px 0px 0.2rem 0.05rem #a7a6a7;
+  padding: 0.3rem 0.17rem;
   text-align: center;
+  margin-top: 0.15rem;
+  box-shadow: 0px 0.1rem 0.2rem #a7a6a7;
 }
 
-.page3 .leftDiv .fczs .fczs-title {
+.page3 .fczs .fczs-title {
   font-size: 0.3rem;
   color: #fff;
   height: 0.5rem;
   font-weight: bold;
-  margin-top: 0.2rem;
+  margin-top: 0.1rem;
 }
 
-.page3 .leftDiv .fczs img {
+.page3 .fczs img {
   display: inline-block;
-  width: 1.42rem;
+  width: 1rem;
 }
 
-.page3 .leftDiv .fczs .fczs-title span {
+.page3 .fczs .fczs-title span {
   position: relative;
   top: -0.17rem;
 }
@@ -484,7 +499,7 @@ input {
   text-overflow: ellipsis;
 }
 
-.page3 .caidan .cd-list ul li .text>div.tag-time {
+.page3 .caidan .cd-list ul li .text > div.tag-time {
   font-size: 0.17rem;
   overflow: hidden;
   background: #ae2227;
@@ -556,7 +571,7 @@ input {
 .page3 .main-con3 ul li.li2 {
   width: 3.05rem;
   /*margin: 0 0.1rem;*/
-   margin-left: 0.05rem; 
+  margin-left: 0.05rem;
 }
 
 .page3 .main-con3 ul li.li2 div {
@@ -581,7 +596,7 @@ input {
 
 .page3 .main-con3 ul li.li5 {
   width: 3.05rem;
-   margin-left: 0.05rem; 
+  margin-left: 0.05rem;
 }
 
 .page3 .main-con3 ul li.li5 div {
@@ -606,7 +621,7 @@ input {
 
 .page3 .main-con3 ul li.li8 {
   width: 3.05rem;
-   margin-left: 0.05rem; 
+  margin-left: 0.05rem;
 }
 
 .page3 .main-con3 ul li.li8 div {
@@ -746,23 +761,23 @@ input {
   width: 100%;
 }
 
-.page3 .pop .textDiv>div {
+.page3 .pop .textDiv > div {
   overflow: hidden;
   line-height: 0.55rem;
 }
 
-.page3 .pop .textDiv>div span {
+.page3 .pop .textDiv > div span {
   display: inline-block;
   /*width: 1.8rem;*/
   text-align: justify;
 }
 
-.page3 .pop .textDiv>div div {
+.page3 .pop .textDiv > div div {
   display: inline-block;
   max-width: 6.8rem;
 }
 
-.page3 .pop .textDiv>div.intro {
+.page3 .pop .textDiv > div.intro {
   margin-top: 0.2rem;
 }
 
@@ -791,7 +806,8 @@ input {
   font-size: 0.4rem;
   color: #303031;
   position: absolute;
-  left: 0.5rem; top: 0;
+  left: 0.5rem;
+  top: 0;
 }
 
 .page .header a i {
@@ -814,7 +830,7 @@ input {
   line-height: 1.5rem;
 }
 
-.page .formDiv .inputDiv>span {
+.page .formDiv .inputDiv > span {
   display: inline-block;
   width: 2.2rem;
   font-size: 0.4rem;
@@ -866,7 +882,7 @@ input {
   color: #222;
 }
 
-.page .formDiv .inputDiv>div {
+.page .formDiv .inputDiv > div {
   float: left;
   height: 1.5rem;
   line-height: 1.5rem;
@@ -875,7 +891,7 @@ input {
   margin-left: 0.2rem;
 }
 
-.page .formDiv .inputDiv>div span {
+.page .formDiv .inputDiv > div span {
   font-size: 0.4rem;
   float: left;
   display: inline-block;
@@ -891,7 +907,7 @@ input {
   color: #909090;
 }
 
-.page .formDiv .inputDiv>div span.check {
+.page .formDiv .inputDiv > div span.check {
   color: #b42628;
   border: 0;
   background: url(../images/sex-bg.png) no-repeat center center;
@@ -942,7 +958,8 @@ input {
   font-size: 0.4rem;
   color: #fff;
   position: absolute;
-  left: 0.5rem; top: 0;
+  left: 0.5rem;
+  top: 0;
 }
 
 .page9 .header a i {
@@ -979,11 +996,11 @@ input {
   overflow: hidden;
 }
 
-.page9 .list .list-text>img {
+.page9 .list .list-text > img {
   width: 100%;
 }
 
-.page9 .list .list-text>ul>li {
+.page9 .list .list-text > ul > li {
   padding: 0.3rem 0.2rem;
   background: #e6e6e6;
   height: 0.9rem;
@@ -994,7 +1011,7 @@ input {
   margin-bottom: 0.3rem;
 }
 
-.page9 .list .list-text>ul>li span {
+.page9 .list .list-text > ul > li span {
   font-size: 0.24rem;
   position: relative;
   top: 0.03rem;
@@ -1101,7 +1118,7 @@ input {
   font-size: 0.4rem;
   color: #4d4d4e;
   text-align: center;
-  line-height: 1rem
+  line-height: 1rem;
 }
 
 .page9 .activity h2 {
@@ -1132,17 +1149,17 @@ input {
   text-indent: 2em;
   text-align: justify;
   border-bottom: 1px solid #ae2227;
-  margin: .1rem 0;
-  padding: .1rem 0
+  margin: 0.1rem 0;
+  padding: 0.1rem 0;
 }
 
-.page9 .activity>div {
+.page9 .activity > div {
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
   border-bottom: 1px solid #ae2227;
 }
 
-.page9 .activity>div.activity4 {
+.page9 .activity > div.activity4 {
   border: 0;
 }
 
@@ -1162,7 +1179,8 @@ input {
   font-size: 0.4rem;
   color: #fff;
   position: absolute;
-  left: 0.5rem; top: 0;
+  left: 0.5rem;
+  top: 0;
 }
 
 .page6 .header a i {
@@ -1189,7 +1207,7 @@ input {
   background: #fff;
 }
 
-.page6 .list .list-text>ul>li {
+.page6 .list .list-text > ul > li {
   padding: 0.3rem 0.2rem;
   background: #cccccb;
   height: 0.9rem;
@@ -1201,7 +1219,7 @@ input {
   text-align: center;
 }
 
-.page6 .list .list-text.selected-list>ul>li {
+.page6 .list .list-text.selected-list > ul > li {
   background: #f4cec0;
 }
 
@@ -1285,23 +1303,23 @@ input {
   width: 100%;
 }
 
-.page6 .pop .textDiv>div {
+.page6 .pop .textDiv > div {
   overflow: hidden;
   line-height: 0.55rem;
 }
 
-.page6 .pop .textDiv>div span {
+.page6 .pop .textDiv > div span {
   display: inline-block;
   /*width: 1.8rem;*/
   text-align: justify;
 }
 
-.page6 .pop .textDiv>div div {
+.page6 .pop .textDiv > div div {
   display: inline-block;
   max-width: 6.8rem;
 }
 
-.page6 .pop .textDiv>div.intro {
+.page6 .pop .textDiv > div.intro {
   margin-top: 0.2rem;
 }
 
@@ -1334,7 +1352,8 @@ input {
   font-size: 0.4rem;
   color: #fff;
   position: absolute;
-  left: 0.5rem; top: 0;
+  left: 0.5rem;
+  top: 0;
 }
 
 .page8 .header a i {
@@ -1361,7 +1380,7 @@ input {
   background: #fff;
 }
 
-.page8 .list .list-text>ul>li {
+.page8 .list .list-text > ul > li {
   padding: 0.3rem 0.2rem;
   background: #e6e6e6;
   height: 0.9rem;
@@ -1510,7 +1529,8 @@ input {
   font-size: 0.4rem;
   color: #fff;
   position: absolute;
-  left: 0.5rem; top: 0;
+  left: 0.5rem;
+  top: 0;
 }
 
 .page5 .header a i {
@@ -1561,7 +1581,7 @@ input {
   margin-top: 0.25rem;
 }
 
-.page5 .list .list-text>ul>li {
+.page5 .list .list-text > ul > li {
   padding: 0.3rem 0.2rem;
   background: #e6e6e6;
   height: 0.9rem;
@@ -1572,7 +1592,7 @@ input {
   margin-bottom: 0.3rem;
 }
 
-.page5 .list .list-text>ul>li span.title {
+.page5 .list .list-text > ul > li span.title {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
@@ -1580,7 +1600,7 @@ input {
   max-width: 70%;
 }
 
-.page5 .list .list-text>ul>li span.fr {
+.page5 .list .list-text > ul > li span.fr {
   font-size: 0.24rem;
   position: relative;
   top: 0.03rem;
@@ -1677,23 +1697,23 @@ input {
   width: 100%;
 }
 
-.page5 .pop .textDiv>div {
+.page5 .pop .textDiv > div {
   overflow: hidden;
   line-height: 0.55rem;
 }
 
-.page5 .pop .textDiv>div span {
+.page5 .pop .textDiv > div span {
   display: inline-block;
   /*width: 1.8rem;*/
   text-align: justify;
 }
 
-.page5 .pop .textDiv>div div {
+.page5 .pop .textDiv > div div {
   display: inline-block;
   max-width: 6.8rem;
 }
 
-.page5 .pop .textDiv>div.intro {
+.page5 .pop .textDiv > div.intro {
   margin-top: 0.2rem;
 }
 
@@ -1719,7 +1739,8 @@ input {
   font-size: 0.4rem;
   color: #4d4d4e;
   position: absolute;
-  left: 0.5rem; top: 0;
+  left: 0.5rem;
+  top: 0;
   top: 0.3rem;
 }
 
@@ -1739,7 +1760,7 @@ input {
   background: #fff;
 }
 
-.page7 .list .list-text>ul>li {
+.page7 .list .list-text > ul > li {
   padding: 0.3rem 0.2rem;
   background: #cccccb;
   height: 0.9rem;
@@ -1750,7 +1771,7 @@ input {
   margin-bottom: 0.3rem;
 }
 
-.page7 .list .list-text>ul>li.first {
+.page7 .list .list-text > ul > li.first {
   background: #ec2027;
   color: #fff;
   font-size: 0.33rem;
@@ -1842,23 +1863,23 @@ input {
   width: 100%;
 }
 
-.page7 .pop .textDiv>div {
+.page7 .pop .textDiv > div {
   overflow: hidden;
   line-height: 0.55rem;
 }
 
-.page7 .pop .textDiv>div span {
+.page7 .pop .textDiv > div span {
   display: inline-block;
   /*width: 1.8rem;*/
   text-align: justify;
 }
 
-.page7 .pop .textDiv>div div {
+.page7 .pop .textDiv > div div {
   display: inline-block;
   max-width: 6.8rem;
 }
 
-.page7 .pop .textDiv>div.intro {
+.page7 .pop .textDiv > div.intro {
   margin-top: 0.2rem;
 }
 
@@ -1890,7 +1911,8 @@ input {
   font-size: 0.4rem;
   color: #fff;
   position: absolute;
-  left: 0.5rem; top: 0;
+  left: 0.5rem;
+  top: 0;
 }
 
 .page4 .header a i {
@@ -2018,7 +2040,7 @@ input {
   position: static;
 }
 
-.page1>.header {
+.page1 > .header {
   position: fixed;
   top: 0;
   z-index: 10;
@@ -2028,7 +2050,8 @@ input {
   font-size: 0.4rem;
   color: #4d4d4e;
   position: absolute;
-  left: 0.5rem; top: 0;
+  left: 0.5rem;
+  top: 0;
   top: 0.42rem;
 }
 
@@ -2187,7 +2210,7 @@ input {
 .page1 .detail .content {
   padding: 0.3rem 0.5rem 0;
   position: absolute;
-  top: 1.30rem;
+  top: 1.3rem;
   overflow: auto;
   z-index: 5;
   bottom: 0;
@@ -2201,7 +2224,7 @@ input {
   margin-bottom: 0.5rem;
 }
 
-.page1 .detail .content>h2 {
+.page1 .detail .content > h2 {
   font-size: 0.45rem;
   margin-bottom: 0.3rem;
   text-align: center;
@@ -2277,7 +2300,7 @@ input {
   font-size: 0.4rem;
   color: #4d4d4e;
   text-align: center;
-  line-height: 1.5
+  line-height: 1.5;
 }
 
 .page1 .event-content h2 {
@@ -2309,17 +2332,17 @@ input {
   text-indent: 2em;
   text-align: justify;
   border-bottom: 1px solid #ae2227;
-  margin: .1rem 0;
-  padding: .1rem 0
+  margin: 0.1rem 0;
+  padding: 0.1rem 0;
 }
 
-.page1 .event-content>div {
+.page1 .event-content > div {
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
   border-bottom: 1px solid #ae2227;
 }
 
-.page1 .event-content>div.activity4 {
+.page1 .event-content > div.activity4 {
   border: 0;
 }
 
@@ -2616,7 +2639,8 @@ input {
   font-size: 0.4rem;
   color: #fff;
   position: absolute;
-  left: 0.5rem; top: 0;
+  left: 0.5rem;
+  top: 0;
 }
 
 .page10 .header a i {
@@ -2757,7 +2781,7 @@ input {
 .page10 .attend-form {
   height: 90%;
   background: #f7f8f8;
-  padding: .6rem;
+  padding: 0.6rem;
 }
 
 .page10 .attend-form .item {
@@ -2777,7 +2801,9 @@ input {
   vertical-align: middle;
 }
 
-.page10 .attend-form input, select, textarea {
+.page10 .attend-form input,
+select,
+textarea {
   outline: none;
   font-family: inherit;
   width: 62%;
@@ -2839,7 +2865,8 @@ input {
   color: #fff;
   position: absolute;
   z-index: 0;
-  left: 0.5rem; top: 0;
+  left: 0.5rem;
+  top: 0;
 }
 
 .page-yuyue .header a i {
@@ -2912,7 +2939,6 @@ a img.aligncenter {
 .wp-caption.alignnone {
   margin: 0 auto;
   width: 100vw !important;
-
 }
 
 .wp-caption.alignleft {
