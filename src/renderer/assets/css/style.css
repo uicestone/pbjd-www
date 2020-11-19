@@ -2361,7 +2361,7 @@ input {
 
 .page2 .tab-bar {
   width: 100%;
-  height: 2.26rem;
+  height: 1.8rem;
   display: flex;
   display: -webkit-flex;
   justify-content: space-between;
@@ -2393,14 +2393,18 @@ input {
 }
 
 .page2 .tab-bar div font {
-  font-size: 0.4rem;
+  font-size: 0.55rem;
   margin-top: 0.2rem;
   display: block;
 }
 
 .page2 .tab-bar .curr {
-  background: #ec1f26;
+  background: #e50215;
   color: #fff;
+
+  /* only one tab  */
+  width: 100%;
+  line-height: 0.6rem;
 }
 
 .page2 .tab-bar .curr img {
@@ -2417,7 +2421,7 @@ input {
   width: 100%;
   height: auto;
   margin-top: 0.3rem;
-  border: 0.02rem solid #ec1f26;
+  border: 0.02rem solid #e50215;
 }
 
 .page2 .lists {
@@ -2436,7 +2440,7 @@ input {
   height: auto;
   color: #4e4e4e;
   font-size: 0.35rem;
-  border-bottom: 1px solid #ec1f26;
+  border-bottom: 1px solid #e50215;
   position: relative;
   padding: 0.2rem 0 0.15rem 0;
 }
@@ -2449,7 +2453,7 @@ input {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background: #ec1f26;
+  background: #e50215;
   color: #fff;
   font-size: 0.3rem;
   position: absolute;
@@ -2518,7 +2522,7 @@ input {
 
 .page2 .chunk3 .played {
   color: #fff;
-  background: #ec1f26;
+  background: #e50215;
 }
 
 .page2 .pop {

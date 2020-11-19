@@ -18,31 +18,31 @@ export default {
         "领誓人带领全体党员面向党旗宣誓（有条件的，参加宣誓的党员在“宣誓人”环节依次报名）；",
         "领誓人致共勉词，与全体党员共勉；",
         "奏《国际歌》；",
-        "主持人宣布仪式结束。"
-      ]
+        "主持人宣布仪式结束。",
+      ],
     };
   },
   computed: {
     currentSelectPeopleData() {
       return this.peopleList[this.currentSelectPeople] || {};
     },
-    currentPlayer(){
+    currentPlayer() {
       return this.$refs.audio;
-    }
+    },
   },
   async mounted() {
     handleLoading();
     this.peopleList = await request.getPosts({
       query: {
         category: "誓词教育",
-        limit: 12
-      }
+        limit: 12,
+      },
     });
     this.musicList = await request.getAttachments({
       query: {
         category: "红色歌曲",
-        limit: 12
-      }
+        limit: 12,
+      },
     });
   },
   methods: {
@@ -55,8 +55,8 @@ export default {
       let data = this.musicList[index];
       this.currentPlayer.src = data.url;
       this.currentPlayer.play();
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -71,17 +71,20 @@ export default {
         <div class="middle">
             <div class="tab-bar">
               <div :class="{curr: currentTag == 1}"  @click="currentTag =1">
-                <p><i class="fa fa-list-ul" aria-hidden="true"></i><font>宣誓流程</font></p>
+                <p>
+                  <!-- <i class="fa fa-list-ul" aria-hidden="true"></i> -->
+                  <font>宣誓流程</font>
+                </p>
                 <img src="~@/assets/images/line.jpg">
               </div>
-              <div :class="{curr: currentTag == 2}"  @click="currentTag =2">
+              <!-- <div :class="{curr: currentTag == 2}"  @click="currentTag =2">
                 <p><i class="fa fa-user-o" aria-hidden="true"></i><font>领誓人</font></p>
                 <img src="~@/assets/images/line.jpg">
               </div>
               <div :class="{curr: currentTag == 3}"  @click="currentTag =3" >
                 <p><i class="fa fa-music" aria-hidden="true"></i><font>红色歌曲</font></p>
                 <img src="~@/assets/images/line.jpg">
-              </div>
+              </div> -->
             </div>
             
             <div class="list-box">
