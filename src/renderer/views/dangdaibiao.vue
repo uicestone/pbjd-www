@@ -51,8 +51,11 @@ export default {
     back() {
       if (this.selectedList) {
         return (this.selectedList = "");
+      } else if (window.history.length > 1) {
+        this.$router.back();
+      } else {
+        window.location.href = "#/home";
       }
-      this.$router.go(-1);
     },
     init() {
       $(".main").css("opacity", "1");

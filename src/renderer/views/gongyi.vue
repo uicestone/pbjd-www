@@ -82,8 +82,10 @@ export default {
     back() {
       if (this.selectedList) {
         this.selectedList = '';
+      } else if (window.history.length > 1) {
+        this.$router.back();
       } else {
-        this.$router.go(-1);
+        window.location.href = "#/home";
       }
     }
   },

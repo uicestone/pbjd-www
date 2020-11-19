@@ -23,7 +23,11 @@ export default {
       }, 1000)
     },
     back() {
-      this.$router.go(-1);
+      if (window.history.length > 1) {
+        this.$router.back();
+      } else {
+        window.location.href = "#/home";
+      }
     },
     showPost(slug) {
       this.showingPost = this.posts.filter(post => post.slug === slug)[0];

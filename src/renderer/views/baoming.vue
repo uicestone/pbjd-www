@@ -26,8 +26,10 @@ export default {
         this.attending = -1;
       } else if (this.currentSelect > -1) {
         this.currentSelect = -1;
+      } else if (window.history.length > 1) {
+        this.$router.back();
       } else {
-        this.$router.go(-1);
+        window.location.href = "#/home";
       }
     },
     attend(index) {

@@ -79,8 +79,10 @@
       back() {
         if (this.showed.length) {
           this.showing = this.showed.pop();
-        } else {
+        } else if (window.history.length > 1) {
           this.$router.back();
+        } else {
+          window.location.href = "#/home";
         }
       },
       playAudio(index) {

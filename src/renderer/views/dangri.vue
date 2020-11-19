@@ -57,9 +57,12 @@ export default {
   methods: {
     back() {
       if (this.selectedList) {
-        return (this.selectedList = "");
+        this.selectedList = "";
+      } else if (window.history.length > 1) {
+        this.$router.back();
+      } else {
+        window.location.href = "#/home";
       }
-      this.$router.go(-1);
     },
     prevSwiper(swiper) {
       this.$refs[swiper].swiper.slidePrev();
